@@ -4,5 +4,10 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  direccionBanner: 'http://http://192.168.33.72:81/api/v1/Banners',
+  direccionMenu: 'http://http://192.168.33.72:81/api/v1/menus',
+  direccionPopups: 'http://http://192.168.33.72:81/api/v1/popups',
+  direccionTabs: 'http://http://192.168.33.72:81/api/v1/tabs',
+  direccionUbicanos: 'http://http://192.168.33.72:81/api/v1/ubicanos',
 };
