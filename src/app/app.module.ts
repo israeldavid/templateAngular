@@ -10,7 +10,8 @@ import { AppComponent } from './app.component';
 import { AgmCoreModule} from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { HttpClientModule} from '@angular/common/http';
-
+//Servicios
+import { BannerService } from './servicios/banner.service';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { HttpClientModule} from '@angular/common/http';
     AppComponent,
     AdminLayoutComponent,
   ],
-  providers: [],
+  providers: [BannerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

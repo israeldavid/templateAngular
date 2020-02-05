@@ -5,9 +5,9 @@
 
 export const environment = {
   production: false,
-  direccionBanner: 'http://http://192.168.33.72:81/api/v1/Banners',
-  direccionMenu: 'http://http://192.168.33.72:81/api/v1/menus',
-  direccionPopups: 'http://http://192.168.33.72:81/api/v1/popups',
-  direccionTabs: 'http://http://192.168.33.72:81/api/v1/tabs',
-  direccionUbicanos: 'http://http://192.168.33.72:81/api/v1/ubicanos',
+  direccionBanner: 'http://192.168.33.72:81/api/v1/Banners',
+  direccionMenu: 'http://192.168.33.72:81/api/v1/menus',
+  direccionPopups: 'http://192.168.33.72:81/api/v1/popups',
+  direccionTabs: 'http://192.168.33.72:81/api/v1/tabs',
+  direccionUbicanos: 'http://192.168.33.72:81/api/v1/ubicanos',
 };
