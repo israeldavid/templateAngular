@@ -15,5 +15,14 @@ export class BannerService {
   obtenerBanners(){
     return this.httpService.get<responseBanner>(url);
   }
+
+  addBanner(banner: responseBanner) {
+    try {
+      return this.httpService.post<responseBanner>(url, banner);
+    } catch (error) {
+      //poner un toast si eso hay en angular
+      console.log(error);
+    }
+  }
   
 }

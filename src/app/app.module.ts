@@ -7,11 +7,13 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
-import { AgmCoreModule} from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 //Servicios
 import { BannerService } from './servicios/banner.service';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -23,6 +25,9 @@ import { BannerService } from './servicios/banner.service';
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
@@ -31,7 +36,9 @@ import { BannerService } from './servicios/banner.service';
     AppComponent,
     AdminLayoutComponent,
   ],
-  providers: [BannerService],
+  providers: [BannerService,
+    MatDialog,
+    MatDialogConfig,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

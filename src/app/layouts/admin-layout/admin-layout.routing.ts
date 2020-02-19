@@ -8,6 +8,8 @@ import { MenusComponent } from '../../menus/menus.component';
 import { SlidesComponent } from '../../slides/slides.component';
 import { ThemeComponent } from '../../theme/theme.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { RolesComponent } from '../../roles/roles.component';
+import { NotificacionesComponent } from '../../notificaciones/notificaciones.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -16,6 +18,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tabs',           component: TabsComponent },
     { path: 'menus',          component: MenusComponent },
     { path: 'slides',         component: SlidesComponent },
+    { path: 'roles',          component: RolesComponent },
+    { path: 'notificaciones', component: NotificacionesComponent },
     { path: 'theme',          component: ThemeComponent },
     { path: 'upgrade',        component: UpgradeComponent },
 ];

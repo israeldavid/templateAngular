@@ -4,14 +4,14 @@ import { responseTabs } from '../interfaces/interface.tabs';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.scss']
+  selector: 'app-roles',
+  templateUrl: './roles.component.html',
+  styleUrls: ['./roles.component.scss']
 })
-export class TabsComponent implements OnInit {
+export class RolesComponent implements OnInit {
 
   responseTabs: responseTabs;
-
+  
   constructor(private ts:TabsService,private sanitized: DomSanitizer) { }
 
   ngOnInit() {
@@ -20,9 +20,7 @@ export class TabsComponent implements OnInit {
 
   consultarTabs(){
     this.ts.obtenerTabs().subscribe(data => { 
-      console.log(data);
       this.responseTabs=data;  
     });
   }
-
 }

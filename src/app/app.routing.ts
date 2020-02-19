@@ -8,10 +8,10 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  }, {
-    path: '',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+  },
+    {
+    path: 'admin',
     component: AdminLayoutComponent,
     children: [{
       path: '',

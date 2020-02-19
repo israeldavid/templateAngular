@@ -11,7 +11,8 @@ import { MenusComponent } from '../../menus/menus.component';
 import { SlidesComponent } from '../../slides/slides.component';
 import { ThemeComponent } from '../../theme/theme.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-
+import { RolesComponent } from '../../roles/roles.component';
+import { NotificacionesComponent } from '../../notificaciones/notificaciones.component';
 import {
   MatButtonModule,
   MatInputModule,
@@ -42,6 +43,8 @@ import {
     SlidesComponent,
     ThemeComponent,
     UpgradeComponent,
+    RolesComponent,
+    NotificacionesComponent
   ]
 })
 

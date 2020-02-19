@@ -4,8 +4,8 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-danger">
-                      <h4 class="card-title ">Listado de Banners</h4>
-                      <p class="card-category"> Banners registrados</p>
+                      <h4 class="card-title ">Listado de Notificaciones PUSH</h4>
+                      <p class="card-category"> Notificaciones registrados</p>
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
@@ -13,18 +13,20 @@
                               <thead class=" text-primary">
                                   <th>ID</th>
                                   <th>Nombre</th>
-                                  <th>Imagen</th>
-                                  <th>Estado</th>
-                                  <th>Acción</th>
+                                  <th>Titulo</th>
+                                  <th>Cuerpo</th>
+                                  <th>Emojis</th>
+                                  <th>Acciones</th>
                               </thead>
                               <tbody>
-                                  <tr *ngFor="let item of responseBanners?.banners"> 
-                                      <td>{{item?.id}}</td>
-                                      <td>{{item?.nombre}}</td>
-                                      <td><img [src]="item.base64" width="50px" height="50px"></td>
-                                      <td>OK</td>
-                                      <td>
-                                        <button mat-raised-button type="button" (click)="crearBanner()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                  <tr *ngFor="let item of responseTabs?.tabs">
+                                      <td> {{item.ID}} </td>
+                                      <td> {{item.nombre}} </td>
+                                      <td> <img [src]="sanitized.bypassSecurityTrustUrl(item?.base64)" width="50px" height="50px"></td>
+                                      <td> {{item.ruta}} </td>
+                                      <td> OK </td>
+                                      <td>  
+                                        <button mat-raised-button type="button" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">open_in_new</i>
                                         </button>
                                         <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
@@ -33,7 +35,7 @@
                                         <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">close</i>
                                         </button>
-                                        </td>
+                                    </td>
                                   </tr>
                               </tbody>
                           </table>

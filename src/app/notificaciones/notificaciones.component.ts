@@ -4,23 +4,19 @@ import { responseTabs } from '../interfaces/interface.tabs';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.scss']
+  selector: 'app-notificaciones',
+  templateUrl: './notificaciones.component.html',
+  styleUrls: ['./notificaciones.component.scss']
 })
-export class TabsComponent implements OnInit {
-
+export class NotificacionesComponent implements OnInit {
   responseTabs: responseTabs;
-
   constructor(private ts:TabsService,private sanitized: DomSanitizer) { }
 
   ngOnInit() {
     this.consultarTabs();
   }
-
   consultarTabs(){
     this.ts.obtenerTabs().subscribe(data => { 
-      console.log(data);
       this.responseTabs=data;  
     });
   }
