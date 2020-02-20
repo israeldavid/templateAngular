@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../servicios/auth.service';
+import { User } from '../interfaces/interface.user';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SweetAlertService } from 'ngx-sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +14,36 @@ export class LoginComponent implements OnInit {
   passwordShown = false;
   passwordType = 'password';
   nameIcon = 'eye-off';
-  constructor(private router: Router) { }
+
+  formLogin: FormGroup;
+
+
+  constructor(private router: Router,private as:AuthService,public fb: FormBuilder,private swal2:SweetAlertService) { 
+    this.formLogin = this.fb.group({
+      usuario: ['', Validators.required],
+      clave: ['', Validators.required]
+  });
+  }
 
   ngOnInit() {
   }
 
-  onLogin() {
+  onLogin(sendata:User) {
     //localStorage.setItem('isLoggedin', 'true');
-    console.log("Difare")
-    this.router.navigateByUrl("admin");
+    if (this.formLogin.invalid){
+      return;
+    } else {
+      console.log("Formulario: ", sendata);
+      this.as.validarUsuario(sendata).subscribe((respuesta) => {
+        if (respuesta.login.token){
+          this.router.navigateByUrl('admin');
+        }
+      },err => {
+        //this.swal2.success
+        this.swal2.error({ title: 'Error de Usuario o Clave' });
+      })
+    }
+  
   }
 
   mostrarPassword(){

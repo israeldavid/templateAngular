@@ -11,7 +11,8 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { RolesComponent } from '../../roles/roles.component';
 import { NotificacionesComponent } from '../../notificaciones/notificaciones.component';
 
-export const AdminLayoutRoutes: Routes = [
+export const AdminLayoutRoutes: 
+Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'banner',         component: BannerComponent },

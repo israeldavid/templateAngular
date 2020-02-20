@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upgrade',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpgradeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit() {
+    this.deslogearse();
   }
 
+  deslogearse(){
+    //localStorage.removeItem('currentUser');
+    this.route.navigateByUrl("login");
+  }
 }

@@ -17,6 +17,7 @@ import { BannerService } from './servicios/banner.service';
 import { MaterialModule } from './material.module';
 import { MultiempresaComponent } from './multiempresa/multiempresa.component';
 import { MultiaplicacionComponent } from './multiaplicacion/multiaplicacion.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { MultiaplicacionComponent } from './multiaplicacion/multiaplicacion.comp
     AdminLayoutComponent,
     MultiempresaComponent,
     MultiaplicacionComponent,
+    LoginComponent
   ],
   providers: [BannerService,
     //MatDialog,
