@@ -12,8 +12,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { HttpClientModule } from '@angular/common/http';
 //Servicios
 import { BannerService } from './servicios/banner.service';
-import { MatDialogConfig, MatDialog } from '@angular/material';
-import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/material';
+//import { MatDialogConfig, MatDialog } from '@angular/material';
+//import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/material';
+import { MaterialModule } from './material.module';
 import { MultiempresaComponent } from './multiempresa/multiempresa.component';
 import { MultiaplicacionComponent } from './multiaplicacion/multiaplicacion.component';
 
@@ -27,9 +28,11 @@ import { MultiaplicacionComponent } from './multiaplicacion/multiaplicacion.comp
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatButtonModule,
+    MaterialModule,
+    //MatInputModule,
+    //MatCheckboxModule,
+    //MatButtonModule,
+    ///MatIconModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
@@ -41,8 +44,11 @@ import { MultiaplicacionComponent } from './multiaplicacion/multiaplicacion.comp
     MultiaplicacionComponent,
   ],
   providers: [BannerService,
-    MatDialog,
-    MatDialogConfig,],
+    //MatDialog,
+    //MatButtonModule,
+    //MatIconModule,
+    //MatDialogConfig,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
