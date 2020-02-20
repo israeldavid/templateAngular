@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    localStorage.setItem('isLoggedin', 'true');
-    this.router.navigate(['admin']);
+    //localStorage.setItem('isLoggedin', 'true');
+    this.router.navigateByUrl("/admin");
 }
 }

@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BannerService } from './servicios/banner.service';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/material';
+import { MultiempresaComponent } from './multiempresa/multiempresa.component';
+import { MultiaplicacionComponent } from './multiaplicacion/multiaplicacion.component';
 
 @NgModule({
   imports: [
@@ -35,6 +37,8 @@ import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/mat
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    MultiempresaComponent,
+    MultiaplicacionComponent,
   ],
   providers: [BannerService,
     MatDialog,
