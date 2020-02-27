@@ -30,9 +30,6 @@ export class NotificacionesComponent implements OnInit {
     this.consultarTabs();
   }
   consultarTabs(){
-    this.ts.obtenerTabs().subscribe(data => { 
-      this.responseTabs=data;  
-    });
   }
 
   crearAplicacion(){

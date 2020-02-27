@@ -19,14 +19,14 @@
                                   <th>Acciones</th>
                               </thead>
                               <tbody>
-                                  <!-- <tr *ngFor="let item of responseTabs?.tabs">
+                                  <tr *ngFor="let item of responseTabs?.tabs">
                                       <td> {{item.ID}} </td>
                                       <td> {{item.nombre}} </td>
                                       <td> <img [src]="sanitized.bypassSecurityTrustUrl(item?.base64)" width="50px" height="50px"></td>
                                       <td> {{item.ruta}} </td>
                                       <td> OK </td>
                                       <td>  
-                                        <button mat-raised-button type="button" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" (click)="crearTabs()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">open_in_new</i>
                                         </button>
                                         <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
@@ -36,24 +36,6 @@
                                             <i class="material-icons">close</i>
                                         </button>
                                     </td>
-                                  </tr>-->
-                                  <tr> 
-                                    <td>1</td>
-                                    <td>Home</td>
-                                    <td><img src="banner-1.jpg" width="50px" height="50px"></td>
-                                    <td>home</td>
-                                    <td>Activo</td>
-                                    <td>
-                                      <button mat-raised-button type="button" (click)="crearTabs()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">open_in_new</i>
-                                      </button>
-                                      <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">edit</i>
-                                      </button>
-                                      <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">close</i>
-                                      </button>
-                                      </td>
                                   </tr>
                               </tbody>
                           </table>

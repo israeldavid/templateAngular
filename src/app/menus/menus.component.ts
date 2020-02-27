@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MenusComponent implements OnInit {
   responseMenus: responseMenu;
-
+  token:any;
   constructor(private ms:menusService,private route:Router) { }
 
   ngOnInit() {
@@ -19,9 +19,9 @@ export class MenusComponent implements OnInit {
   }
 
   consultarMenus(){
-    this.ms.obtenerMenus().subscribe(data => { 
+    this.token=localStorage.getItem('token');
+    this.ms.obtenerMenus(this.token).subscribe(data => { 
       this.responseMenus=data;  
-      console.log(this.responseMenus);
     });
   }
 

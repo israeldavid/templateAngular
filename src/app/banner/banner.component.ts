@@ -12,24 +12,23 @@ import { Router } from '@angular/router';
 })
 export class BannerComponent implements OnInit {
   responseBanners: responseBanner;
-
+  token:any;
   constructor(private bs:BannerService,private dialog: MatDialog,private router:Router) { 
 
   }
 
   ngOnInit() {
-    //this.consultarBanners();
+    this.consultarBanners();
   }
 
   consultarBanners(){
-    this.bs.obtenerBanners().subscribe(data => { 
-      console.log(data);
+    this.token=localStorage.getItem('token');
+    this.bs.obtenerBanners(this.token).subscribe(data => { 
       this.responseBanners=data;  
     });
   }
 
-  crearBanner(parametro:string){
+  crearBanner(){
     this.router.navigateByUrl("crear");
-    console.log("Crear Banner",parametro);
   }
 }

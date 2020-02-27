@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class TabsComponent implements OnInit {
 
   responseTabs: responseTabs;
-
+  token:any;
   constructor(private ts:TabsService,private sanitized: DomSanitizer,private route:Router) { }
 
   ngOnInit() {
@@ -20,8 +20,8 @@ export class TabsComponent implements OnInit {
   }
 
   consultarTabs(){
-    this.ts.obtenerTabs().subscribe(data => { 
-      console.log(data);
+    this.token=localStorage.getItem('token');
+    this.ts.obtenerTabs(this.token).subscribe(data => { 
       this.responseTabs=data;  
     });
   }

@@ -31,12 +31,20 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(sendata:User) {
-    //localStorage.setItem('isLoggedin', 'true');
+    localStorage.setItem('isLoggedin', 'true');
     if (this.formLogin.invalid){
       return;
     } else {
       console.log("Formulario: ", sendata);
-      this.router.navigateByUrl('admin');
+      this.as.validarUsuario(sendata).subscribe((res) => {
+        console.log(res);
+        if (res.login.token) {
+          localStorage.setItem('token', res.login.token);
+          this.router.navigateByUrl('admin/(dashboard)');
+        }
+      },err => {
+        alert("Error;");
+      });  
     }
   
   }

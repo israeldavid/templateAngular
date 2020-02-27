@@ -10,6 +10,7 @@ import { responseBanner } from '../interfaces/interface.banner';
 export class DashboardComponent implements OnInit {
 
   responseBanners: responseBanner;
+  token:any;
   constructor(private bs:BannerService) { }
 
   ngOnInit() {
@@ -17,7 +18,8 @@ export class DashboardComponent implements OnInit {
   }
 
   consultarBanners(){
-    this.bs.obtenerBanners().subscribe(data => { 
+    this.token=localStorage.getItem('token');
+    this.bs.obtenerBanners(this.token).subscribe(data => { 
       this.responseBanners=data;     
     });
   }

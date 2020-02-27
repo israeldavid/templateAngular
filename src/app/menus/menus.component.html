@@ -24,7 +24,7 @@
                                       <td>{{item.urlPage}}</td>
                                       <td>Ok</td>
                                       <td>
-                                        <button mat-raised-button type="button" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" (click)="crearMenu()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">open_in_new</i>
                                         </button>
                                         <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
@@ -33,23 +33,6 @@
                                         <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">close</i>
                                         </button>
-                                      </td>
-                                  </tr>
-                                  <tr> 
-                                    <td>1</td>
-                                    <td>Opción de Menú</td>
-                                    <td>registro</td>
-                                    <td>OK</td>
-                                    <td>
-                                      <button mat-raised-button type="button" (click)="crearMenu('')" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">open_in_new</i>
-                                      </button>
-                                      <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">edit</i>
-                                      </button>
-                                      <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">close</i>
-                                      </button>
                                       </td>
                                   </tr>
                               </tbody>

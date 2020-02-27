@@ -19,9 +19,7 @@ export class RolesComponent implements OnInit {
   }
 
   consultarTabs(){
-    this.ts.obtenerTabs().subscribe(data => { 
-      this.responseTabs=data;  
-    });
+
   }
 
   nuevoRol(){

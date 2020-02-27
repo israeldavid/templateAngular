@@ -28,12 +28,13 @@
                                   </th>
                               </thead>
                               <tbody>
-                                <tr> 
-                                    <td>1</td>
-                                    <td>Slide Uno</td>
-                                    <td><img src="banner-1.jpg" width="50px" height="50px"></td>
-                                    <td>OK</td>
-                                    <td>
+                                <tr *ngFor="let item of responseSlides?.slides">
+                                    <td> {{item.id}} </td>
+                                    <td> {{item.nombre}} </td>
+                                    <td> <img [src]="sanitized.bypassSecurityTrustUrl(item?.base64)" width="50px" height="50px"></td>
+                                    
+                                    <td> OK </td>
+                                    <td>  
                                       <button mat-raised-button type="button" (click)="crearSlides()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                           <i class="material-icons">open_in_new</i>
                                       </button>
@@ -43,44 +44,8 @@
                                       <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
                                           <i class="material-icons">close</i>
                                       </button>
-                                      </td>
-                                  </tr>
-
-                                  <tr> 
-                                    <td>2</td>
-                                    <td>Slide 2</td>
-                                    <td><img src="banner2.jpg" width="50px" height="50px"></td>
-                                    <td>OK</td>
-                                    <td>
-                                      <button mat-raised-button type="button" (click)="crearSlides()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">open_in_new</i>
-                                      </button>
-                                      <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">edit</i>
-                                      </button>
-                                      <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">close</i>
-                                      </button>
-                                      </td>
-                                  </tr>
-
-                                  <tr> 
-                                    <td>3</td>
-                                    <td>Slide 3</td>
-                                    <td><img src="banner3.jpg" width="50px" height="50px"></td>
-                                    <td>OK</td>
-                                    <td>
-                                      <button mat-raised-button type="button" (click)="crearBanner()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">open_in_new</i>
-                                      </button>
-                                      <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">edit</i>
-                                      </button>
-                                      <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                          <i class="material-icons">close</i>
-                                      </button>
-                                      </td>
-                                  </tr>
+                                  </td>
+                                </tr>
                               </tbody>
                           </table>
                       </div>

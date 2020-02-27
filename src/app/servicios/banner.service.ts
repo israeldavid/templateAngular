@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment} from '../../environments/environment';
 import { responseBanner} from '../interfaces/interface.banner';
 
@@ -12,8 +12,17 @@ export class BannerService {
 
   constructor(private httpService: HttpClient) { }
 
-  obtenerBanners(){
-    return this.httpService.get<responseBanner>(url);
+  obtenerBanners(access_token){
+    //return this.httpService.get<responseBanner>(url);
+    return this.httpService.get<responseBanner>(url,this.getRequestHeaders(access_token));
+  }
+
+  getRequestHeaders(access_token:string): { headers: HttpHeaders | { [header: string]: string | string[] }; } {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + access_token,
+      'Content-Type': 'application/json',
+    });
+    return { headers: headers };  
   }
 
   addBanner(banner: responseBanner) {
