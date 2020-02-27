@@ -1,0 +1,44 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Nueva Aplicación</h4>
+                  </div>
+                  <div class="card-body">
+                    <form id="addBanner" [formGroup]="formGroup" (ngSubmit)="grabar()">
+
+                      <div class="container" style="margin-top: 4%">
+                          <strong>Empresa:</strong>
+                          <select class="form-control" formControlName="empresa" name="empresa">
+                            <option selected value="1">Distrigen</option>
+                            <option value="2">Otra</option>
+                            <option value="3">La Otra</option>
+                          </select>
+                      </div>
+              
+                      <div class="container" style="margin-top: 2%">
+                          <strong>Nombre de la Aplicacion:</strong>
+                          <input type="text" name="nombreApp" formControlName="nombreApp" placeholder="Nombre de la Aplicación" class="form-control">
+                      </div>
+                            
+                      <div class="container" style="margin-top: 2%">
+                          <strong>Estado:</strong>
+                          <select class="form-control" formControlName="estado" name="estado">
+                              <option selected value="1">Activo</option>
+                              <option value="2">Desactivado</option>
+                          </select>
+                      </div>
+
+                      <div class="container centrado" style="margin-top: 2%">
+                        <button class="btn btn-dark" (click)="cerrar()">Cerrar</button>
+                        <button class="btn btn-danger" type="submit" [disabled]="formGroup.invalid">Grabar</button>
+                      </div>
+                  </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

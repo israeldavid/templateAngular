@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { menusService } from '../servicios/menus.services';
 import { responseMenu } from '../interfaces/interface.menu';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { responseMenu } from '../interfaces/interface.menu';
 export class MenusComponent implements OnInit {
   responseMenus: responseMenu;
 
-  constructor(private ms:menusService) { }
+  constructor(private ms:menusService,private route:Router) { }
 
   ngOnInit() {
     this.consultarMenus();
@@ -22,6 +23,10 @@ export class MenusComponent implements OnInit {
       this.responseMenus=data;  
       console.log(this.responseMenus);
     });
+  }
+
+  crearMenu(){
+    this.route.navigateByUrl("crearmenus");
   }
 
 }

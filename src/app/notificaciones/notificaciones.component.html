@@ -22,7 +22,7 @@
                                       <td> Distrigen </td>
                                       <td> OK </td>
                                       <td>  
-                                        <button mat-raised-button type="button" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" (click)="crearAplicacion()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">open_in_new</i>
                                         </button>
                                         <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
@@ -62,7 +62,7 @@
                                     <td> Salud </td>
                                     <td> OK </td>
                                     <td>  
-                                      <button mat-raised-button type="button" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                      <button mat-raised-button type="button" matTooltip="Nuevo" (click)="crearGrupo()" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                           <i class="material-icons">open_in_new</i>
                                       </button>
                                       <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">

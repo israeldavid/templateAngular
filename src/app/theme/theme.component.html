@@ -15,17 +15,14 @@
                                       ID
                                   </th>
                                   <th>
+                                      Aplicacion
+                                  </th>
+                                  <th>
                                       Nombre
                                   </th>
                                   <th>
-                                      -
+                                      Acción
                                   </th>
-                                  <th>
-                                      -
-                                  </th>
-                                  <th>
-                                    Acción
-                                </th>
                               </thead>
                               <tbody>
                                   <tr>
@@ -33,14 +30,22 @@
                                           1
                                       </td>
                                       <td>
-                                          ------
+                                          distrigen
                                       </td>
                                       <td>
-                                          -----
+                                          deep sky
                                       </td>
                                       <td>
-                                          ------
-                                      </td>
+                                        <button mat-raised-button type="button" (click)="crearTheme()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">open_in_new</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                        </td>
                                   </tr>
                               </tbody>
                           </table>

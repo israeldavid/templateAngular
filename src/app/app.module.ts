@@ -19,6 +19,12 @@ import { MaterialModule } from './material.module';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import { CrearComponent } from './banner/crear/crear.component';
+import { CrearempresaComponent } from './user-profile/crearempresa/crearempresa.component';
+import { CrearaplicacionComponent } from './multiaplicacion/crearaplicacion/crearaplicacion.component';
+import { CreartabsComponent } from './tabs/creartabs/creartabs.component';
+import { CrearmenusComponent } from './menus/crearmenus/crearmenus.component';
+import { CrearslidesComponent } from './slides/crearslides/crearslides.component';
+import { CrearthemesComponent } from './theme/crearthemes/crearthemes.component';
 
 @NgModule({
   imports: [
@@ -45,7 +51,13 @@ import { CrearComponent } from './banner/crear/crear.component';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    CrearComponent
+    CrearComponent,
+    CrearempresaComponent,
+    CrearaplicacionComponent,
+    CreartabsComponent,
+    CrearmenusComponent,
+    CrearslidesComponent,
+    CrearthemesComponent
   ],
   providers: [BannerService,
     MatDialog,

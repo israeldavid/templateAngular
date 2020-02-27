@@ -22,7 +22,7 @@
                                       <a [routerLink]="['multiaplicacion']"><td> Distrigen </td></a>
                                       <td> OK </td>
                                       <td>  
-                                        <button mat-raised-button type="button" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" (click)="crearEmpresa()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">open_in_new</i>
                                         </button>
                                         <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">

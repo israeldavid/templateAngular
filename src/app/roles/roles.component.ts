@@ -23,4 +23,8 @@ export class RolesComponent implements OnInit {
       this.responseTabs=data;  
     });
   }
+
+  nuevoRol(){
+    alert("Por Implementar los Roles")
+  }
 }

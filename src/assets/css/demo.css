@@ -16,3 +16,8 @@
   position: absolute;
   width: 260px;
 }
+.centrado{
+  width: 400px;
+  display: flex;
+  justify-content: center;
+}
