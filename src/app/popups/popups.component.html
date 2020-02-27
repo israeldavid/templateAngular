@@ -1,3 +1,46 @@
-<p>
-  popups works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Listado de PopUps</h4>
+                      <p class="card-category"> Imagenes registrados</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>ID</th>
+                                  <th>Nombre</th>
+                                  <th>Ruta</th>
+                                  <th>Estado</th>
+                                  <th>Acciones</th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let item of responsePopup?.popups">
+                                      <td></td>
+                                      <td>{{item.nombre}}</td>
+                                      <td>{{item.urlPage}}</td>
+                                      <td>Ok</td>
+                                      <td>
+                                        <button mat-raised-button type="button" (click)="crearMenu()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">open_in_new</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
