@@ -15,6 +15,9 @@ import { RolesComponent } from '../../roles/roles.component';
 import { NotificacionesComponent } from '../../notificaciones/notificaciones.component';
 import { MultiaplicacionComponent } from '../../multiaplicacion/multiaplicacion.component';
 import { MultiempresaComponent } from '../../multiempresa/multiempresa.component';
+import { PopupsComponent} from '../../popups/popups.component';
+import { ReporteComponent } from '../../reporte/reporte.component';
+import { UbicanosComponent } from '../../ubicanos/ubicanos.component';
 
 import {
   MatButtonModule,
@@ -51,6 +54,9 @@ import {
     MultiempresaComponent,
     NotificacionesComponent,
     MultiaplicacionComponent,
+    PopupsComponent,
+    ReporteComponent,
+    UbicanosComponent
   ]
 })
 

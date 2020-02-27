@@ -12,6 +12,9 @@ import { RolesComponent } from '../../roles/roles.component';
 import { NotificacionesComponent } from '../../notificaciones/notificaciones.component';
 import { MultiaplicacionComponent } from '../../multiaplicacion/multiaplicacion.component';
 import { MultiempresaComponent } from '../../multiempresa/multiempresa.component';
+import { PopupsComponent} from '../../popups/popups.component';
+import { ReporteComponent } from '../../reporte/reporte.component';
+import { UbicanosComponent } from '../../ubicanos/ubicanos.component';
 
 export const AdminLayoutRoutes: 
 Routes = [
@@ -27,4 +30,7 @@ Routes = [
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'user-profile/multiaplicacion',component: MultiaplicacionComponent },
     { path: 'multiempresa',   component: MultiempresaComponent },
+    { path: 'popups',         component: PopupsComponent },
+    { path: 'reporte',        component: ReporteComponent },
+    { path: 'ubicanos',       component: UbicanosComponent },
 ];
