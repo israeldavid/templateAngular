@@ -4,8 +4,8 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-danger">
-                      <h4 class="card-title ">Listado de Notificaciones PUSH</h4>
-                      <p class="card-category"> Notificaciones registrados</p>
+                      <h4 class="card-title ">Listado de Aplicaciones Permitidas</h4>
+                      <p class="card-category"> para el envio de Notificaciones Push</p>
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
@@ -13,17 +13,13 @@
                               <thead class=" text-primary">
                                   <th>ID</th>
                                   <th>Nombre</th>
-                                  <th>Titulo</th>
-                                  <th>Cuerpo</th>
-                                  <th>Emojis</th>
+                                  <th>Estado</th>
                                   <th>Acciones</th>
                               </thead>
                               <tbody>
-                                  <tr *ngFor="let item of responseTabs?.tabs">
-                                      <td> {{item.ID}} </td>
-                                      <td> {{item.nombre}} </td>
-                                      <td> <img [src]="sanitized.bypassSecurityTrustUrl(item?.base64)" width="50px" height="50px"></td>
-                                      <td> {{item.ruta}} </td>
+                                  <tr>
+                                      <td> D-13408798 </td>
+                                      <td> Distrigen </td>
                                       <td> OK </td>
                                       <td>  
                                         <button mat-raised-button type="button" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
@@ -44,5 +40,45 @@
               </div>
           </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-success">
+                    <h4 class="card-title ">Listado de Grupos (Topicos)</h4>
+                    <p class="card-category"> para el envio de Notificaciones Push</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> 1 </td>
+                                    <td> Salud </td>
+                                    <td> OK </td>
+                                    <td>  
+                                      <button mat-raised-button type="button" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                          <i class="material-icons">open_in_new</i>
+                                      </button>
+                                      <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                          <i class="material-icons">edit</i>
+                                      </button>
+                                      <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                          <i class="material-icons">close</i>
+                                      </button>
+                                  </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
 </div>

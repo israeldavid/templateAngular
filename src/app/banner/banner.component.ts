@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BannerService } from '../servicios/banner.service';
 import { responseBanner } from '../interfaces/interface.banner';
 import { MatDialogConfig, MatDialog } from '@angular/material';
-import { PopupBannerComponent } from '../components/popup-banner/popup-banner.component'
 import { isUndefined } from 'util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-banner',
@@ -12,21 +12,24 @@ import { isUndefined } from 'util';
 })
 export class BannerComponent implements OnInit {
   responseBanners: responseBanner;
-  constructor(private bs:BannerService,private dialog: MatDialog) { 
+
+  constructor(private bs:BannerService,private dialog: MatDialog,private router:Router) { 
 
   }
 
   ngOnInit() {
-    this.consultarBanners();
+    //this.consultarBanners();
   }
 
   consultarBanners(){
     this.bs.obtenerBanners().subscribe(data => { 
+      console.log(data);
       this.responseBanners=data;  
     });
   }
 
-  crearBanner(){
-    console.log("Crear Banner");
+  crearBanner(parametro:string){
+    this.router.navigateByUrl("crear");
+    console.log("Crear Banner",parametro);
   }
 }

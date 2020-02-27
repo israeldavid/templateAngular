@@ -13,6 +13,9 @@ import { ThemeComponent } from '../../theme/theme.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { RolesComponent } from '../../roles/roles.component';
 import { NotificacionesComponent } from '../../notificaciones/notificaciones.component';
+import { MultiaplicacionComponent } from '../../multiaplicacion/multiaplicacion.component';
+import { MultiempresaComponent } from '../../multiempresa/multiempresa.component';
+
 import {
   MatButtonModule,
   MatInputModule,
@@ -21,6 +24,7 @@ import {
   MatTooltipModule,
   MatSelectModule
 } from '@angular/material';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -44,7 +48,9 @@ import {
     ThemeComponent,
     UpgradeComponent,
     RolesComponent,
-    NotificacionesComponent
+    MultiempresaComponent,
+    NotificacionesComponent,
+    MultiaplicacionComponent,
   ]
 })
 

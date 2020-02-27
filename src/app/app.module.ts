@@ -8,16 +8,17 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { HttpClientModule } from '@angular/common/http';
+
 //Servicios
 import { BannerService } from './servicios/banner.service';
-//import { MatDialogConfig, MatDialog } from '@angular/material';
+import { MatDialogConfig, MatDialog, MatDialogModule, MatSelectModule   } from '@angular/material';
 //import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/material';
 import { MaterialModule } from './material.module';
-import { MultiempresaComponent } from './multiempresa/multiempresa.component';
-import { MultiaplicacionComponent } from './multiaplicacion/multiaplicacion.component';
+
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
+import { CrearComponent } from './banner/crear/crear.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,8 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
+    MatDialogModule,
+    MatSelectModule,
     //MatInputModule,
     //MatCheckboxModule,
     //MatButtonModule,
@@ -41,16 +44,18 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    MultiempresaComponent,
-    MultiaplicacionComponent,
-    LoginComponent
+    LoginComponent,
+    CrearComponent
   ],
   providers: [BannerService,
-    //MatDialog,
+    MatDialog,
     //MatButtonModule,
     //MatIconModule,
-    //MatDialogConfig,
+    MatDialogConfig,
+    MatDialogModule,
+    MatSelectModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

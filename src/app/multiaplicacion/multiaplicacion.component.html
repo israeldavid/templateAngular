@@ -1,3 +1,46 @@
-<p>
-  multiaplicacion works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title ">Listado de Aplicaciones Registradas</h4>
+                      <p class="card-category"> Revise los Estados</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>ID</th>
+                                  <th>Empresa</th>
+                                  <th>Aplicacion</th>
+                                  <th>Estado</th>
+                                  <th>Acciones</th>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td> D-13408798 </td>
+                                      <td> Difare </td>
+                                      <td> distrigen </td>
+                                      <td> OK </td>
+                                      <td>  
+                                        <button mat-raised-button type="button" (click)="openDialog()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">open_in_new</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

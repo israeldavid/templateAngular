@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { PopupBannerComponent } from './popup-banner/popup-banner.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent,
-    PopupBannerComponent
+    SidebarComponent
   ],
   exports: [
     FooterComponent,

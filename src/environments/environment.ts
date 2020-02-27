@@ -9,7 +9,7 @@ const  api = 'api/v1/';
 export const environment = {
   production: false,
 
-  direccionLogin: direccion + puerto + api + '/Login/ValidateLogin',
+  direccionLogin: direccion + puerto + api + 'Login/ValidateLogin',
   direccionBanner: direccion + puerto + api + 'banners',
   direccionMenu: direccion + puerto + api + 'menus',
   direccionPopups: direccion + puerto + api + 'popups',

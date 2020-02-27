@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
+import { CrearComponent } from './banner/crear/crear.component';
 
 const routes: Routes =[
   {
@@ -20,8 +21,13 @@ const routes: Routes =[
       path: 'admin',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
     }]
+  },
+  {
+    path:'crear',
+    component:CrearComponent
   }
 ];
+
 
 @NgModule({
   imports: [
