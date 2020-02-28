@@ -19,13 +19,16 @@ import { PopupsComponent} from '../../popups/popups.component';
 import { ReporteComponent } from '../../reporte/reporte.component';
 import { UbicanosComponent } from '../../ubicanos/ubicanos.component';
 
+//Charts
+import { ChartsModule } from 'ng2-charts';
+
 import {
   MatButtonModule,
   MatInputModule,
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
 } from '@angular/material';
 
 @NgModule({
@@ -40,6 +43,7 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    ChartsModule
   ],
   declarations: [
     DashboardComponent,

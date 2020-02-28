@@ -8,11 +8,12 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
 
 //Servicios
 import { BannerService } from './servicios/banner.service';
 import { MatDialogConfig, MatDialog, MatDialogModule, MatSelectModule   } from '@angular/material';
+
 //import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/material';
 import { MaterialModule } from './material.module';
 
@@ -28,9 +29,11 @@ import { CrearthemesComponent } from './theme/crearthemes/crearthemes.component'
 import { CrearPopupComponent } from './popups/crear/crearpopup.component';
 import { CrearubicacionComponent } from './ubicanos/crearubicacion/crearubicacion.component';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
