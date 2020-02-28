@@ -13,18 +13,18 @@
                               <thead class=" text-primary">
                                   <th>ID</th>
                                   <th>Nombre</th>
-                                  <th>Ruta</th>
+                                  <th>Imagen</th>
                                   <th>Estado</th>
                                   <th>Acciones</th>
                               </thead>
                               <tbody>
                                   <tr *ngFor="let item of responsePopup?.popups">
-                                      <td></td>
+                                      <td>{{item.id}}</td>
                                       <td>{{item.nombre}}</td>
-                                      <td>{{item.urlPage}}</td>
+                                      <td><img [src]="sanitized.bypassSecurityTrustUrl(item?.base64)" width="50px" height="50px"></td>
                                       <td>Ok</td>
                                       <td>
-                                        <button mat-raised-button type="button" (click)="crearMenu()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" (click)="crearPopup()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">open_in_new</i>
                                         </button>
                                         <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">

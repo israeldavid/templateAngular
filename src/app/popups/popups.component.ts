@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PopupsService } from '../servicios/popups.service';
 import { responsePopups } from '../interfaces/interface.popup';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-popups',
   templateUrl: './popups.component.html',
@@ -9,7 +12,7 @@ import { responsePopups } from '../interfaces/interface.popup';
 export class PopupsComponent implements OnInit {
   token:any;
   responsePopup:responsePopups;
-  constructor(private ps:PopupsService) { }
+  constructor(private ps:PopupsService,private sanitized: DomSanitizer,private route:Router) { }
 
   ngOnInit() {
     this.cargarPopups();
@@ -18,9 +21,12 @@ export class PopupsComponent implements OnInit {
   cargarPopups(){
     this.token=localStorage.getItem('token');
     this.ps.obtenerPopup(this.token).subscribe(data => { 
-      console.log(data);
       this.responsePopup=data;  
     });
+  }
+
+  crearPopup(){
+    this.route.navigateByUrl("crearpopup");
   }
 
 }

@@ -25,6 +25,8 @@ import { CreartabsComponent } from './tabs/creartabs/creartabs.component';
 import { CrearmenusComponent } from './menus/crearmenus/crearmenus.component';
 import { CrearslidesComponent } from './slides/crearslides/crearslides.component';
 import { CrearthemesComponent } from './theme/crearthemes/crearthemes.component';
+import { CrearPopupComponent } from './popups/crear/crearpopup.component';
+import { CrearubicacionComponent } from './ubicanos/crearubicacion/crearubicacion.component';
 
 @NgModule({
   imports: [
@@ -57,7 +59,9 @@ import { CrearthemesComponent } from './theme/crearthemes/crearthemes.component'
     CreartabsComponent,
     CrearmenusComponent,
     CrearslidesComponent,
-    CrearthemesComponent
+    CrearthemesComponent,
+    CrearPopupComponent,
+    CrearubicacionComponent
   ],
   providers: [BannerService,
     MatDialog,

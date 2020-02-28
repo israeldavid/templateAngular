@@ -1,3 +1,48 @@
-<p>
-  ubicanos works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Listado de Ubicaciones</h4>
+                      <p class="card-category"> por empresas en Aplicaciones</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>ID</th>
+                                  <th>Aplicacion</th>
+                                  <th>Latitud</th>
+                                  <th>Longitud</th>
+                                  <th>Estado</th>
+                                  <th>Acciones</th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let item of responseCoordenada?.coordenadas">
+                                      <td>{{item.id}}</td>
+                                      <td>{{item.nombre}}</td>
+                                      <td>{{item.latitud}}</td>
+                                      <td>{{item.longitud}}</td>
+                                      <td>Ok</td>
+                                      <td>
+                                        <button mat-raised-button type="button" (click)="crearUbicacion()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">open_in_new</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

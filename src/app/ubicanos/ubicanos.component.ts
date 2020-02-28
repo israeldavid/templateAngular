@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UbicanosService } from '../servicios/ubicanos.service';
+import { responseCoordenada } from '../interfaces/interface.coordenada';
+
 
 @Component({
   selector: 'app-ubicanos',
@@ -6,10 +10,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ubicanos.component.scss']
 })
 export class UbicanosComponent implements OnInit {
-
-  constructor() { }
+  token:any;
+  responseCoordenada:responseCoordenada;
+  constructor(private route:Router,private us:UbicanosService) { }
 
   ngOnInit() {
+    this.cargarUbicaciones();
+  }
+
+  cargarUbicaciones(){
+    this.token=localStorage.getItem('token');
+    this.us.obtenerUbicaciones(this.token).subscribe(data => { 
+      this.responseCoordenada=data;  
+    });
+  }
+
+  crearUbicacion(){
+    this.route.navigateByUrl("crearubicacion");
   }
 
 }

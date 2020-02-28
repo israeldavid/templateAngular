@@ -35,9 +35,7 @@ export class LoginComponent implements OnInit {
     if (this.formLogin.invalid){
       return;
     } else {
-      console.log("Formulario: ", sendata);
       this.as.validarUsuario(sendata).subscribe((res) => {
-        console.log(res);
         if (res.login.token) {
           localStorage.setItem('token', res.login.token);
           this.router.navigateByUrl('admin/(dashboard)');

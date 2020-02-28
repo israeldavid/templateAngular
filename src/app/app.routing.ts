@@ -12,6 +12,8 @@ import { CreartabsComponent } from './tabs/creartabs/creartabs.component';
 import { CrearmenusComponent } from './menus/crearmenus/crearmenus.component';
 import { CrearslidesComponent } from './slides/crearslides/crearslides.component';
 import { CrearthemesComponent } from './theme/crearthemes/crearthemes.component';
+import { CrearPopupComponent } from './popups/crear/crearpopup.component';
+import { CrearubicacionComponent } from './ubicanos/crearubicacion/crearubicacion.component';
 
 const routes: Routes =[
   {
@@ -55,6 +57,14 @@ const routes: Routes =[
   {
     path:'crearthemes',
     component:CrearthemesComponent
+  },
+  {
+    path:'crearpopup',
+    component:CrearPopupComponent
+  },
+  {
+    path:'crearubicacion',
+    component:CrearubicacionComponent
   }
 ];
 
