@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment} from '../../environments/environment';
-import { responseBanner} from '../interfaces/interface.banner';
+import { responseBanner, Banner} from '../interfaces/interface.banner';
 
 const url = environment.direccionBanner;
 
@@ -25,13 +25,22 @@ export class BannerService {
     return { headers: headers };  
   }
 
-  addBanner(banner: responseBanner) {
+  addBanner(banner: Banner,access_token) {
     try {
-      return this.httpService.post<responseBanner>(url, banner);
+      console.log(banner,access_token);
+      return this.httpService.post<Banner>(url, this.getRequestHeaders(access_token));
     } catch (error) {
       //poner un toast si eso hay en angular
       console.log(error);
     }
+  }
+
+  editBanner(){
+    console.log("Editar Banner");
+  }
+
+  deleteBanner(){
+    console.log("Eliminar Banner");
   }
   
 }

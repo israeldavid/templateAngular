@@ -7,7 +7,7 @@ export interface responseSlides {
   export interface Slider {
     nombre: string;
     base64: string;
-    fechaCreacion: string;
+    fechaCreacion?: string;
     urlImagen:string;
     id: number;
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { responseTabs } from '../interfaces/interface.tabs';
+import { responseTabs, Tab } from '../interfaces/interface.tabs';
 
 const url = environment.direccionTabs;
 
@@ -24,7 +24,20 @@ const url = environment.direccionTabs;
       return { headers: headers };  
     }
 
-    addTabs(){
-      
+    addTabs(tab: Tab, access_token){
+      try {
+        console.log(tab,access_token);
+        return this.httpService.post<Tab>(url, this.getRequestHeaders(access_token));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    editTabs(){
+      console.log("Editar Tabs...")
+    }
+  
+    deleteTabs(){
+      console.log("Eliminar Tabs...")
     }
   }

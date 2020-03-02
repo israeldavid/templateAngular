@@ -27,4 +27,12 @@ const url = environment.direccionPopups;
     addTabs(){
       
     }
+
+    editPopUp(){
+      console.log("Editar Popup...")
+    }
+  
+    deletePopUp(){
+      console.log("Eliminar Popup...")
+    }
   }

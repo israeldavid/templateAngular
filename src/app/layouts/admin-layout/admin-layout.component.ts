@@ -67,6 +67,7 @@ export class AdminLayoutComponent implements OnInit {
       this.runOnRouteChange();
   }
   isMaps(path){
+      //Aquí es donde cambiamos el título
       var titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.slice( 1 );
       if(path == titlee){

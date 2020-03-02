@@ -27,4 +27,12 @@ const url = environment.direccionUbicanos;
     addUbicacion(){
       
     }
+
+    editUbicanos(){
+      console.log("Editar Ubicanos...")
+    }
+  
+    deleteUbicanos(){
+      console.log("Eliminar Ubicanos...")
+    }
   }

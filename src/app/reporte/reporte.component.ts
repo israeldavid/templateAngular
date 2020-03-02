@@ -24,7 +24,7 @@ export class ReporteComponent implements OnInit {
     }
   ];
 
-  lineChartLabels: Label[] = ['Grupo 1', 'Grupo 2', 'Grupo 3', 'Grupo 4', 'Grupo 5', 'Grupo 6'];
+  lineChartLabels: Label[] = ['2/Feb', '12/Feb', '15/Feb', '25/Feb', '28/Feb', '6/Marz'];
 
   lineChartOptions = {
     responsive: true,

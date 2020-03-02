@@ -16,4 +16,11 @@ export class slidesService {
     return this.httpService.get<responseSlides>(url);
   }
   
+  editSlide(){
+    console.log("Editar Slide...")
+  }
+
+  deleteSlide(){
+    console.log("Eliminar Slide...")
+  }
 }

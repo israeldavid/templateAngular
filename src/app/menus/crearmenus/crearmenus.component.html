@@ -23,7 +23,7 @@
                           <b>Seleccione la Aplicación:</b>
                           <select class="form-control" formControlName="aplicacion" name="aplicacion">
                               <option selected value="1">eCommerce</option>
-                              <option>Inventarios</option>
+                              <option menu="2">Inventarios</option>
                           </select>
                       </div>
               
@@ -34,7 +34,7 @@
               
                       <div class="container" style="margin-top: 2%">
                           <strong>Icono: [png,svg]</strong><br>
-                          <input type="file" formControlName="archivo" name="archivo">
+                          <input type="file" formControlName="archivo" name="archivo" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf">
                       </div>
 
                       <div class="container" style="margin-top: 2%">
