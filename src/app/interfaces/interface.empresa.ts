@@ -5,7 +5,8 @@ export interface responseEmpresa {
   }
   
   export interface Empresa {
-    id:number;
-    nombre: string;
-    fechaCreacion?: string;
+    id?:number,
+    nombre: string,
+    estado:string,
+    fechaCreacion?: string
   }

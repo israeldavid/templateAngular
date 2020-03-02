@@ -29,4 +29,12 @@ export class UserProfileComponent implements OnInit {
   crearEmpresa(){
     this.route.navigateByUrl("crearempresa");
   }
+
+  eliminarEmpresa(idEmpresa:number){
+    this.es.deleteEmpresa(idEmpresa,this.token=localStorage.getItem('token'));
+  }
+
+  editarEmpresa(idEmpresa:number){
+    this.route.navigateByUrl("editarempresa/"+idEmpresa)
+  }
 }

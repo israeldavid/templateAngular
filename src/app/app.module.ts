@@ -28,6 +28,7 @@ import { CrearslidesComponent } from './slides/crearslides/crearslides.component
 import { CrearthemesComponent } from './theme/crearthemes/crearthemes.component';
 import { CrearPopupComponent } from './popups/crear/crearpopup.component';
 import { CrearubicacionComponent } from './ubicanos/crearubicacion/crearubicacion.component';
+import { EditarempresaComponent } from './user-profile/editarempresa/editarempresa.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { CrearubicacionComponent } from './ubicanos/crearubicacion/crearubicacio
     CrearslidesComponent,
     CrearthemesComponent,
     CrearPopupComponent,
-    CrearubicacionComponent
+    CrearubicacionComponent,
+    EditarempresaComponent
   ],
   providers: [BannerService,
     MatDialog,

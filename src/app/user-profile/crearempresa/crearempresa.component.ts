@@ -12,13 +12,14 @@ import { Empresa } from '../../interfaces/interface.empresa';
 export class CrearempresaComponent implements OnInit {
   public formGroup: FormGroup;
   token:any;
-  crearEmpresa:Empresa = {id:1,nombre:''};
+  crearEmpresa:Empresa = {nombre:'', estado:'A'};
   valorFormulario: any;
-  
+  mensaje:string;
+
   constructor(private route:Router, private formBuilder: FormBuilder,private es:EmpresaService) { 
     this.formGroup = formBuilder.group({
       nombreEmpresa: ['',Validators.required],
-      estado:['1']
+      estado:['A']
     });
   }
 
@@ -26,14 +27,19 @@ export class CrearempresaComponent implements OnInit {
   }
 
   cerrar(){
-    this.route.navigateByUrl("admin/(user-profile)");
+    if (!this.formGroup.valid) {
+      this.route.navigateByUrl("admin/(user-profile)");
+    }
   }
 
   grabar() {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
       this.crearEmpresa.nombre=this.valorFormulario.nombreEmpresa;
-      this.es.addEmpresa(this.crearEmpresa, this.obtenerToken());
+      this.crearEmpresa.estado=this.valorFormulario.estado;
+      this.es.addEmpresa(this.crearEmpresa,this.obtenerToken());
+      alert("Empresa Creada con Exito");
+      this.route.navigateByUrl("admin/(user-profile)");
     }
     else{
       alert("Llena los campos necesarios");

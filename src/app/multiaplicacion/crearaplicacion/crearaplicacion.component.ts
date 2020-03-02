@@ -34,7 +34,7 @@ export class CrearaplicacionComponent implements OnInit {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
       this.crearAplicacion.empresa=this.valorFormulario.empresa;
-      this.crearAplicacion.nombre=this.valorFormulario.nombreEmpresa;
+      this.crearAplicacion.nombre=this.valorFormulario.nombreApp;
       this.as.addAplicacion(this.crearAplicacion, this.obtenerToken());
     }
     else{

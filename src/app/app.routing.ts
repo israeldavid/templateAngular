@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './login/login.component';
 import { CrearComponent } from './banner/crear/crear.component';
 import { CrearempresaComponent } from './user-profile/crearempresa/crearempresa.component';
+import { EditarempresaComponent } from './user-profile/editarempresa/editarempresa.component';
 import { CrearaplicacionComponent } from './multiaplicacion/crearaplicacion/crearaplicacion.component';
 import { CreartabsComponent } from './tabs/creartabs/creartabs.component';
 import { CrearmenusComponent } from './menus/crearmenus/crearmenus.component';
@@ -37,6 +38,10 @@ const routes: Routes =[
   {
     path:'crearempresa',
     component:CrearempresaComponent
+  },
+  {
+    path:'editarempresa/:idempresa',
+    component:EditarempresaComponent
   },
   {
     path:'crearaplicacion',

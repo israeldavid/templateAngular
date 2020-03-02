@@ -17,18 +17,18 @@
                                   <th>Acciones</th>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td> 1 </td>
-                                      <a [routerLink]="['multiaplicacion']"><td> Distrigen </td></a>
-                                      <td> OK </td>
+                                  <tr *ngFor="let item of responseEmpresa?.empresas">
+                                      <td>{{item.id}}</td>
+                                      <a [routerLink]="['multiaplicacion']"><td> {{item.nombre}} </td></a>
+                                      <td> {{item.estado}} </td>
                                       <td>  
                                         <button mat-raised-button type="button" (click)="crearEmpresa()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">open_in_new</i>
                                         </button>
-                                        <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" (click)="editarEmpresa(item.id)" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" (click)="eliminarEmpresa(item.id)" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">close</i>
                                         </button>
                                     </td>

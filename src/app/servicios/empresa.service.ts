@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment} from '../../environments/environment';
 import { responseEmpresa, Empresa} from '../interfaces/interface.empresa';
+import { Observable } from 'rxjs';
 
 const url = environment.direccionEmpresa;
 
@@ -9,7 +10,7 @@ const url = environment.direccionEmpresa;
   providedIn: 'root'
 })
 export class EmpresaService {
-
+  mensaje:string;
   constructor(private httpService: HttpClient) { }
 
   obtenerEmpresas(access_token){
@@ -24,10 +25,10 @@ export class EmpresaService {
     return { headers: headers };  
   }
 
-  addEmpresa(empresa: Empresa,access_token) {
+  addEmpresa(empresa: Empresa,access_token:any) {
     try {
-      console.log(empresa,access_token);
-      return this.httpService.post<Empresa>(url, this.getRequestHeaders(access_token));
+      this.httpService.post<Empresa>(url, empresa, this.getRequestHeaders(access_token))
+      .subscribe();
     } catch (error) {
       console.log(error);
     }
@@ -37,8 +38,9 @@ export class EmpresaService {
     console.log("Editar Empresa");
   }
 
-  deleteEmpresa(){
-    console.log("Eliminar Empresa");
+  deleteEmpresa(idEmpresa:number,access_token){
+    let direccion=url+"/"+idEmpresa;
+    this.httpService.delete<Empresa>(direccion,this.getRequestHeaders(access_token)).subscribe(data => alert("Empresa Eliminada"));
   }
   
 }
