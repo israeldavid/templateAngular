@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { UbicanosService } from '../../servicios/ubicanos.service';
+import { Coordenada } from '../../interfaces/interface.coordenada';
 
 @Component({
   selector: 'app-crearubicacion',
@@ -9,7 +11,13 @@ import { Router } from '@angular/router';
 })
 export class CrearubicacionComponent implements OnInit {
   public formGroup: FormGroup;
-  constructor(private route:Router,private formBuilder: FormBuilder) { 
+  token:any;
+  base64textString = [];
+  crearCoodernada:Coordenada = {id:1,empresa:1,aplicacion:1,nombre:'',longitud: '',latitud:''};
+  valorFormulario: any;
+  imgUrl:any;
+
+  constructor(private route:Router,private formBuilder: FormBuilder,private cs:UbicanosService) { 
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
@@ -29,10 +37,20 @@ export class CrearubicacionComponent implements OnInit {
 
   grabar() {
     if (this.formGroup.valid) {
-      console.log(this.formGroup.value)
+      this.valorFormulario = this.formGroup.value;
+      this.crearCoodernada.empresa=this.valorFormulario.empresa;
+      this.crearCoodernada.aplicacion=this.valorFormulario.aplicacion;
+      this.crearCoodernada.nombre=this.valorFormulario.nombreSucursal;
+      this.crearCoodernada.longitud=this.valorFormulario.longitud;
+      this.crearCoodernada.latitud=this.valorFormulario.latitud;
+      this.cs.addUbicacion(this.crearCoodernada, this.obtenerToken());
     }
     else{
-      alert("Llena los campos necesarios")
+      alert("Llena los campos necesarios");
     }
+  }
+
+  obtenerToken(){
+    return this.token=localStorage.getItem('token');
   }
 }

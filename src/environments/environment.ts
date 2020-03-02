@@ -16,4 +16,6 @@ export const environment = {
   direccionTabs: direccion + puerto + api + 'tabs',
   direccionSlides: direccion + puerto + api + 'slides',
   direccionUbicanos: direccion + puerto + api + 'coordenadas',
+  direccionEmpresa: direccion + puerto + api + 'empresa',
+  direccionAplicacion: direccion + puerto + api + 'aplicacion',
 };

@@ -5,9 +5,11 @@ export interface responsePopups {
   }
   
   export interface Popups {
+    empresa:number;
+    aplicacion:number;
     nombre: string;
     base64: string;
-    fechaCreacion: string;
+    fechaCreacion?: string;
     urlPage:string;
     id: number;
   }

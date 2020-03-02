@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { responseCoordenada } from '../interfaces/interface.coordenada';
+import { responseCoordenada,Coordenada } from '../interfaces/interface.coordenada';
 
 const url = environment.direccionUbicanos;
 
@@ -24,8 +24,13 @@ const url = environment.direccionUbicanos;
       return { headers: headers };  
     }
 
-    addUbicacion(){
-      
+    addUbicacion(ubicacion: Coordenada,access_token){
+      try {
+        console.log(ubicacion,access_token);
+        return this.httpService.post<Coordenada>(url, this.getRequestHeaders(access_token));
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     editUbicanos(){

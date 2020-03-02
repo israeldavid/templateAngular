@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { responsePopups } from '../interfaces/interface.popup';
+import { responsePopups,Popups } from '../interfaces/interface.popup';
 
 const url = environment.direccionPopups;
 
@@ -24,8 +24,13 @@ const url = environment.direccionPopups;
       return { headers: headers };  
     }
 
-    addTabs(){
-      
+    addPopups(popup: Popups,access_token){
+      try {
+        console.log(popup,access_token);
+        return this.httpService.post<Popups>(url, this.getRequestHeaders(access_token));
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     editPopUp(){
