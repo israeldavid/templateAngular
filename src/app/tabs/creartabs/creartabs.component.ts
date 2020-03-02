@@ -56,7 +56,7 @@ export class CreartabsComponent implements OnInit {
       this.crearTab.aplicacion=this.valorFormulario.aplicacion;
       this.crearTab.base64=this.base64textString[0];
       this.crearTab.nombre=this.valorFormulario.nombreOpcion;
-      this.crearTab.urlPage=this.valorFormulario.nombreEnlace;
+      this.crearTab.urlPage=this.imgUrl;
       this.ts.addTabs(this.crearTab, this.obtenerToken());
     }
     else{

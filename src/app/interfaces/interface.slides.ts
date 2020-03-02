@@ -5,6 +5,8 @@ export interface responseSlides {
   }
   
   export interface Slider {
+    aplicacion:number;
+    empresa:number;
     nombre: string;
     base64: string;
     fechaCreacion?: string;

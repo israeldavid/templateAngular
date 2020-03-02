@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { menusService } from '../../servicios/menus.services';
 import { slidesService } from '../../servicios/slides.service';
+import { Slider } from '../../interfaces/interface.slides';
 
 @Component({
   selector: 'app-crearslides',
@@ -13,11 +13,11 @@ export class CrearslidesComponent implements OnInit {
   public formGroup: FormGroup;
   token:any;
   base64textString = [];
-  crearMenu:Menu = {id:1,empresa:1,aplicacion:1,nombre:'',base64: '',urlPage:''};
+  crearSlider:Slider = {id:1,empresa:1,aplicacion:1,nombre:'',base64: '',urlImagen:''};
   valorFormulario: any;
   imgUrl:any;
 
-  constructor(private formBuilder: FormBuilder,private route:Router) { 
+  constructor(private formBuilder: FormBuilder,private route:Router,private ss:slidesService) { 
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
@@ -31,15 +31,6 @@ export class CrearslidesComponent implements OnInit {
 
   cerrar(){
     this.route.navigateByUrl("admin/(slides)");
-  }
-
-  grabar() {
-    if (this.formGroup.valid) {
-      console.log(this.formGroup.value)
-    }
-    else{
-      alert("Llena los campos necesarios")
-    }
   }
 
   onUploadChange(evt: any) {
@@ -59,12 +50,12 @@ export class CrearslidesComponent implements OnInit {
   grabar() {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
-      this.crearMenu.empresa=this.valorFormulario.empresa;
-      this.crearMenu.aplicacion=this.valorFormulario.aplicacion;
-      this.crearMenu.base64=this.base64textString[0];
-      this.crearMenu.nombre=this.valorFormulario.nombreOpcion;
-      this.crearMenu.urlPage=this.valorFormulario.nombreEnlace;
-      this.ms.addMenu(this.crearMenu, this.obtenerToken());
+      this.crearSlider.empresa=this.valorFormulario.empresa;
+      this.crearSlider.aplicacion=this.valorFormulario.aplicacion;
+      this.crearSlider.base64=this.base64textString[0];
+      this.crearSlider.nombre=this.valorFormulario.nombreOpcion;
+      this.crearSlider.urlImagen=this.imgUrl;
+      this.ss.addSlider(this.crearSlider, this.obtenerToken());
     }
     else{
       alert("Llena los campos necesarios");

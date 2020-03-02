@@ -16,7 +16,7 @@ export class CrearmenusComponent implements OnInit {
   crearMenu:Menu = {id:1,empresa:1,aplicacion:1,nombre:'',base64: '',urlPage:''};
   valorFormulario: any;
   imgUrl:any;
-  
+
   constructor(private route:Router,private formBuilder: FormBuilder,private ms:menusService) {
     this.formGroup = formBuilder.group({
       empresa: ['1'],
@@ -56,7 +56,7 @@ export class CrearmenusComponent implements OnInit {
       this.crearMenu.aplicacion=this.valorFormulario.aplicacion;
       this.crearMenu.base64=this.base64textString[0];
       this.crearMenu.nombre=this.valorFormulario.nombreOpcion;
-      this.crearMenu.urlPage=this.valorFormulario.nombreEnlace;
+      this.crearMenu.urlPage=this.imgUrl;
       this.ms.addMenu(this.crearMenu, this.obtenerToken());
     }
     else{
