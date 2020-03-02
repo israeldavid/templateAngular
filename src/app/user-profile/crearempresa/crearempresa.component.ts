@@ -38,7 +38,6 @@ export class CrearempresaComponent implements OnInit {
       this.crearEmpresa.nombre=this.valorFormulario.nombreEmpresa;
       this.crearEmpresa.estado=this.valorFormulario.estado;
       this.es.addEmpresa(this.crearEmpresa,this.obtenerToken());
-      alert("Empresa Creada con Exito");
       this.route.navigateByUrl("admin/(user-profile)");
     }
     else{
