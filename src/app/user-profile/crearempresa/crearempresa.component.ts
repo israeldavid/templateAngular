@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { EmpresaService } from '../../servicios/empresa.service';
+import { Empresa } from '../../interfaces/interface.empresa';
 
 @Component({
   selector: 'app-crearempresa',
@@ -9,7 +11,11 @@ import { Router } from '@angular/router';
 })
 export class CrearempresaComponent implements OnInit {
   public formGroup: FormGroup;
-  constructor(private route:Router, private formBuilder: FormBuilder) { 
+  token:any;
+  crearEmpresa:Empresa = {id:1,nombre:''};
+  valorFormulario: any;
+  
+  constructor(private route:Router, private formBuilder: FormBuilder,private es:EmpresaService) { 
     this.formGroup = formBuilder.group({
       nombreEmpresa: ['',Validators.required],
       estado:['1']
@@ -25,10 +31,16 @@ export class CrearempresaComponent implements OnInit {
 
   grabar() {
     if (this.formGroup.valid) {
-      console.log(this.formGroup.value)
+      this.valorFormulario = this.formGroup.value;
+      this.crearEmpresa.nombre=this.valorFormulario.nombreEmpresa;
+      this.es.addEmpresa(this.crearEmpresa, this.obtenerToken());
     }
     else{
-      alert("Llena los campos necesarios")
+      alert("Llena los campos necesarios");
     }
+  }
+
+  obtenerToken(){
+    return this.token=localStorage.getItem('token');
   }
 }

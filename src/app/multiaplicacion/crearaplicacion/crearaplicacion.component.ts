@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
+import { AplicacionService } from '../../servicios/aplicacion.service';
+import { Aplicacion } from '../../interfaces/interface.aplicacion';
 
 @Component({
   selector: 'app-crearaplicacion',
@@ -9,7 +11,11 @@ import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 })
 export class CrearaplicacionComponent implements OnInit {
   public formGroup: FormGroup;
-  constructor(private route:Router,private formBuilder: FormBuilder) {
+  token:any;
+  crearAplicacion:Aplicacion = {id:1,empresa:1,nombre:''};
+  valorFormulario: any;
+
+  constructor(private route:Router,private formBuilder: FormBuilder,private as:AplicacionService) {
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       nombreApp: ['',Validators.required],
@@ -26,10 +32,17 @@ export class CrearaplicacionComponent implements OnInit {
 
   grabar() {
     if (this.formGroup.valid) {
-      console.log(this.formGroup.value)
+      this.valorFormulario = this.formGroup.value;
+      this.crearAplicacion.empresa=this.valorFormulario.empresa;
+      this.crearAplicacion.nombre=this.valorFormulario.nombreEmpresa;
+      this.as.addAplicacion(this.crearAplicacion, this.obtenerToken());
     }
     else{
-      alert("llena los campos necesarios")
+      alert("Llena los campos necesarios");
     }
+  }
+
+  obtenerToken(){
+    return this.token=localStorage.getItem('token');
   }
 }

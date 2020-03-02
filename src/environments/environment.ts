@@ -6,6 +6,12 @@ const direccion = 'http://192.168.33.72:';
 const  puerto = '81/';
 const  api = 'api/v1/';
 
+const direcciondos =''
+const puertodos = '81/';
+const apidos = 'api/v1/';
+const direccionUnida = direcciondos + puertodos + apidos;
+
+
 export const environment = {
   production: false,
 
@@ -16,6 +22,6 @@ export const environment = {
   direccionTabs: direccion + puerto + api + 'tabs',
   direccionSlides: direccion + puerto + api + 'slides',
   direccionUbicanos: direccion + puerto + api + 'coordenadas',
-  direccionEmpresa: direccion + puerto + api + 'empresa',
-  direccionAplicacion: direccion + puerto + api + 'aplicacion',
+  direccionEmpresa: direccionUnida + 'empresa',
+  direccionAplicacion: direccionUnida + 'aplicacion',
 };

@@ -6,6 +6,7 @@ export interface responseAplicacion {
   
   export interface Aplicacion {
     id:number;
+    empresa:number,
     nombre: string;
     fechaCreacion?: string;
   }
