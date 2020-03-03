@@ -12,7 +12,7 @@ import { Aplicacion } from '../../interfaces/interface.aplicacion';
 export class CrearaplicacionComponent implements OnInit {
   public formGroup: FormGroup;
   token:any;
-  crearAplicacion:Aplicacion = {id:1,empresa:1,nombre:''};
+  crearAplicacion:Aplicacion = {id:1,nombre:'',estado:'',idempresa:0};
   valorFormulario: any;
 
   constructor(private route:Router,private formBuilder: FormBuilder,private as:AplicacionService) {
@@ -33,7 +33,7 @@ export class CrearaplicacionComponent implements OnInit {
   grabar() {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
-      this.crearAplicacion.empresa=this.valorFormulario.empresa;
+      this.crearAplicacion.idempresa=this.valorFormulario.empresa;
       this.crearAplicacion.nombre=this.valorFormulario.nombreApp;
       this.as.addAplicacion(this.crearAplicacion, this.obtenerToken());
     }

@@ -28,7 +28,7 @@ Routes = [
     { path: 'notificaciones', component: NotificacionesComponent },
     { path: 'theme',          component: ThemeComponent },
     { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'user-profile/multiaplicacion',component: MultiaplicacionComponent },
+    { path: 'user-profile/multiaplicacion/:idaplicacion',component: MultiaplicacionComponent },
     { path: 'multiempresa',   component: MultiempresaComponent },
     { path: 'popups',         component: PopupsComponent },
     { path: 'reporte',        component: ReporteComponent },

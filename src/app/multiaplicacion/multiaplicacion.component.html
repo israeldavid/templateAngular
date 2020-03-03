@@ -18,11 +18,11 @@
                                   <th>Acciones</th>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td> D-13408798 </td>
-                                      <td> Difare </td>
-                                      <td> distrigen </td>
-                                      <td> OK </td>
+                                  <tr *ngFor="let item of responseAplicacion?.aplicaciones">
+                                      <td> {{item.id}}        </td>
+                                      <td> {{item.idEmpresa}} </td>
+                                      <td> {{item.nombre}}    </td>
+                                      <td> {{item.estado}}    </td>
                                       <td>  
                                         <button mat-raised-button type="button" (click)="crearaplicacion()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">open_in_new</i>

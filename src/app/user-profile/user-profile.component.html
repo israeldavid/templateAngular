@@ -19,7 +19,7 @@
                               <tbody>
                                   <tr *ngFor="let item of responseEmpresa?.empresas">
                                       <td>{{item.id}}</td>
-                                      <a [routerLink]="['multiaplicacion']"><td> {{item.nombre}} </td></a>
+                                      <a [routerLink]="['multiaplicacion',item.id]"><td> {{item.nombre}} </td></a>
                                       <td> {{item.estado}} </td>
                                       <td>  
                                         <button mat-raised-button type="button" (click)="crearEmpresa()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">

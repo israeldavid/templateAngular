@@ -23,5 +23,5 @@ export const environment = {
   direccionSlides: direccion + puerto + api + 'slides',
   direccionUbicanos: direccion + puerto + api + 'coordenadas',
   direccionEmpresa: direccionUnida + 'Empresas',
-  direccionAplicacion: direccionUnida + 'aplicacion',
+  direccionAplicacion: direccionUnida + 'Aplicaciones',
 };

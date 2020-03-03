@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment} from '../../environments/environment';
-import { responseAplicacion, Aplicacion} from '../interfaces/interface.aplicacion';
+import { responseAplicacion, Aplicacion, empresaXApp} from '../interfaces/interface.aplicacion';
 
 const url = environment.direccionAplicacion;
 
@@ -9,11 +9,14 @@ const url = environment.direccionAplicacion;
   providedIn: 'root'
 })
 export class AplicacionService {
-
+  empresa:empresaXApp={idEmpresa:0};
   constructor(private httpService: HttpClient) { }
 
-  obtenerAplicacion(access_token){
-    return this.httpService.get<responseAplicacion>(url,this.getRequestHeaders(access_token));
+  obtenerAplicacionByEmpresa(idEmpresa:number,access_token){
+    let direccion = url + "/ByIdEmpresa/";
+    this.empresa.idEmpresa=idEmpresa;
+    console.log(this.empresa);
+    return this.httpService.post<responseAplicacion>(direccion,this.empresa,this.getRequestHeaders(access_token));
   }
 
   getRequestHeaders(access_token:string): { headers: HttpHeaders | { [header: string]: string | string[] }; } {
