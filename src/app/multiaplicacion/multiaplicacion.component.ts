@@ -35,4 +35,15 @@ export class MultiaplicacionComponent implements OnInit {
   crearaplicacion(){
     this.router.navigateByUrl("crearaplicacion");
   }
+
+  editarApp(idApp:number){
+    this.router.navigateByUrl("editaraplicacion/"+idApp)
+  }
+
+  eliminarApp(idAplicacion:number){
+    this.es.deleteAplicacion(idAplicacion,this.token=localStorage.getItem('token'));
+    this.router.navigateByUrl("admin/(user-profile)")
+  }
+
+
 }

@@ -9,6 +9,7 @@ import { CrearComponent } from './banner/crear/crear.component';
 import { CrearempresaComponent } from './user-profile/crearempresa/crearempresa.component';
 import { EditarempresaComponent } from './user-profile/editarempresa/editarempresa.component';
 import { CrearaplicacionComponent } from './multiaplicacion/crearaplicacion/crearaplicacion.component';
+import { EditaraplicacionComponent } from './multiaplicacion/editaraplicacion/editaraplicacion.component';
 import { CreartabsComponent } from './tabs/creartabs/creartabs.component';
 import { CrearmenusComponent } from './menus/crearmenus/crearmenus.component';
 import { CrearslidesComponent } from './slides/crearslides/crearslides.component';
@@ -46,6 +47,10 @@ const routes: Routes =[
   {
     path:'crearaplicacion',
     component:CrearaplicacionComponent
+  },
+  {
+    path:'editaraplicacion/:idaplicacion',
+    component:EditaraplicacionComponent
   },
   {
     path:'creartabs',

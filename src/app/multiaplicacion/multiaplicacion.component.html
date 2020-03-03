@@ -5,7 +5,9 @@
               <div class="card">
                   <div class="card-header card-header-success">
                       <h4 class="card-title ">Listado de Aplicaciones Registradas</h4>
-                      <p class="card-category"> Revise los Estados</p>
+                        <button mat-raised-button type="button" (click)="crearaplicacion()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary alineadoDerecha">
+                            Nueva Aplicación
+                        </button>
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
@@ -27,10 +29,10 @@
                                         <button mat-raised-button type="button" (click)="crearaplicacion()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">open_in_new</i>
                                         </button>
-                                        <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" (click)="editarApp(item.id)" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" (click)="eliminarApp(item.id)" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">close</i>
                                         </button>
                                     </td>

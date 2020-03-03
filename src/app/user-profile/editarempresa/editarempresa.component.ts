@@ -63,7 +63,7 @@ export class EditarempresaComponent implements OnInit {
       console.log(error);
       alert("Empresa No se pudo Actualizar, Error en el servicio");
     })} else {
-      alert("Enpresa no se pudo actualizar")
+      alert("Empresa no se pudo actualizar")
     }
   }
 

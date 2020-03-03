@@ -1,3 +1,37 @@
-<p>
-  editaraplicacion works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Editar Aplicación</h4>
+                  </div>
+                  <div class="card-body">
+                      <!-- (ngSubmit)="grabar()" -->
+                    <form id="addBanner" [formGroup]="formGroup">
+              
+                      <div class="container" style="margin-top: 2%">
+                          <strong>Nombre de la Aplicacion:</strong>
+                          <input type="text" name="nombreApp" formControlName="nombreApp" placeholder="Nombre de la Aplicación" class="form-control">
+                      </div>
+                            
+                      <div class="container" style="margin-top: 2%">
+                          <strong>Estado:</strong>
+                          <select class="form-control" formControlName="estado" name="estado">
+                              <option selected value="A">Activo</option>
+                              <option value="D">Desactivado</option>
+                          </select>
+                      </div>
+
+                      <div class="container centrado" style="margin-top: 2%">
+                        <button class="btn btn-dark" (click)="cerrar()">Cerrar</button>
+                        <!-- type="submit"-->
+                        <button class="btn btn-danger" (click)="grabar()" [disabled]="formGroup.invalid">Grabar</button>
+                      </div>
+                  </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
