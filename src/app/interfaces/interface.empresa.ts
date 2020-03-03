@@ -1,5 +1,5 @@
 export interface responseEmpresa {
-    empresa: Empresa[];
+    empresas: Empresa[];
     count: number;
     errorResponse?: any;
   }
@@ -9,4 +9,9 @@ export interface responseEmpresa {
     nombre: string,
     estado:string,
     fechaCreacion?: string
+  }
+
+  export interface EmpresaXid{
+    empresa: Empresa;
+    errorResponse?: any;
   }

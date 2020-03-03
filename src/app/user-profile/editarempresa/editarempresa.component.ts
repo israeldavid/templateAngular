@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { EmpresaService } from '../../servicios/empresa.service';
-import { responseEmpresa, Empresa} from '../../interfaces/interface.empresa';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmpresaXid } from 'app/interfaces/interface.empresa';
 
 @Component({
   selector: 'app-editarempresa',
@@ -11,10 +11,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class EditarempresaComponent implements OnInit {
   public formGroup: FormGroup;
-  empresa:{id:number};
-  datosEmpresa:any;
+  empresaId:{id:number};
   token:any;
-  constructor(private rutaActiva: ActivatedRoute,private es: EmpresaService,private formBuilder: FormBuilder) { 
+  empresaMostrar:EmpresaXid;
+  valorFormulario:any;
+
+  constructor(private rutaActiva: ActivatedRoute,private es: EmpresaService,private formBuilder: FormBuilder,private route:Router) { 
   
   this.formGroup = formBuilder.group({
     nombreEmpresa: ['',Validators.required],
@@ -23,17 +25,45 @@ export class EditarempresaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.empresa = {
+    this.empresaId = {
       id:this.rutaActiva.snapshot.params.idempresa
     }
-    this.datosEmpresa = this.es.obtenerEmpresaXId(this.empresa.id,this.obtenerToken());
-    console.log("Datos empresa: " + this.datosEmpresa);
-    this.formGroup.controls['nombreEmpresa'].setValue(this.datosEmpresa.nombre);
-    this.formGroup.controls['estado'].setValue(this.datosEmpresa.estado);
+    this.es.obtenerEmpresaXId(this.empresaId.id,this.obtenerToken()).subscribe(
+      data => {
+        this.empresaMostrar = data;
+        this.formGroup.controls['nombreEmpresa'].setValue(this.empresaMostrar.empresa.nombre);
+        this.formGroup.controls['estado'].setValue(this.empresaMostrar.empresa.estado);
+      },error => {
+        console.log(error);
+      }
+    );
   }
 
   obtenerToken(){
     return this.token=localStorage.getItem('token');
+  }
+
+  cerrar(){
+    console.log("Cerrar");
+      this.route.navigateByUrl("admin/(user-profile)");
+  }
+
+  grabar(){
+    if (this.formGroup.valid) {
+    this.valorFormulario = this.formGroup.value;
+    this.empresaMostrar.empresa.id=this.empresaId.id;
+    this.empresaMostrar.empresa.nombre=this.valorFormulario.nombreEmpresa;
+    this.empresaMostrar.empresa.estado=this.valorFormulario.estado;
+    this.es.editEmpresa(this.empresaMostrar,this.token=localStorage.getItem('token'))
+    .subscribe(data => {
+      console.log(data);
+      alert("Empresa Actualizada correctamente")
+    },error =>{
+      console.log(error);
+      alert("Empresa No se pudo Actualizar, Error en el servicio");
+    })} else {
+      alert("Enpresa no se pudo actualizar")
+    }
   }
 
 }

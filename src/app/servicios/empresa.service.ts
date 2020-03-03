@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment} from '../../environments/environment';
-import { responseEmpresa, Empresa} from '../interfaces/interface.empresa';
+import { responseEmpresa, Empresa,EmpresaXid} from '../interfaces/interface.empresa';
 import { Observable } from 'rxjs';
 
 const url = environment.direccionEmpresa;
@@ -11,17 +11,17 @@ const url = environment.direccionEmpresa;
 })
 export class EmpresaService {
   mensaje:string;
-  datosEmpresa:Empresa;
-  
+    
   constructor(private httpService: HttpClient) { }
 
+  //Listas
   obtenerEmpresas(access_token){
     return this.httpService.get<responseEmpresa>(url,this.getRequestHeaders(access_token));
   }
-
+  //Solo una
   obtenerEmpresaXId(idEmpresa:number,access_token){
     let direccion=url+"/aplication/"+idEmpresa;
-    return this.httpService.get<Empresa>(direccion,this.getRequestHeaders(access_token))
+    return this.httpService.get<EmpresaXid>(direccion,this.getRequestHeaders(access_token));
   }
 
   getRequestHeaders(access_token:string): { headers: HttpHeaders | { [header: string]: string | string[] }; } {
@@ -31,7 +31,7 @@ export class EmpresaService {
     });
     return { headers: headers };  
   }
-
+  //Añadir nuevo
   addEmpresa(empresa: Empresa,access_token:any) {
     try {
       this.httpService.post<Empresa>(url, empresa, this.getRequestHeaders(access_token))
@@ -43,9 +43,9 @@ export class EmpresaService {
     }
   }
 
-  editEmpresa(idEmpresa:number,empresa,access_token){
-    let direccion=url+"/"+idEmpresa;
-    this.httpService.put<Empresa>(direccion, empresa, this.getRequestHeaders(access_token))
+  editEmpresa(empresa,access_token){
+    console.log(empresa);
+    return this.httpService.put<EmpresaXid>(url, empresa, this.getRequestHeaders(access_token))
   }
 
   deleteEmpresa(idEmpresa:number,access_token){
