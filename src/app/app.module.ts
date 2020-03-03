@@ -30,7 +30,12 @@ import { CrearPopupComponent } from './popups/crear/crearpopup.component';
 import { CrearubicacionComponent } from './ubicanos/crearubicacion/crearubicacion.component';
 import { EditarempresaComponent } from './user-profile/editarempresa/editarempresa.component';
 import { EditaraplicacionComponent } from './multiaplicacion/editaraplicacion/editaraplicacion.component';
-
+import { EditartabsComponent } from './tabs/editartabs/editartabs.component';
+import { EditarmenusComponent } from './menus/editarmenus/editarmenus.component';
+import { EditarslidesComponent } from './slides/editarslides/editarslides.component';
+import { EditarthemeComponent } from './theme/editartheme/editartheme.component';
+import { EditarpopupsComponent } from './popups/editarpopups/editarpopups.component';
+import { EditarubicacionComponent } from './ubicanos/editarubicacion/editarubicacion.component';
 
 @NgModule({
   imports: [
@@ -68,7 +73,13 @@ import { EditaraplicacionComponent } from './multiaplicacion/editaraplicacion/ed
     CrearPopupComponent,
     CrearubicacionComponent,
     EditarempresaComponent,
-    EditaraplicacionComponent
+    EditaraplicacionComponent,
+    EditartabsComponent,
+    EditarmenusComponent,
+    EditarslidesComponent,
+    EditarthemeComponent,
+    EditarpopupsComponent,
+    EditarubicacionComponent
   ],
   providers: [BannerService,
     MatDialog,

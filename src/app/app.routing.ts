@@ -11,11 +11,17 @@ import { EditarempresaComponent } from './user-profile/editarempresa/editarempre
 import { CrearaplicacionComponent } from './multiaplicacion/crearaplicacion/crearaplicacion.component';
 import { EditaraplicacionComponent } from './multiaplicacion/editaraplicacion/editaraplicacion.component';
 import { CreartabsComponent } from './tabs/creartabs/creartabs.component';
+import { EditartabsComponent } from './tabs/editartabs/editartabs.component';
 import { CrearmenusComponent } from './menus/crearmenus/crearmenus.component';
+import { EditarmenusComponent } from './menus/editarmenus/editarmenus.component';
 import { CrearslidesComponent } from './slides/crearslides/crearslides.component';
+import { EditarslidesComponent } from './slides/editarslides/editarslides.component';
 import { CrearthemesComponent } from './theme/crearthemes/crearthemes.component';
+import { EditarthemeComponent } from './theme/editartheme/editartheme.component';
 import { CrearPopupComponent } from './popups/crear/crearpopup.component';
+import { EditarpopupsComponent } from './popups/editarpopups/editarpopups.component';
 import { CrearubicacionComponent } from './ubicanos/crearubicacion/crearubicacion.component';
+import { EditarubicacionComponent } from './ubicanos/editarubicacion/editarubicacion.component';
 
 const routes: Routes =[
   {
@@ -57,24 +63,48 @@ const routes: Routes =[
     component:CreartabsComponent
   },
   {
+    path:'editartabs/:idtabs',
+    component:EditartabsComponent
+  },
+  {
     path:'crearmenus',
     component:CrearmenusComponent
+  },
+  {
+    path:'editarmenus/:idmenu',
+    component:EditarmenusComponent
   },
   {
     path:'crearslides',
     component:CrearslidesComponent
   },
   {
+    path:'editarslides/:idslide',
+    component:EditarslidesComponent
+  },
+  {
     path:'crearthemes',
     component:CrearthemesComponent
+  },
+  {
+    path:'editarthemes/:idtheme',
+    component:EditarthemeComponent
   },
   {
     path:'crearpopup',
     component:CrearPopupComponent
   },
   {
+    path:'editarpopup/:idpopup',
+    component:EditarpopupsComponent
+  },
+  {
     path:'crearubicacion',
     component:CrearubicacionComponent
+  },
+  {
+    path:'editarubicacion/:idubicacion',
+    component:EditarubicacionComponent
   }
 ];
 
