@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { EmpresaService } from '../../servicios/empresa.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EmpresaXid } from 'app/interfaces/interface.empresa';
+import { EmpresaXid,Empresa } from 'app/interfaces/interface.empresa';
 
 @Component({
   selector: 'app-editarempresa',
@@ -14,6 +14,7 @@ export class EditarempresaComponent implements OnInit {
   empresaId:{id:number};
   token:any;
   empresaMostrar:EmpresaXid;
+  objetoActualizar:Empresa={id:0,nombre:'',estado:''}
   valorFormulario:any;
 
   constructor(private rutaActiva: ActivatedRoute,private es: EmpresaService,private formBuilder: FormBuilder,private route:Router) { 
@@ -51,13 +52,13 @@ export class EditarempresaComponent implements OnInit {
   grabar(){
     if (this.formGroup.valid) {
     this.valorFormulario = this.formGroup.value;
-    this.empresaMostrar.empresa.id=this.empresaId.id;
-    this.empresaMostrar.empresa.nombre=this.valorFormulario.nombreEmpresa;
-    this.empresaMostrar.empresa.estado=this.valorFormulario.estado;
-    this.es.editEmpresa(this.empresaMostrar,this.token=localStorage.getItem('token'))
+    this.objetoActualizar.id=this.empresaId.id;
+    this.objetoActualizar.nombre=this.valorFormulario.nombreEmpresa;
+    this.objetoActualizar.estado=this.valorFormulario.estado;
+    this.es.editEmpresa(this.objetoActualizar,this.token=localStorage.getItem('token'))
     .subscribe(data => {
-      console.log(data);
-      alert("Empresa Actualizada correctamente")
+      alert("Empresa Actualizada correctamente");
+      this.route.navigateByUrl("admin/(user-profile)");
     },error =>{
       console.log(error);
       alert("Empresa No se pudo Actualizar, Error en el servicio");

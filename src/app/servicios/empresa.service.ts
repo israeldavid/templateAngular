@@ -20,7 +20,7 @@ export class EmpresaService {
   }
   //Solo una
   obtenerEmpresaXId(idEmpresa:number,access_token){
-    let direccion=url+"/aplication/"+idEmpresa;
+    let direccion=url+"/"+idEmpresa;
     return this.httpService.get<EmpresaXid>(direccion,this.getRequestHeaders(access_token));
   }
 
@@ -44,7 +44,6 @@ export class EmpresaService {
   }
 
   editEmpresa(empresa,access_token){
-    console.log(empresa);
     return this.httpService.put<EmpresaXid>(url, empresa, this.getRequestHeaders(access_token))
   }
 

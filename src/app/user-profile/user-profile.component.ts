@@ -32,6 +32,7 @@ export class UserProfileComponent implements OnInit {
 
   eliminarEmpresa(idEmpresa:number){
     this.es.deleteEmpresa(idEmpresa,this.token=localStorage.getItem('token'));
+    alert("Empresa Eliminada Correctamente");
     this.route.navigateByUrl("admin/(user-profile)");
   }
 
