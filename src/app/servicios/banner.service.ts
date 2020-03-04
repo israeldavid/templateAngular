@@ -13,7 +13,7 @@ export class BannerService {
   constructor(private httpService: HttpClient) { }
 
   obtenerBanners(access_token){
-    //return this.httpService.get<responseBanner>(url);
+    console.log(url);
     return this.httpService.get<responseBanner>(url,this.getRequestHeaders(access_token));
   }
 
@@ -27,8 +27,7 @@ export class BannerService {
 
   addBanner(banner: Banner,access_token) {
     try {
-      console.log(banner,access_token);
-      this.httpService.post<Banner>(url, this.getRequestHeaders(access_token)).subscribe(
+      this.httpService.post<Banner>(url, banner, this.getRequestHeaders(access_token)).subscribe(
         data => alert("Banner Ingresado Correctamente"),
         error => alert("No pudo ingresarse el banner")
       );

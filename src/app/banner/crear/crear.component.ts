@@ -19,7 +19,7 @@ export class CrearComponent implements OnInit {
   responseEmpresa: responseEmpresa;
   responseAplicacion: responseAplicacion;
   base64textString = [];
-  crearBanner:Banner = {id:1,idEmpresa:1,idAplicacion:1,nombre:'',base64: '',fechaCreacion: '', urlImagen:''};
+  crearBanner:Banner = {nombre:'',base64: '',idEmpresa:1,idAplicacion:1,estado:'A'};
   valorFormulario: any;
   imgUrl:any;
 
@@ -27,12 +27,13 @@ export class CrearComponent implements OnInit {
               private bs:BannerService,
               private es:EmpresaService,
               private as:AplicacionService) { 
+    
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
       nombreBanner: ['',Validators.required],
       archivo: ['',Validators.required],
-      estado:['1']
+      estado:['A']
     });
    
   }
@@ -67,8 +68,6 @@ export class CrearComponent implements OnInit {
     const file = evt.target.files[0];
     if (file) {
       const reader = new FileReader();
-      console.log("Reader as DataURL:",reader.readAsDataURL);
-      console.log("Reader as Texto:",reader.readAsText);
       reader.onload = this.handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
     }
@@ -76,7 +75,8 @@ export class CrearComponent implements OnInit {
   
   handleReaderLoaded(e) {
     this.imgUrl = btoa(e.target.result);
-    this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
+    //this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
+    this.base64textString.push(btoa(e.target.result));
   }
 
   obtenerFecha(){
@@ -91,13 +91,14 @@ export class CrearComponent implements OnInit {
   grabar() {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
-      this.crearBanner.id=1;
+      //this.crearBanner.id=1;
+      this.crearBanner.nombre=this.valorFormulario.nombreBanner;
+      this.crearBanner.base64=this.imgUrl;
       this.crearBanner.idEmpresa=this.valorFormulario.empresa;
       this.crearBanner.idAplicacion=this.valorFormulario.aplicacion;
-      this.crearBanner.base64=this.base64textString[0];
-      this.crearBanner.fechaCreacion= this.obtenerFecha(); 
-      this.crearBanner.nombre=this.valorFormulario.nombreBanner;
-      this.crearBanner.urlImagen=this.imgUrl;
+      this.crearBanner.estado=this.valorFormulario.estado;
+      //this.crearBanner.fechaCreacion= this.obtenerFecha(); 
+      //this.crearBanner.urlImagen=this.imgUrl;
       this.bs.addBanner(this.crearBanner, this.obtenerToken());
     }
     else{
