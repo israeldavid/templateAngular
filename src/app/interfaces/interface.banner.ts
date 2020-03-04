@@ -5,11 +5,11 @@ export interface responseBanner {
   }
   
   export interface Banner {
-    empresa:number;
-    aplicacion:number;
+    idEmpresa:number;
+    idAplicacion:number;
     nombre: string;
     base64: string;
-    fechaCreacion: string;
+    fechaCreacion?: string;
     urlImagen:string;
-    id: number;
+    id?: number;
   }

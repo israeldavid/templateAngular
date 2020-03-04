@@ -22,7 +22,10 @@
                       <div class="container" style="margin-top: 2%">
                           <b>Seleccione la Aplicación:</b>
                           <select class="form-control" formControlName="aplicacion" name="aplicacion">
-                              <option selected value="0">Seleccione una aplicacion</option>
+                            <option selected value="1">Selecciona una aplicación</option>
+                              <option selected value="{{itema.id}}" *ngFor="let itema of responseAplicacion?.aplicaciones">
+                                {{itema.nombre}}
+                              </option>
                           </select>
                       </div>
               

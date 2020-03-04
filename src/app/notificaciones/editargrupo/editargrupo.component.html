@@ -1,3 +1,53 @@
-<p>
-  editargrupo works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-warning">
+                      <h4 class="card-title">Nuevo Canal de Distribucion</h4>
+                      <p class="card-category"> Estos Canales son para la distribución de notificaciones</p>
+                  </div>
+                  <div class="card-body">
+                    <form id="addGrupo" [formGroup]="formGroup" (ngSubmit)="grabar()">
+
+                      <div class="container" style="margin-top: 4%">
+                          <strong>Empresa:</strong>
+                          <select class="form-control" formControlName="empresa" name="empresa">
+                            <option selected value="1">Distrigen</option>
+                            <option value="2">Otra</option>
+                            <option value="3">La Otra</option>
+                          </select>
+                      </div>
+              
+                      <div class="container" style="margin-top: 2%">
+                          <b>Seleccione la Aplicación:</b>
+                          <select class="form-control" formControlName="aplicacion" name="aplicacion">
+                              <option selected value="1">eCommerce</option>
+                              <option>Inventarios</option>
+                          </select>
+                      </div>
+              
+                      <div class="container" style="margin-top: 2%">
+                          <strong>Nombre Grupo:</strong>
+                          <input type="text" name="nombregrupo" formControlName="nombregrupo" placeholder="Nombre del Grupo" class="form-control">
+                      </div>
+              
+                      <div class="container" style="margin-top: 2%">
+                          <strong>Estado:</strong>
+                          <select class="form-control" formControlName="estado" name="estado">
+                              <option selected value="1">Activo</option>
+                              <option value="2">Desactivado</option>
+                          </select>
+                      </div>
+
+                      <div class="container centrado" style="margin-top: 2%">
+                        <button class="btn btn-dark" (click)="cerrar()">Cerrar</button>
+                        <button class="btn btn-danger" type="submit" [disabled]="formGroup.invalid">Grabar</button>
+                      </div>
+                  </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

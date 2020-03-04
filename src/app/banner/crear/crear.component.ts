@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { BannerService } from '../../servicios/banner.service';
 import { responseBanner, Banner} from '../../interfaces/interface.banner';
+import { EmpresaService } from '../../servicios/empresa.service';
+import { AplicacionService } from '../../servicios/aplicacion.service';
+import { responseEmpresa,Empresa } from '../../interfaces/interface.empresa';
+import { responseAplicacion, Aplicacion} from '../../interfaces/interface.aplicacion';
 
 @Component({
   selector: 'app-crear',
@@ -12,12 +16,17 @@ import { responseBanner, Banner} from '../../interfaces/interface.banner';
 export class CrearComponent implements OnInit {
   public formGroup: FormGroup;
   token:any;
+  responseEmpresa: responseEmpresa;
+  responseAplicacion: responseAplicacion;
   base64textString = [];
-  crearBanner:Banner = {id:1,empresa:1,aplicacion:1,nombre:'',base64: '',fechaCreacion: '', urlImagen:''};
+  crearBanner:Banner = {id:1,idEmpresa:1,idAplicacion:1,nombre:'',base64: '',fechaCreacion: '', urlImagen:''};
   valorFormulario: any;
   imgUrl:any;
 
-  constructor(private route:Router,private formBuilder: FormBuilder,private bs:BannerService) { 
+  constructor(private route:Router,private formBuilder: FormBuilder,
+              private bs:BannerService,
+              private es:EmpresaService,
+              private as:AplicacionService) { 
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
@@ -29,7 +38,21 @@ export class CrearComponent implements OnInit {
   }
   
   ngOnInit() {
-    
+    this.consultarEmpresas();
+    this.token=localStorage.getItem('token');
+  }
+
+  consultarEmpresas(){
+    this.es.obtenerEmpresas(this.token).subscribe(data => { 
+      this.responseEmpresa=data;  
+    });
+  }
+
+  cambioSeleccionado(event){
+    const IdEmpresa = event.target.value;
+    this.as.obtenerAplicacionByEmpresa(IdEmpresa,this.token).subscribe(data => { 
+      this.responseAplicacion=data;  
+    });
   }
 
   cerrar(){
@@ -44,6 +67,8 @@ export class CrearComponent implements OnInit {
     const file = evt.target.files[0];
     if (file) {
       const reader = new FileReader();
+      console.log("Reader as DataURL:",reader.readAsDataURL);
+      console.log("Reader as Texto:",reader.readAsText);
       reader.onload = this.handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
     }
@@ -67,8 +92,8 @@ export class CrearComponent implements OnInit {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
       this.crearBanner.id=1;
-      this.crearBanner.empresa=this.valorFormulario.empresa;
-      this.crearBanner.aplicacion=this.valorFormulario.aplicacion;
+      this.crearBanner.idEmpresa=this.valorFormulario.empresa;
+      this.crearBanner.idAplicacion=this.valorFormulario.aplicacion;
       this.crearBanner.base64=this.base64textString[0];
       this.crearBanner.fechaCreacion= this.obtenerFecha(); 
       this.crearBanner.nombre=this.valorFormulario.nombreBanner;

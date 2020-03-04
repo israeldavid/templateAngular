@@ -11,17 +11,18 @@ const puertodos = '5051/';
 const apidos = 'api/v1/';
 const direccionUnida = direcciondos + puertodos + apidos;
 
-
 export const environment = {
   production: false,
 
   direccionLogin: direccion + puerto + api + 'Login/ValidateLogin',
-  direccionBanner: direccion + puerto + api + 'banners',
+  //direccionBanner: direccion + puerto + api + 'banners',
+  direccionBanner: direcciondos + 'Banners',
   direccionMenu: direccion + puerto + api + 'menus',
   direccionPopups: direccion + puerto + api + 'popups',
   direccionTabs: direccion + puerto + api + 'tabs',
   direccionSlides: direccion + puerto + api + 'slides',
-  direccionUbicanos: direccion + puerto + api + 'coordenadas',
+  //direccionUbicanos: direccion + puerto + api + 'coordenadas',
+  direccionUbicanos: direccionUnida + 'Coordenadas',
   direccionEmpresa: direccionUnida + 'Empresas',
   direccionAplicacion: direccionUnida + 'Aplicaciones',
 };

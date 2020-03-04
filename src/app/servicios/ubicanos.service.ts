@@ -27,7 +27,11 @@ const url = environment.direccionUbicanos;
     addUbicacion(ubicacion: Coordenada,access_token){
       try {
         console.log(ubicacion,access_token);
-        return this.httpService.post<Coordenada>(url, this.getRequestHeaders(access_token));
+        this.httpService.post<Coordenada>(url, ubicacion, this.getRequestHeaders(access_token))
+        .subscribe( 
+          data => alert("Coordenadas Ingresada Correctamente"),
+          error => alert("Coordenada no pudo ser creada, Error de proceso")
+        );
       } catch (error) {
         console.log(error);
       }

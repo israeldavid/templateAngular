@@ -6,6 +6,7 @@ import { EmpresaService } from '../../servicios/empresa.service';
 import { AplicacionService } from '../../servicios/aplicacion.service';
 import { UbicanosService } from '../../servicios/ubicanos.service';
 import { responseEmpresa,Empresa } from '../../interfaces/interface.empresa';
+import { responseAplicacion, Aplicacion} from '../../interfaces/interface.aplicacion';
 
 @Component({
   selector: 'app-crearubicacion',
@@ -15,9 +16,10 @@ import { responseEmpresa,Empresa } from '../../interfaces/interface.empresa';
 export class CrearubicacionComponent implements OnInit {
   public formGroup: FormGroup;
   responseEmpresa: responseEmpresa;
+  responseAplicacion: responseAplicacion;
   token:any;
   base64textString = [];
-  crearCoodernada:Coordenada = {id:1,empresa:1,aplicacion:1,nombre:'',longitud: '',latitud:''};
+  crearCoodernada:Coordenada = {id:1,idBusiness:1,idAplication:1,nombre:'',longitud: '',latitud:''};
   valorFormulario: any;
   imgUrl:any;
 
@@ -37,7 +39,6 @@ export class CrearubicacionComponent implements OnInit {
 
   ngOnInit() {
     this.consultarEmpresas();
-    //this.consultarAplicaciones();
     this.token=localStorage.getItem('token');
   }
 
@@ -47,13 +48,11 @@ export class CrearubicacionComponent implements OnInit {
     });
   }
 
-  consultarAplicaciones(IdEmpresa:number){
-      this.as.obtenerAplicacionByEmpresa(IdEmpresa,this.token)
-  }
-
   cambioSeleccionado(event){
-    const value = event.target.value;
-    console.log(value);
+    const IdEmpresa = event.target.value;
+    this.as.obtenerAplicacionByEmpresa(IdEmpresa,this.token).subscribe(data => { 
+      this.responseAplicacion=data;  
+    });
   }
 
   cerrar(){
@@ -63,13 +62,13 @@ export class CrearubicacionComponent implements OnInit {
   grabar() {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
-      this.crearCoodernada.empresa=this.valorFormulario.empresa;
-      this.crearCoodernada.aplicacion=this.valorFormulario.aplicacion;
+      this.crearCoodernada.idBusiness=this.valorFormulario.empresa;
+      this.crearCoodernada.idAplication=this.valorFormulario.aplicacion;
       this.crearCoodernada.nombre=this.valorFormulario.nombreSucursal;
       this.crearCoodernada.longitud=this.valorFormulario.longitud;
       this.crearCoodernada.latitud=this.valorFormulario.latitud;
       this.cs.addUbicacion(this.crearCoodernada, this.obtenerToken());
-
+      this.route.navigateByUrl("admin/(ubicanos)");
     }
     else{
       alert("Llena los campos necesarios");

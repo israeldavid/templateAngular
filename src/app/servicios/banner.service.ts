@@ -28,7 +28,10 @@ export class BannerService {
   addBanner(banner: Banner,access_token) {
     try {
       console.log(banner,access_token);
-      return this.httpService.post<Banner>(url, this.getRequestHeaders(access_token));
+      this.httpService.post<Banner>(url, this.getRequestHeaders(access_token)).subscribe(
+        data => alert("Banner Ingresado Correctamente"),
+        error => alert("No pudo ingresarse el banner")
+      );
     } catch (error) {
       //poner un toast si eso hay en angular
       console.log(error);

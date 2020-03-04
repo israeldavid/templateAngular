@@ -5,11 +5,11 @@ export interface responseCoordenada {
   }
   
   export interface Coordenada {
-    empresa:number,
-    aplicacion:number,
+    idBusiness:number,
+    idAplication:number,
     nombre: string,
     longitud: string,
     latitud: string,
     fechaCreacion?: string,
-    id: number
+    id?: number
   }
