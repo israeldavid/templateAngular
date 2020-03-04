@@ -5,11 +5,12 @@ export interface responseMenu {
   }
   
   export interface Menu {
-    empresa:number;
-    aplicacion:number;
+    idEmpresa:number;
+    idAplicacion:number;
     nombre: string;
     base64: string;
     urlPage:string;
+    estado:string;
     fechaCreacion?: string;
-    id: number;
+    id?: number;
   }

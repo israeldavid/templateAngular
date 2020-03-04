@@ -19,7 +19,7 @@ export class CrearmenusComponent implements OnInit {
   responseAplicacion: responseAplicacion;
   token:any;
   base64textString = [];
-  crearMenu:Menu = {id:1,empresa:1,aplicacion:1,nombre:'',base64: '',urlPage:''};
+  crearMenu:Menu = {idEmpresa:1,idAplicacion:1,nombre:'',base64: '',urlPage:'',estado:''};
   valorFormulario: any;
   imgUrl:any;
 
@@ -33,7 +33,7 @@ export class CrearmenusComponent implements OnInit {
       nombreOpcion: ['',Validators.required],
       archivo: ['',Validators.required],
       nombreEnlace: ['',Validators.required],
-      estado:['1']
+      estado:['A']
     });
    }
 
@@ -76,12 +76,13 @@ export class CrearmenusComponent implements OnInit {
   grabar() {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
-      this.crearMenu.empresa=this.valorFormulario.empresa;
-      this.crearMenu.aplicacion=this.valorFormulario.aplicacion;
+      this.crearMenu.idEmpresa=this.valorFormulario.empresa;
+      this.crearMenu.idAplicacion=this.valorFormulario.aplicacion;
       this.crearMenu.base64=this.imgUrl
-      //this.base64textString[0]; este es para mostrar de pronto en el dit va a funcionar
+      //this.base64textString[0]; este es para mostrar de pronto en el edit va a funcionar
       this.crearMenu.nombre=this.valorFormulario.nombreOpcion;
-      this.crearMenu.urlPage=this.imgUrl;
+      this.crearMenu.urlPage=this.valorFormulario.nombreEnlace;
+      this.crearMenu.estado=this.valorFormulario.estado;
       this.ms.addMenu(this.crearMenu, this.obtenerToken());
       this.route.navigateByUrl("admin/(menus)");
     }
