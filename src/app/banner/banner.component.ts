@@ -33,7 +33,7 @@ export class BannerComponent implements OnInit {
   }
 
   editarBanner(idBanner:number){
-
+    this.router.navigateByUrl("editarbanner/"+idBanner);
   }
 
   eliminarBanner(idBanner:number){

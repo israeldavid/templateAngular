@@ -22,6 +22,7 @@ import { CrearPopupComponent } from './popups/crear/crearpopup.component';
 import { EditarpopupsComponent } from './popups/editarpopups/editarpopups.component';
 import { CrearubicacionComponent } from './ubicanos/crearubicacion/crearubicacion.component';
 import { EditarubicacionComponent } from './ubicanos/editarubicacion/editarubicacion.component';
+import { EditarbannerComponent } from './banner/editarbanner/editarbanner.component';
 
 const routes: Routes =[
   {
@@ -41,6 +42,10 @@ const routes: Routes =[
   {
     path:'crear',
     component:CrearComponent
+  },
+  {
+    path:'editarbanner/:idBanner',
+    component:EditarbannerComponent
   },
   {
     path:'crearempresa',

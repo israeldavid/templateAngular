@@ -36,6 +36,7 @@ import { EditarslidesComponent } from './slides/editarslides/editarslides.compon
 import { EditarthemeComponent } from './theme/editartheme/editartheme.component';
 import { EditarpopupsComponent } from './popups/editarpopups/editarpopups.component';
 import { EditarubicacionComponent } from './ubicanos/editarubicacion/editarubicacion.component';
+import { EditarbannerComponent } from './banner/editarbanner/editarbanner.component';
 
 @NgModule({
   imports: [
@@ -79,7 +80,8 @@ import { EditarubicacionComponent } from './ubicanos/editarubicacion/editarubica
     EditarslidesComponent,
     EditarthemeComponent,
     EditarpopupsComponent,
-    EditarubicacionComponent
+    EditarubicacionComponent,
+    EditarbannerComponent
   ],
   providers: [BannerService,
     MatDialog,

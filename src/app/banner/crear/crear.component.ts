@@ -100,6 +100,7 @@ export class CrearComponent implements OnInit {
       //this.crearBanner.fechaCreacion= this.obtenerFecha(); 
       //this.crearBanner.urlImagen=this.imgUrl;
       this.bs.addBanner(this.crearBanner, this.obtenerToken());
+      this.route.navigateByUrl("admin/(banner)");
     }
     else{
       alert("Llena los campos necesarios");

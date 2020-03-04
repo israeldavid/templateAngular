@@ -17,8 +17,8 @@ export class BannerService {
     return this.httpService.get<responseBanner>(url,this.getRequestHeaders(access_token));
   }
 
-  obtenerBannerById(idAplicacion:number,access_token){
-    let direccion=url+"/"+idAplicacion;
+  obtenerBannerById(idBanner:number,access_token){
+    let direccion=url+"/"+idBanner;
     return this.httpService.get<BannerXid>(direccion,this.getRequestHeaders(access_token));
   }
 
