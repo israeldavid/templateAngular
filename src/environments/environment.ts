@@ -17,7 +17,7 @@ export const environment = {
   direccionLogin: direccion + puerto + api + 'Login/ValidateLogin',
   //direccionBanner: direccion + puerto + api + 'banners',
   direccionBanner: direccionUnida + 'Banners',
-  direccionMenu: direccion + puerto + api + 'menus',
+  direccionMenu: direccionUnida + 'Menus',
   direccionPopups: direccion + puerto + api + 'popups',
   direccionTabs: direccion + puerto + api + 'tabs',
   direccionSlides: direccion + puerto + api + 'slides',

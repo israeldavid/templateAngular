@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
+import { EmpresaService } from '../../servicios/empresa.service';
+import { AplicacionService } from '../../servicios/aplicacion.service';
+import { responseEmpresa,Empresa } from '../../interfaces/interface.empresa';
+import { responseAplicacion, Aplicacion} from '../../interfaces/interface.aplicacion';
 
 @Component({
   selector: 'app-crearthemes',
@@ -9,7 +13,11 @@ import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 })
 export class CrearthemesComponent implements OnInit {
   public formGroup: FormGroup;
-  constructor(private route:Router,private formBuilder: FormBuilder) {
+  responseEmpresa: responseEmpresa;
+  responseAplicacion: responseAplicacion;
+  token:any;
+  constructor(private route:Router,private formBuilder: FormBuilder,private es:EmpresaService,
+    private as:AplicacionService) {
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
@@ -19,6 +27,19 @@ export class CrearthemesComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  consultarEmpresas(){
+    this.es.obtenerEmpresas(this.token).subscribe(data => { 
+      this.responseEmpresa=data;  
+    });
+  }
+
+  cambioSeleccionado(event){
+    const IdEmpresa = event.target.value;
+    this.as.obtenerAplicacionByEmpresa(IdEmpresa,this.token).subscribe(data => { 
+      this.responseAplicacion=data;  
+    });
   }
 
   cerrar(){

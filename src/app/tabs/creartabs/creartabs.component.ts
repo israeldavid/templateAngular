@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { TabsService } from '../../servicios/tabs.service';
 import { Tab } from '../../interfaces/interface.tabs';
+import { EmpresaService } from '../../servicios/empresa.service';
+import { AplicacionService } from '../../servicios/aplicacion.service';
+import { responseEmpresa,Empresa } from '../../interfaces/interface.empresa';
+import { responseAplicacion, Aplicacion} from '../../interfaces/interface.aplicacion';
 
 @Component({
   selector: 'app-creartabs',
@@ -11,13 +15,17 @@ import { Tab } from '../../interfaces/interface.tabs';
 })
 export class CreartabsComponent implements OnInit {
   public formGroup: FormGroup;
+  responseEmpresa: responseEmpresa;
+  responseAplicacion: responseAplicacion;
   token:any;
   base64textString = [];
   crearTab:Tab = {id:1,empresa:1,aplicacion:1,nombre:'',base64: '',urlPage:''};
   valorFormulario: any;
   imgUrl:any;
 
-  constructor(private route:Router,private formBuilder:FormBuilder,private ts:TabsService) {
+  constructor(private route:Router,private formBuilder:FormBuilder,private ts:TabsService,
+    private es:EmpresaService,
+    private as:AplicacionService) {
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
@@ -29,6 +37,21 @@ export class CreartabsComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.consultarEmpresas();
+    this.token=localStorage.getItem('token');
+  }
+
+  consultarEmpresas(){
+    this.es.obtenerEmpresas(this.token).subscribe(data => { 
+      this.responseEmpresa=data;  
+    });
+  }
+
+  cambioSeleccionado(event){
+    const IdEmpresa = event.target.value;
+    this.as.obtenerAplicacionByEmpresa(IdEmpresa,this.token).subscribe(data => { 
+      this.responseAplicacion=data;  
+    });
   }
 
   cerrar(){

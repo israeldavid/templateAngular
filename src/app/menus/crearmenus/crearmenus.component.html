@@ -8,22 +8,25 @@
                       <p class="card-category"> *No se recomienda crear más de 10 items en el menú</p>
                   </div>
                   <div class="card-body">
-                    <form id="addTabs" [formGroup]="formGroup" (ngSubmit)="grabar()">
-
+                      <!-- (ngSubmit)="grabar()" -->
+                    <form id="addTabs" [formGroup]="formGroup">
                       <div class="container" style="margin-top: 4%">
                           <strong>Empresa:</strong>
-                          <select class="form-control" formControlName="empresa" name="empresa">
-                            <option selected value="1">Distrigen</option>
-                            <option value="2">Otra</option>
-                            <option value="3">La Otra</option>
+                          <select class="form-control" formControlName="empresa" name="empresa" (change)='cambioSeleccionado($event)'>
+                            <option selected value="1">Selecciona una empresa</option>
+                            <option value="{{item.id}}" *ngFor="let item of responseEmpresa?.empresas">
+                                {{item.nombre}}
+                            </option>
                           </select>
                       </div>
               
                       <div class="container" style="margin-top: 2%">
                           <b>Seleccione la Aplicación:</b>
                           <select class="form-control" formControlName="aplicacion" name="aplicacion">
-                              <option selected value="1">eCommerce</option>
-                              <option menu="2">Inventarios</option>
+                            <option selected value="1">Selecciona una aplicación</option>
+                              <option selected value="{{itema.id}}" *ngFor="let itema of responseAplicacion?.aplicaciones">
+                                {{itema.nombre}}
+                              </option>
                           </select>
                       </div>
               
@@ -38,7 +41,7 @@
                       </div>
 
                       <div class="container" style="margin-top: 2%">
-                          <strong>Enlace:( a donde se va a dirigir la opción)</strong>
+                          <strong>Enlace a donde se va a dirigir la opción)</strong>
                           <input type="text" name="nombreEnlace" formControlName="nombreEnlace" placeholder="Nombre de la página que se visitará en la aplicación" class="form-control">
                       </div>
               

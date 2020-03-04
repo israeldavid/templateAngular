@@ -3,6 +3,10 @@ import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { PopupsService } from '../../servicios/popups.service';
 import { Popups } from '../../interfaces/interface.popup';
+import { EmpresaService } from '../../servicios/empresa.service';
+import { AplicacionService } from '../../servicios/aplicacion.service';
+import { responseEmpresa,Empresa } from '../../interfaces/interface.empresa';
+import { responseAplicacion, Aplicacion} from '../../interfaces/interface.aplicacion';
 
 @Component({
   selector: 'app-crearpopup',
@@ -10,13 +14,18 @@ import { Popups } from '../../interfaces/interface.popup';
   styleUrls: ['./crearpopup.component.scss']
 })
 export class CrearPopupComponent implements OnInit {
-  public formGroup: FormGroup;  token:any;
+  public formGroup: FormGroup;  
+  responseEmpresa: responseEmpresa;
+  responseAplicacion: responseAplicacion;
+  token:any;
   base64textString = [];
   crearPopup:Popups = {id:1,empresa:1,aplicacion:1,nombre:'',base64: '',urlPage:''};
   valorFormulario: any;
   imgUrl:any;
 
-  constructor(private route:Router,private formBuilder: FormBuilder,private ps:PopupsService) { 
+  constructor(private route:Router,private formBuilder: FormBuilder,private ps:PopupsService,
+    private es:EmpresaService,
+    private as:AplicacionService) { 
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
@@ -27,6 +36,21 @@ export class CrearPopupComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.consultarEmpresas();
+    this.token=localStorage.getItem('token');
+  }
+
+  consultarEmpresas(){
+    this.es.obtenerEmpresas(this.token).subscribe(data => { 
+      this.responseEmpresa=data;  
+    });
+  }
+
+  cambioSeleccionado(event){
+    const IdEmpresa = event.target.value;
+    this.as.obtenerAplicacionByEmpresa(IdEmpresa,this.token).subscribe(data => { 
+      this.responseAplicacion=data;  
+    });
   }
 
   cerrar(){

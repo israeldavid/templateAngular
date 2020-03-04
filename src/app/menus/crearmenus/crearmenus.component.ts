@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { menusService } from '../../servicios/menus.services';
 import { responseMenu, Menu} from '../../interfaces/interface.menu';
+import { EmpresaService } from '../../servicios/empresa.service';
+import { AplicacionService } from '../../servicios/aplicacion.service';
+import { responseEmpresa,Empresa } from '../../interfaces/interface.empresa';
+import { responseAplicacion, Aplicacion} from '../../interfaces/interface.aplicacion';
 
 @Component({
   selector: 'app-crearmenus',
@@ -11,13 +15,18 @@ import { responseMenu, Menu} from '../../interfaces/interface.menu';
 })
 export class CrearmenusComponent implements OnInit {
   public formGroup: FormGroup;
+  responseEmpresa: responseEmpresa;
+  responseAplicacion: responseAplicacion;
   token:any;
   base64textString = [];
   crearMenu:Menu = {id:1,empresa:1,aplicacion:1,nombre:'',base64: '',urlPage:''};
   valorFormulario: any;
   imgUrl:any;
 
-  constructor(private route:Router,private formBuilder: FormBuilder,private ms:menusService) {
+  constructor(private route:Router,private formBuilder: FormBuilder,
+    private ms:menusService,
+    private es:EmpresaService,
+    private as:AplicacionService) {
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
@@ -29,6 +38,21 @@ export class CrearmenusComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.consultarEmpresas();
+    this.token=localStorage.getItem('token');
+  }
+
+  consultarEmpresas(){
+    this.es.obtenerEmpresas(this.token).subscribe(data => { 
+      this.responseEmpresa=data;  
+    });
+  }
+
+  cambioSeleccionado(event){
+    const IdEmpresa = event.target.value;
+    this.as.obtenerAplicacionByEmpresa(IdEmpresa,this.token).subscribe(data => { 
+      this.responseAplicacion=data;  
+    });
   }
 
   cerrar(){
@@ -54,10 +78,12 @@ export class CrearmenusComponent implements OnInit {
       this.valorFormulario = this.formGroup.value;
       this.crearMenu.empresa=this.valorFormulario.empresa;
       this.crearMenu.aplicacion=this.valorFormulario.aplicacion;
-      this.crearMenu.base64=this.base64textString[0];
+      this.crearMenu.base64=this.imgUrl
+      //this.base64textString[0]; este es para mostrar de pronto en el dit va a funcionar
       this.crearMenu.nombre=this.valorFormulario.nombreOpcion;
       this.crearMenu.urlPage=this.imgUrl;
       this.ms.addMenu(this.crearMenu, this.obtenerToken());
+      this.route.navigateByUrl("admin/(menus)");
     }
     else{
       alert("Llena los campos necesarios");
