@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { responseTabs, Tab } from '../interfaces/interface.tabs';
+import { responseTabs, Tab, TabXid } from '../interfaces/interface.tabs';
 
 const url = environment.direccionTabs;
 
@@ -14,6 +14,11 @@ const url = environment.direccionTabs;
   
     obtenerTabs(access_token){
       return this.httpService.get<responseTabs>(url,this.getRequestHeaders(access_token));
+    }
+
+    obtenerTabById(idTab:number,access_token){
+      let direccion=url+"/"+idTab;
+      return this.httpService.get<TabXid>(direccion,this.getRequestHeaders(access_token));
     }
     
     getRequestHeaders(access_token:string): { headers: HttpHeaders | { [header: string]: string | string[] }; } {
@@ -36,7 +41,7 @@ const url = environment.direccionTabs;
       }
     }
 
-    editTabs(){
+    editTabs(tab: Tab, access_token){
       console.log("Editar Tabs...")
     }
   

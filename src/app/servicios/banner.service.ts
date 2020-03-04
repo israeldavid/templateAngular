@@ -42,8 +42,17 @@ export class BannerService {
     }
   }
 
-  editBanner(){
-    console.log("Editar Banner");
+  editBanner(banner: Banner,access_token){
+    console.log(banner);
+    try {
+      this.httpService.put<Banner>(url, banner, this.getRequestHeaders(access_token)).subscribe(
+        data => alert("Banner Actualizado Correctamente"),
+        error => alert("No se pudo actualizar el banner")
+      );
+    } catch (error) {
+      //poner un toast si eso hay en angular
+      console.log(error);
+    }
   }
 
   deleteBanner(idBanner:number,access_token){

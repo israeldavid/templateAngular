@@ -23,8 +23,8 @@
                                       <td> {{item.id}} </td>
                                       <td> {{item.nombre}} </td>
                                       <td> <img [src]="sanitized.bypassSecurityTrustUrl(item?.base64)" width="50px" height="50px"></td>
-                                      <td> {{item.ruta}} </td>
-                                      <td> OK </td>
+                                      <td> {{item.urlPage}} </td>
+                                      <td> {{item.estado}} </td>
                                       <td>  
                                         <button mat-raised-button type="button" (click)="crearTabs()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">open_in_new</i>

@@ -22,6 +22,9 @@ export class EditarbannerComponent implements OnInit {
   responseEmpresa: responseEmpresa;
   responseAplicacion: responseAplicacion;
   valorFormulario: any;
+  imgUrl:any;
+  imgMostrar:string;
+  base64textString = [];
 
   constructor(private rutaActiva: ActivatedRoute, private bs: BannerService,
     private es: EmpresaService,
@@ -33,7 +36,7 @@ export class EditarbannerComponent implements OnInit {
       empresa: ['1'],
       aplicacion: ['1'],
       nombreBanner: ['', Validators.required],
-      archivo: ['', Validators.required],
+      archivo: [''],
       estado: ['A']
     });
   }
@@ -55,6 +58,8 @@ export class EditarbannerComponent implements OnInit {
         this.formGroup.controls['empresa'].setValue(this.bannerMostrar.banner.idEmpresa);
         this.formGroup.controls['aplicacion'].setValue(this.bannerMostrar.banner.idAplicacion);
         this.formGroup.controls['nombreBanner'].setValue(this.bannerMostrar.banner.nombre);
+        this.imgMostrar='data:image/png;base64,' + this.bannerMostrar.banner.base64;
+        this.imgUrl=this.bannerMostrar.banner.base64;
         //aqui deberia ir una variable de base64 para que en el html exista una etiqueta img [variable] y se pueda ver la foto
         //this.formGroup.controls['archivo'].setValue(this.bannerMostrar.banner.base64);
         this.formGroup.controls['estado'].setValue(this.bannerMostrar.banner.estado);
@@ -88,6 +93,21 @@ export class EditarbannerComponent implements OnInit {
     return this.token = localStorage.getItem('token');
   }
 
+  onUploadChange(evt: any) {
+    const file = evt.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = this.handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
+    }
+  }
+  
+  handleReaderLoaded(e) {
+    this.imgUrl = btoa(e.target.result);
+    //this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
+    this.base64textString.push(btoa(e.target.result));
+  }
+
   cerrar() {
     this.route.navigateByUrl("admin/(banner)");
   }
@@ -96,14 +116,16 @@ export class EditarbannerComponent implements OnInit {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
       //this.crearBanner.id=1;
+      this.objetoActualizar.id = this.BannerId.id;
       this.objetoActualizar.nombre = this.valorFormulario.nombreBanner;
-      //this.objetoActualizar.base64=this.imgUrl;
       this.objetoActualizar.idEmpresa = this.valorFormulario.empresa;
       this.objetoActualizar.idAplicacion = this.valorFormulario.aplicacion;
       this.objetoActualizar.estado = this.valorFormulario.estado;
+      this.objetoActualizar.base64 = this.imgUrl;
       //this.crearBanner.fechaCreacion= this.obtenerFecha(); 
       //this.crearBanner.urlImagen=this.imgUrl;
-      this.bs.addBanner(this.objetoActualizar, this.obtenerToken());
+      this.bs.editBanner(this.objetoActualizar, this.obtenerToken());
+      this.route.navigateByUrl("admin/(banner)");
     }
     else {
       alert("Llena los campos necesarios");

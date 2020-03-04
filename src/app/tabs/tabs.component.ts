@@ -35,4 +35,8 @@ export class TabsComponent implements OnInit {
     this.route.navigateByUrl("admin/(tabs)");
   }
 
+  editarTabs(idTab:number){
+    this.route.navigateByUrl("editartabs/"+idTab);
+  }
+
 }

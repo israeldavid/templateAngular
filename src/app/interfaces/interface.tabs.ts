@@ -14,3 +14,8 @@ export interface responseTabs {
     urlPage:string;
     id?: number;
   }
+
+  export interface TabXid{
+    tab: Tab;
+    errorResponse?: any;
+  }
