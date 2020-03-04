@@ -27,7 +27,10 @@ const url = environment.direccionTabs;
     addTabs(tab: Tab, access_token){
       try {
         console.log(tab,access_token);
-        return this.httpService.post<Tab>(url, this.getRequestHeaders(access_token));
+        this.httpService.post<Tab>(url, tab, this.getRequestHeaders(access_token)).subscribe(
+          data => alert("Tab agregado correctamente"),
+          error => alert("No se pudo agregar el Tab")
+        );
       } catch (error) {
         console.log(error);
       }
@@ -37,7 +40,12 @@ const url = environment.direccionTabs;
       console.log("Editar Tabs...")
     }
   
-    deleteTabs(){
-      console.log("Eliminar Tabs...")
+    deleteTabs(idTab:number,access_token){
+      let direccion=url+"/"+idTab;
+      this.httpService.delete<Tab>(direccion,this.getRequestHeaders(access_token))
+      .subscribe(
+        data  => alert("Tab Eliminado Correctamente"),
+        error => alert("Tab no pudo ser eliminado, Error de proceso")
+      );
     }
   }

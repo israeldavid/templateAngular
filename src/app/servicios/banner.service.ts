@@ -41,8 +41,13 @@ export class BannerService {
     console.log("Editar Banner");
   }
 
-  deleteBanner(){
-    console.log("Eliminar Banner");
+  deleteBanner(idBanner:number,access_token){
+    let direccion=url+"/"+idBanner;
+    this.httpService.delete<Banner>(direccion,this.getRequestHeaders(access_token))
+    .subscribe(
+      data  => alert("Banner Eliminado Correctamente"),
+      error => alert("Banner no pudo ser eliminado, Error de proceso")
+    );
   }
   
 }

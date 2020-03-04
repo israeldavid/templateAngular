@@ -19,7 +19,7 @@ export class CreartabsComponent implements OnInit {
   responseAplicacion: responseAplicacion;
   token:any;
   base64textString = [];
-  crearTab:Tab = {id:1,empresa:1,aplicacion:1,nombre:'',base64: '',urlPage:''};
+  crearTab:Tab = {nombre:'',base64: '',urlPage:'',idEmpresa:1,idAplicacion:1,estado:''};
   valorFormulario: any;
   imgUrl:any;
 
@@ -32,7 +32,7 @@ export class CreartabsComponent implements OnInit {
       nombreOpcion: ['',Validators.required],
       archivo: ['',Validators.required],
       nombreEnlace: ['',Validators.required],
-      estado:['1']
+      estado:['A']
     });
    }
 
@@ -75,12 +75,15 @@ export class CreartabsComponent implements OnInit {
   grabar() {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
-      this.crearTab.empresa=this.valorFormulario.empresa;
-      this.crearTab.aplicacion=this.valorFormulario.aplicacion;
-      this.crearTab.base64=this.base64textString[0];
+      this.crearTab.idEmpresa=this.valorFormulario.empresa;
+      this.crearTab.idAplicacion=this.valorFormulario.aplicacion;
+      this.crearTab.base64=this.imgUrl;
+      //this.base64textString[0];
       this.crearTab.nombre=this.valorFormulario.nombreOpcion;
-      this.crearTab.urlPage=this.imgUrl;
+      this.crearTab.urlPage=this.valorFormulario.nombreEnlace;
+      this.crearTab.estado=this.valorFormulario.estado;
       this.ts.addTabs(this.crearTab, this.obtenerToken());
+      this.route.navigateByUrl("admin/(tabs)");
     }
     else{
       alert("Llena los campos necesarios");

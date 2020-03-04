@@ -5,11 +5,12 @@ export interface responseTabs {
   }
   
   export interface Tab {
-    empresa:number;
-    aplicacion:number;
+    idEmpresa:number;
+    idAplicacion:number;
     nombre: string;
     base64: string;
+    estado:string;
     fechaCreacion?: string;
     urlPage:string;
-    id: number;
+    id?: number;
   }

@@ -19,7 +19,7 @@ export class CrearPopupComponent implements OnInit {
   responseAplicacion: responseAplicacion;
   token:any;
   base64textString = [];
-  crearPopup:Popups = {id:1,empresa:1,aplicacion:1,nombre:'',base64: '',urlPage:''};
+  crearPopup:Popups = {idEmpresa:1,idAplicacion:1,nombre:'',base64: '',estado:''};
   valorFormulario: any;
   imgUrl:any;
 
@@ -31,7 +31,7 @@ export class CrearPopupComponent implements OnInit {
       aplicacion: ['1'],
       nombrePopup: ['',Validators.required],
       archivo: ['',Validators.required],
-      estado:['1']
+      estado:['A']
     });
   }
 
@@ -74,12 +74,14 @@ export class CrearPopupComponent implements OnInit {
   grabar() {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
-      this.crearPopup.empresa=this.valorFormulario.empresa;
-      this.crearPopup.aplicacion=this.valorFormulario.aplicacion;
-      this.crearPopup.base64=this.base64textString[0];
-      this.crearPopup.nombre=this.valorFormulario.nombreOpcion;
-      this.crearPopup.urlPage=this.imgUrl;
+      this.crearPopup.idEmpresa=this.valorFormulario.empresa;
+      this.crearPopup.idAplicacion=this.valorFormulario.aplicacion;
+      this.crearPopup.base64=this.imgUrl;
+      //this.base64textString[0];
+      this.crearPopup.nombre=this.valorFormulario.nombrePopup;
+      this.crearPopup.estado=this.valorFormulario.estado;
       this.ps.addPopups(this.crearPopup, this.obtenerToken());
+      this.route.navigateByUrl("admin/(popups)");
     }
     else{
       alert("Llena los campos necesarios");

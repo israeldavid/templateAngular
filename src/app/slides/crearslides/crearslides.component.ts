@@ -19,7 +19,7 @@ export class CrearslidesComponent implements OnInit {
   responseAplicacion: responseAplicacion;
   token:any;
   base64textString = [];
-  crearSlider:Slider = {id:1,empresa:1,aplicacion:1,nombre:'',base64: '',urlImagen:''};
+  crearSlider:Slider = {idEmpresa:1,idAplicacion:1,nombre:'',base64: '',urlImagen:'',estado:''};
   valorFormulario: any;
   imgUrl:any;
 
@@ -28,9 +28,10 @@ export class CrearslidesComponent implements OnInit {
     private as:AplicacionService) { 
     this.formGroup = formBuilder.group({
       empresa: ['1'],
+      nombre:[''],
       aplicacion: ['1'],
       archivo: ['',Validators.required],
-      estado:['1']
+      estado:['A']
     });
   }
 
@@ -73,12 +74,15 @@ export class CrearslidesComponent implements OnInit {
   grabar() {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
-      this.crearSlider.empresa=this.valorFormulario.empresa;
-      this.crearSlider.aplicacion=this.valorFormulario.aplicacion;
-      this.crearSlider.base64=this.base64textString[0];
-      this.crearSlider.nombre=this.valorFormulario.nombreOpcion;
+      this.crearSlider.idEmpresa=this.valorFormulario.empresa;
+      this.crearSlider.idAplicacion=this.valorFormulario.aplicacion;
+      this.crearSlider.base64=this.imgUrl
+      //this.base64textString[0];
+      this.crearSlider.nombre=this.valorFormulario.nombre;
       this.crearSlider.urlImagen=this.imgUrl;
+      this.crearSlider.estado=this.valorFormulario.estado;
       this.ss.addSlider(this.crearSlider, this.obtenerToken());
+      this.route.navigateByUrl("admin/(slides)");
     }
     else{
       alert("Llena los campos necesarios");

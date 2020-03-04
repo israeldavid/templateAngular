@@ -26,8 +26,11 @@ const url = environment.direccionPopups;
 
     addPopups(popup: Popups,access_token){
       try {
-        console.log(popup,access_token);
-        return this.httpService.post<Popups>(url, this.getRequestHeaders(access_token));
+        console.log(popup,access_token,url);
+        this.httpService.post<Popups>(url, popup, this.getRequestHeaders(access_token)).subscribe(
+          data => alert("Popup creado correctamente"),
+          error => alert("Popup no se pudo crear")
+        )
       } catch (error) {
         console.log(error);
       }

@@ -39,7 +39,12 @@ export class menusService {
     console.log("Editar Menu...")
   }
 
-  deleteMenu(){
-    console.log("Eliminar Menu...")
+  deleteMenu(idMenu:number,access_token){
+    let direccion=url+"/"+idMenu;
+    this.httpService.delete<Menu>(direccion,this.getRequestHeaders(access_token))
+    .subscribe(
+      data  => alert("Menu Eliminado Correctamente"),
+      error => alert("Menu no pudo ser eliminado, Error de proceso")
+    );
   }
 }

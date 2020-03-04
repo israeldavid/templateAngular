@@ -29,4 +29,9 @@ export class MenusComponent implements OnInit {
     this.route.navigateByUrl("crearmenus");
   }
 
+  eliminarMenu(idMenu:number){
+    this.ms.deleteMenu(idMenu,this.token=localStorage.getItem('token'));
+    this.route.navigateByUrl("admin/(menus)")
+  }
+
 }

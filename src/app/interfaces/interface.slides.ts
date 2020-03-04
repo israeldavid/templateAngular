@@ -5,11 +5,12 @@ export interface responseSlides {
   }
   
   export interface Slider {
-    aplicacion:number;
-    empresa:number;
+    idAplicacion:number;
+    idEmpresa:number;
     nombre: string;
     base64: string;
     fechaCreacion?: string;
     urlImagen:string;
-    id: number;
+    estado:string;
+    id?: number;
 }

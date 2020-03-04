@@ -26,7 +26,6 @@ const url = environment.direccionUbicanos;
 
     addUbicacion(ubicacion: Coordenada,access_token){
       try {
-        console.log(ubicacion,access_token);
         this.httpService.post<Coordenada>(url, ubicacion, this.getRequestHeaders(access_token))
         .subscribe( 
           data => alert("Coordenadas Ingresada Correctamente"),

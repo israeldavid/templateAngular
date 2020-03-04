@@ -18,8 +18,10 @@ export class slidesService {
 
   addSlider(slider: Slider,access_token){
     try {
-      console.log(slider,access_token);
-      return this.httpService.post<Slider>(url, this.getRequestHeaders(access_token));
+      this.httpService.post<Slider>(url, slider, this.getRequestHeaders(access_token)).subscribe(
+        data => alert ('Slider ingresado correctamente'),
+        error => alert("Error al ingresar el Slider")
+      );
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +39,12 @@ export class slidesService {
     console.log("Editar Slide...")
   }
 
-  deleteSlide(){
-    console.log("Eliminar Slide...")
+  deleteSlide(idSlides:number){
+    let direccion=url+"/"+idSlides;
+    this.httpService.delete<Slider>(direccion)
+    .subscribe(
+      data  => alert("Slider Eliminado Correctamente"),
+      error => alert("Slider no pudo ser eliminado, Error de proceso")
+    );
   }
 }

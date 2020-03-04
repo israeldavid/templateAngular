@@ -20,7 +20,7 @@
                               </thead>
                               <tbody>
                                   <tr *ngFor="let item of responseTabs?.tabs">
-                                      <td> {{item.ID}} </td>
+                                      <td> {{item.id}} </td>
                                       <td> {{item.nombre}} </td>
                                       <td> <img [src]="sanitized.bypassSecurityTrustUrl(item?.base64)" width="50px" height="50px"></td>
                                       <td> {{item.ruta}} </td>

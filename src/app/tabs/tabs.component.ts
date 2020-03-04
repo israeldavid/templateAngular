@@ -30,4 +30,9 @@ export class TabsComponent implements OnInit {
     this.route.navigateByUrl("creartabs");
   }
 
+  eliminarTabs(idTab:number){
+    this.ts.deleteTabs(idTab,this.token=localStorage.getItem('token'));
+    this.route.navigateByUrl("admin/(tabs)");
+  }
+
 }
