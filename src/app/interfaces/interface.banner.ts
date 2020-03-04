@@ -14,3 +14,8 @@ export interface responseBanner {
     urlImagen?:string;
     id?: number;
   }
+
+  export interface BannerXid{
+    banner: Banner;
+    errorResponse?: any;
+  }

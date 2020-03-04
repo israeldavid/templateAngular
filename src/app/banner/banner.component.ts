@@ -32,6 +32,10 @@ export class BannerComponent implements OnInit {
     this.router.navigateByUrl("crear");
   }
 
+  editarBanner(idBanner:number){
+
+  }
+
   eliminarBanner(idBanner:number){
     this.bs.deleteBanner(idBanner,this.token=localStorage.getItem('token'));
     this.router.navigateByUrl("admin/(banner)")

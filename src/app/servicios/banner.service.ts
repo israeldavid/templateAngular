@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment} from '../../environments/environment';
-import { responseBanner, Banner} from '../interfaces/interface.banner';
+import { responseBanner, Banner, BannerXid} from '../interfaces/interface.banner';
 
 const url = environment.direccionBanner;
 
@@ -15,6 +15,11 @@ export class BannerService {
   obtenerBanners(access_token){
     console.log(url);
     return this.httpService.get<responseBanner>(url,this.getRequestHeaders(access_token));
+  }
+
+  obtenerBannerById(idAplicacion:number,access_token){
+    let direccion=url+"/"+idAplicacion;
+    return this.httpService.get<BannerXid>(direccion,this.getRequestHeaders(access_token));
   }
 
   getRequestHeaders(access_token:string): { headers: HttpHeaders | { [header: string]: string | string[] }; } {

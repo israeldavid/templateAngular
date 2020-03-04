@@ -9,6 +9,7 @@ import { Aplicacion,AppXid } from '../../interfaces/interface.aplicacion';
   templateUrl: './editaraplicacion.component.html',
   styleUrls: ['./editaraplicacion.component.scss']
 })
+
 export class EditaraplicacionComponent implements OnInit {
   public formGroup: FormGroup;
   objetoActualizar:Aplicacion={id:0,nombre:'',estado:'',idempresa:0}
