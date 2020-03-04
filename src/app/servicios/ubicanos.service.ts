@@ -33,11 +33,16 @@ const url = environment.direccionUbicanos;
       }
     }
 
-    editUbicanos(){
+    editUbicanos(ubicacion: Coordenada,access_token){
       console.log("Editar Ubicanos...")
     }
   
-    deleteUbicanos(){
-      console.log("Eliminar Ubicanos...")
+    deleteUbicanos(IdUbicacion: number,access_token){
+      let direccion=url+"/"+IdUbicacion;
+      this.httpService.delete<Coordenada>(direccion,this.getRequestHeaders(access_token))
+    .subscribe(
+      data  => alert("Ubicación Eliminada Correctamente"),
+      error => alert("La Ubicación no pudo ser eliminada, Error de proceso")
+    );
     }
   }

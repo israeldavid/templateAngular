@@ -29,4 +29,14 @@ export class UbicanosComponent implements OnInit {
     this.route.navigateByUrl("crearubicacion");
   }
 
+  eliminarUbicacion(idUbicacion:number){
+    this.us.deleteUbicanos(idUbicacion,localStorage.getItem('token'));
+    alert("Ubicacion Eliminada Correctamente");
+    this.route.navigateByUrl("admin/(user-profile)");
+  }
+
+  editarUbicacion(idUbicacion:number){
+    this.route.navigateByUrl("editarubicacion/"+idUbicacion)
+  }
+
 }
