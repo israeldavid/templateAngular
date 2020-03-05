@@ -79,7 +79,6 @@ export class CrearmenusComponent implements OnInit {
       this.crearMenu.idEmpresa=this.valorFormulario.empresa;
       this.crearMenu.idAplicacion=this.valorFormulario.aplicacion;
       this.crearMenu.base64=this.imgUrl
-      //this.base64textString[0]; este es para mostrar de pronto en el edit va a funcionar
       this.crearMenu.nombre=this.valorFormulario.nombreOpcion;
       this.crearMenu.urlPage=this.valorFormulario.nombreEnlace;
       this.crearMenu.estado=this.valorFormulario.estado;

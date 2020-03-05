@@ -3,7 +3,8 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 const direccion = 'http://192.168.33.72:';
-const  puerto = '81/';
+const puerto = '81/';
+const puertodosn = '84/';
 const  api = 'api/v1/';
 
 const direcciondos ='http://192.168.33.52:'
@@ -21,8 +22,11 @@ export const environment = {
   direccionPopups: direccionUnida + 'Popups',
   direccionTabs: direccionUnida + 'Tabs',
   direccionSlides: direccionUnida + 'Slides',
+  direccionRoles: direccionUnida + 'Roles',
   //direccionUbicanos: direccion + puerto + api + 'coordenadas',
   direccionUbicanos: direccionUnida + 'Coordenadas',
   direccionEmpresa: direccionUnida + 'Empresas',
   direccionAplicacion: direccionUnida + 'Aplicaciones',
+  direccionGrupos:direccion + puertodosn + api + 'RegistroTopicos',
+  direccionEnvioFCM:direccion + puertodosn + api + 'Notifications/PushNotificationByGroup'
 };

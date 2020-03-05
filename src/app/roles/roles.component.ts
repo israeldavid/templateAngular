@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TabsService } from '../servicios/tabs.service';
-import { responseTabs } from '../interfaces/interface.tabs';
-import { DomSanitizer } from '@angular/platform-browser';
+import { RolesService } from '../servicios/roles.service';
+import { responseRoles } from '../interfaces/interface.roles';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-roles',
@@ -10,19 +10,28 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class RolesComponent implements OnInit {
 
-  responseTabs: responseTabs;
-  
-  constructor(private ts:TabsService,private sanitized: DomSanitizer) { }
+  responseRoles: responseRoles;
+  constructor(private rs:RolesService,private router:Router) { }
 
   ngOnInit() {
-    this.consultarTabs();
+    this.consultarRoles();
   }
 
-  consultarTabs(){
-
+  consultarRoles(){
+    this.rs.obtenerRoles().subscribe(data => { 
+      this.responseRoles=data;        
+    });
   }
 
-  nuevoRol(){
-    alert("Por Implementar los Roles")
+  nuevorol(){
+    this.router.navigateByUrl("crearrol");
+  }
+
+  editarrol(idrol:number){
+    this.router.navigateByUrl("editarrol/"+idrol)
+  }
+
+  eliminarrol(idrol:number){
+
   }
 }

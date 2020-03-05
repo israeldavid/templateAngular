@@ -32,7 +32,6 @@ export class menusService {
 
   addMenu(menu: Menu,access_token){
     try {
-      console.log(menu,access_token);
       this.httpService.post<Menu>(url, menu, this.getRequestHeaders(access_token)).subscribe(
         data => alert("Opcion ingresada correctamente"),
         error => alert("Opción no pudo ser ingresada")

@@ -37,6 +37,10 @@ import { EditarthemeComponent } from './theme/editartheme/editartheme.component'
 import { EditarpopupsComponent } from './popups/editarpopups/editarpopups.component';
 import { EditarubicacionComponent } from './ubicanos/editarubicacion/editarubicacion.component';
 import { EditarbannerComponent } from './banner/editarbanner/editarbanner.component';
+import { CreargruposComponent } from './notificaciones/creargrupos/creargrupos.component';
+import { EditargrupoComponent } from './notificaciones/editargrupo/editargrupo.component';
+import { CrearrolComponent } from './roles/crearrol/crearrol.component';
+import { EditarrolComponent } from './roles/editarrol/editarrol.component';
 
 @NgModule({
   imports: [
@@ -81,7 +85,11 @@ import { EditarbannerComponent } from './banner/editarbanner/editarbanner.compon
     EditarthemeComponent,
     EditarpopupsComponent,
     EditarubicacionComponent,
-    EditarbannerComponent
+    EditarbannerComponent,
+    CreargruposComponent,
+    EditargrupoComponent,
+    CrearrolComponent,
+    EditarrolComponent
   ],
   providers: [BannerService,
     MatDialog,

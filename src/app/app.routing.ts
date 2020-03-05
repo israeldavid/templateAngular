@@ -23,6 +23,10 @@ import { EditarpopupsComponent } from './popups/editarpopups/editarpopups.compon
 import { CrearubicacionComponent } from './ubicanos/crearubicacion/crearubicacion.component';
 import { EditarubicacionComponent } from './ubicanos/editarubicacion/editarubicacion.component';
 import { EditarbannerComponent } from './banner/editarbanner/editarbanner.component';
+import { CreargruposComponent } from './notificaciones/creargrupos/creargrupos.component';
+import { EditargrupoComponent } from './notificaciones/editargrupo/editargrupo.component';
+import { CrearrolComponent } from './roles/crearrol/crearrol.component';
+import { EditarrolComponent } from './roles/editarrol/editarrol.component';
 
 const routes: Routes =[
   {
@@ -110,6 +114,22 @@ const routes: Routes =[
   {
     path:'editarubicacion/:idubicacion',
     component:EditarubicacionComponent
+  },
+  {
+    path:'creargrupo',
+    component:CreargruposComponent
+  },
+  {
+    path:'editargrupo/:idgrupo',
+    component:EditargrupoComponent
+  },
+  {
+    path:'crearrol',
+    component:CrearrolComponent
+  },
+  {
+    path:'editarrol/:idrol',
+    component:EditarrolComponent
   }
 ];
 

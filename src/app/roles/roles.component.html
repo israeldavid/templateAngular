@@ -6,54 +6,39 @@
                   <div class="card-header card-header-danger">
                       <h4 class="card-title ">Listado de Roles</h4>
                       <p class="card-category"> Roles registrados</p>
+                      <button mat-raised-button type="button" matTooltip="Nuevo" (click)="nuevorol()" [matTooltipPosition]="'above'" class="btn btn-primary">
+                        Nuevo Rol
+                    </button>
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
                           <table class="table">
                               <thead class=" text-primary">
                                   <th>ID</th>
-                                  <th>Usuario</th>
-                                  <th>Nombres</th>
-                                  <th>Permiso</th>
+                                  <th>Nombre</th>
+                                  <th>Id Aplicacion</th>
+                                  <th>Id Empresa</th>
                                   <th>Estado</th>
                                   <th>Acciones</th>
                               </thead>
                               <tbody>
-                                  <tr *ngFor="let item of responseTabs?.tabs">
-                                      <td> {{item.ID}} </td>
+                                  <tr *ngFor="let item of responseRoles?.roles">
+                                      <td> {{item.id}} </td>
                                       <td> {{item.nombre}} </td>
-                                      <td> <img [src]="sanitized.bypassSecurityTrustUrl(item?.base64)" width="50px" height="50px"></td>
-                                      <td> {{item.ruta}} </td>
-                                      <td> OK </td>
+                                      <td> {{item.idAplicacion}}</td>
+                                      <td> {{item.idEmpresa}} </td>
+                                      <td> {{item.estado}} </td>
                                       <td>  
-                                        <button mat-raised-button type="button" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" matTooltip="Nuevo" (click)="nuevorol()" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">open_in_new</i>
                                         </button>
-                                        <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" matTooltip="Editar" (click)="editarrol(item.id)" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" matTooltip="Borrar" (click)="eliminarrol(item.id)" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">close</i>
                                         </button>
                                        </td>
-                                  </tr>
-                                  <tr>
-                                      <td>1</td>
-                                      <td>admin</td>
-                                      <td>Administrator</td>
-                                      <td>Full</td>
-                                      <td>Activo</td>
-                                      <td>  
-                                        <button mat-raised-button type="button" (click)="nuevoRol()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                            <i class="material-icons">open_in_new</i>
-                                        </button>
-                                        <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                            <i class="material-icons">edit</i>
-                                        </button>
-                                        <button mat-raised-button type="button" matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                            <i class="material-icons">close</i>
-                                        </button>
-                                    </td>
                                   </tr>
                               </tbody>
                           </table>

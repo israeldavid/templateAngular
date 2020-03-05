@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { TabsService } from '../servicios/tabs.service';
-import { responseTabs } from '../interfaces/interface.tabs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
+import { GruposService } from 'app/servicios/grupos.service';
+import { responseGrupos } from '../interfaces/interface.grupo';
+import { EmpresaService } from 'app/servicios/empresa.service';
+import { responseEmpresa } from 'app/interfaces/interface.empresa';
+import { responseAplicacion } from 'app/interfaces/interface.aplicacion';
+import { AplicacionService } from 'app/servicios/aplicacion.service';
+import { NotificacionesService } from 'app/servicios/notificaciones.service';
+import { mensajeFCM } from 'app/interfaces/interface.fcm';
 
 @Component({
   selector: 'app-notificaciones',
@@ -11,25 +17,57 @@ import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./notificaciones.component.scss']
 })
 export class NotificacionesComponent implements OnInit {
-  responseTabs: responseTabs;
+  responseGrupos: responseGrupos;
+  responseEmpresa:responseEmpresa;
+  responseAplicacion:responseAplicacion
   public formGroup: FormGroup;
-  constructor(private ts:TabsService,
+  token:any;
+  valorFormulario: any;
+  crearMensaje:mensajeFCM = {headNotification:'',bodyNotification:'',topic:'',idAplicationSend:''};
+
+  constructor(private gs:GruposService,
               private sanitized: DomSanitizer,
               private route:Router,
-              private formBuilder: FormBuilder) 
+              private formBuilder: FormBuilder,
+              private es:EmpresaService,
+              private as:AplicacionService,
+              private ns:NotificacionesService) 
   { 
     this.formGroup = formBuilder.group({
-    empresa: ['1'],
-    aplicacion: ['1'],
-    titulo: ['',Validators.required],
-    mensaje:['',Validators.required]
+      empresa: ['1'],
+      aplicacion: ['1'],
+      grupo: ['1'],
+      headNotification: ['',Validators.required],
+      mensaje:['',Validators.required]
     });
   }
 
   ngOnInit() {
-    this.consultarTabs();
+    this.consultarTopicos();
+    this.consultarEmpresas();
   }
-  consultarTabs(){
+
+  consultarEmpresas(){
+    this.es.obtenerEmpresas(this.token).subscribe(data => {
+      this.responseEmpresa = data;
+    });
+  }
+
+  cambioSeleccionado(event) {
+    const IdEmpresa = event.target.value;
+    this.as.obtenerAplicacionByEmpresa(IdEmpresa, this.token).subscribe(data => {
+      this.responseAplicacion = data;
+    });
+  }
+
+  consultarTopicos(){
+    this.gs.obtenerGrupos(this.token).subscribe(data => {
+      this.responseGrupos = data;
+    });
+  }
+
+  obtenerToken() {
+    return this.token = localStorage.getItem('token');
   }
 
   crearAplicacion(){
@@ -42,7 +80,12 @@ export class NotificacionesComponent implements OnInit {
 
   envioFCM(){
     if (this.formGroup.valid) {
-      console.log(this.formGroup.value)
+      this.valorFormulario = this.formGroup.value;
+      this.crearMensaje.headNotification=this.valorFormulario.headNotification;
+      this.crearMensaje.bodyNotification=this.valorFormulario.mensaje;
+      this.crearMensaje.idAplicationSend=this.valorFormulario.aplicacion;
+      this.crearMensaje.topic=this.valorFormulario.grupo;
+      this.ns.envioFCM(this.crearMensaje);
     }
     else{
       alert("Llena los campos necesarios")
