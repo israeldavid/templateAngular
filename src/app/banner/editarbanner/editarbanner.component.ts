@@ -30,7 +30,7 @@ export class EditarbannerComponent implements OnInit {
     private es: EmpresaService,
     private as: AplicacionService,
     private formBuilder: FormBuilder,
-    private route: Router) {
+    private route: Router) { 
 
     this.formGroup = formBuilder.group({
       empresa: ['1'],
@@ -115,7 +115,6 @@ export class EditarbannerComponent implements OnInit {
   grabar() {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
-      //this.crearBanner.id=1;
       this.objetoActualizar.id = this.BannerId.id;
       this.objetoActualizar.nombre = this.valorFormulario.nombreBanner;
       this.objetoActualizar.idEmpresa = this.valorFormulario.empresa;

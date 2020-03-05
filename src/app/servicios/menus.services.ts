@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment} from '../../environments/environment';
-import { responseMenu, Menu} from '../interfaces/interface.menu';
+import { responseMenu, Menu, MenuXid} from '../interfaces/interface.menu';
 const url = environment.direccionMenu;
 
 @Injectable({
@@ -14,6 +14,13 @@ export class menusService {
   obtenerMenus(access_token){
     return this.httpService.get<responseMenu>(url,this.getRequestHeaders(access_token));
   }
+
+  obtenerMenuById(idMenu:number,access_token){
+    let direccion=url+"/"+idMenu;
+    return this.httpService.get<MenuXid>(direccion,this.getRequestHeaders(access_token));
+  }
+
+  
 
   getRequestHeaders(access_token:string): { headers: HttpHeaders | { [header: string]: string | string[] }; } {
     const headers = new HttpHeaders({
@@ -35,8 +42,16 @@ export class menusService {
     }
   }
 
-  editMenu(){
-    console.log("Editar Menu...")
+  editMenu(menu: Menu,access_token){
+    try {
+      console.log(menu);
+      this.httpService.put<Menu>(url, menu, this.getRequestHeaders(access_token)).subscribe(
+        data => alert("Menu Actualizado Correctamente"),
+        error => alert("No se pudo actualizar el Menu")
+      );
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   deleteMenu(idMenu:number,access_token){

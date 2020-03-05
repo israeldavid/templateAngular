@@ -27,6 +27,10 @@ export class SlidesComponent implements OnInit {
     this.route.navigateByUrl("crearslides");
   }
 
+  editarslides(idslide:number){
+    this.route.navigateByUrl("editarslides/"+idslide);
+  }
+
   eliminarslide(idSlider:number){
     this.ss.deleteSlide(idSlider);
     this.route.navigateByUrl("admin/(slides)")

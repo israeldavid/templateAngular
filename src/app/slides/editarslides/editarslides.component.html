@@ -1,3 +1,66 @@
-<p>
-  editarslides works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title">Ediatr un Slides</h4>
+                      <p class="card-category"> Se recomienda solo cargar 3 imagenes. Esto se mostrará en la pantalla inicial de la App</p>
+                  </div>
+                  <div class="card-body">
+                    <!--(ngSubmit)="grabar()" -->
+                    <form id="addTabs" [formGroup]="formGroup">
+                      <div class="container" style="margin-top: 4%">
+                          <strong>Empresa:</strong>
+                          <select class="form-control" formControlName="empresa" name="empresa" (change)='cambioSeleccionado($event)'>
+                            <option selected value="1">Selecciona una empresa</option>
+                            <option value="{{item.id}}" *ngFor="let item of responseEmpresa?.empresas">
+                                {{item.nombre}}
+                            </option>
+                          </select>
+                      </div>
+              
+                      <div class="container" style="margin-top: 2%">
+                          <b>Seleccione la Aplicación:</b>
+                          <select class="form-control" formControlName="aplicacion" name="aplicacion">
+                            <option selected value="1">Selecciona una aplicación</option>
+                              <option selected value="{{itema.id}}" *ngFor="let itema of responseAplicacion?.aplicaciones">
+                                {{itema.nombre}}
+                              </option>
+                          </select>
+                      </div>
+
+                      <div class="container" style="margin-top: 2%">
+                        <strong>Nombre:</strong><br>
+                        <input type="text" formControlName="nombre" name="nombre" placeholder="Nombre del Slide" class="form-control">
+                     </div>
+
+                     <div class="container" style="margin-top: 2%">
+                      <strong>Icono Actual:</strong><br>
+                      <img [src]="imgMostrar" width="25%">
+                     </div>
+              
+                      <div class="container" style="margin-top: 2%">
+                          <strong>Imagen</strong><br>
+                          <input type="file" formControlName="archivo" name="archivo" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf">
+                       </div>
+              
+                      <div class="container" style="margin-top: 2%">
+                          <strong>Estado:</strong>
+                          <select class="form-control" formControlName="estado" name="estado">
+                              <option selected value="A">Activo</option>
+                              <option value="D">Desactivado</option>
+                          </select>
+                      </div>
+
+                      <div class="container centrado" style="margin-top: 2%">
+                        <button class="btn btn-dark" (click)="cerrar()">Cerrar</button>
+                        <button class="btn btn-danger" (click)="grabar()" [disabled]="formGroup.invalid">Grabar</button>
+                      </div>
+                  </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

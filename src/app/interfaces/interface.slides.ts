@@ -10,7 +10,12 @@ export interface responseSlides {
     nombre: string;
     base64: string;
     fechaCreacion?: string;
-    urlImagen:string;
+    urlImagen?:string;
     estado:string;
     id?: number;
+}
+
+export interface SliderXid{
+    slide: Slider;
+    errorResponse?: any;
 }

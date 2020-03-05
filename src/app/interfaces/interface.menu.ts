@@ -14,3 +14,8 @@ export interface responseMenu {
     fechaCreacion?: string;
     id?: number;
   }
+
+  export interface MenuXid {
+    menu: Menu;
+    errorResponse?: any;
+  }

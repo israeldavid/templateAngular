@@ -39,7 +39,6 @@ export class EditartabsComponent implements OnInit {
         nombreEnlace: [''],
         estado:['A']
       });
-      
     }
 
   ngOnInit() {
@@ -111,8 +110,9 @@ export class EditartabsComponent implements OnInit {
     if (this.formGroup.valid) {
       //aqui me quede comparar con las opciones de banner
       this.valorFormulario = this.formGroup.value;
-      this.objetoActualizar.idEmpresa=this.valorFormulario.empresa;
-      this.objetoActualizar.idAplicacion=this.valorFormulario.aplicacion;
+      this.objetoActualizar.id=this.tabId.id;
+      //this.objetoActualizar.idEmpresa=this.valorFormulario.empresa;
+      //this.objetoActualizar.idAplicacion=this.valorFormulario.aplicacion;
       this.objetoActualizar.base64=this.imgUrl;
       this.objetoActualizar.nombre=this.valorFormulario.nombreOpcion;
       this.objetoActualizar.urlPage=this.valorFormulario.nombreEnlace;

@@ -13,6 +13,7 @@
                               <thead class=" text-primary">
                                   <th>ID</th>
                                   <th>Nombre</th>
+                                  <th>Icono</th>
                                   <th>Ruta</th>
                                   <th>Estado</th>
                                   <th>Acciones</th>
@@ -21,6 +22,8 @@
                                   <tr *ngFor="let item of responseMenus?.menus">
                                       <td>{{item.id}}</td>
                                       <td>{{item.nombre}}</td>
+                                      <!-- Para que se muestre la imagen, debes agregar al campo algo asi: <img src='data:image/svg+xml;utf8,<svg ... > ... </svg>'>-->
+                                      <td> <img [src]="sanitized.bypassSecurityTrustUrl(item?.base64)" width="50px" height="50px"></td>
                                       <td>{{item.urlPage}}</td>
                                       <td>Ok</td>
                                       <td>

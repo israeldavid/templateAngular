@@ -42,7 +42,15 @@ const url = environment.direccionTabs;
     }
 
     editTabs(tab: Tab, access_token){
-      console.log("Editar Tabs...")
+      try {
+        console.log("info: ",tab);
+        this.httpService.put<Tab>(url, tab, this.getRequestHeaders(access_token)).subscribe(
+          data => alert("Tab Actualizado Correctamente"),
+          error => alert("No se pudo actualizar el Tab")
+        );
+      } catch (error) {
+        console.log(error);
+      }
     }
   
     deleteTabs(idTab:number,access_token){

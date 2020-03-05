@@ -43,7 +43,6 @@ export class BannerService {
   }
 
   editBanner(banner: Banner,access_token){
-    console.log(banner);
     try {
       this.httpService.put<Banner>(url, banner, this.getRequestHeaders(access_token)).subscribe(
         data => alert("Banner Actualizado Correctamente"),

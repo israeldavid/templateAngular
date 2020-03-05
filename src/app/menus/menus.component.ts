@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { menusService } from '../servicios/menus.services';
 import { responseMenu } from '../interfaces/interface.menu';
 import { Router } from '@angular/router';
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-menus',
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class MenusComponent implements OnInit {
   responseMenus: responseMenu;
   token:any;
-  constructor(private ms:menusService,private route:Router) { }
+  constructor(private ms:menusService,private route:Router,private sanitized: DomSanitizer) { }
 
   ngOnInit() {
     this.consultarMenus();
@@ -27,6 +27,10 @@ export class MenusComponent implements OnInit {
 
   crearMenu(){
     this.route.navigateByUrl("crearmenus");
+  }
+
+  editarMenu(idMenu:number){
+    this.route.navigateByUrl("editarmenus/"+idMenu);
   }
 
   eliminarMenu(idMenu:number){

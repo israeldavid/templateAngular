@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment} from '../../environments/environment';
-import { responseSlides,Slider } from '../interfaces/interface.slides';
+import { responseSlides,Slider,SliderXid } from '../interfaces/interface.slides';
 
 const url = environment.direccionSlides;
 
@@ -16,11 +16,29 @@ export class slidesService {
     return this.httpService.get<responseSlides>(url);
   }
 
+  obtenerSliderById(idSlider:number,access_token){
+    let direccion=url+"/"+idSlider;
+    console.log(direccion);
+    return this.httpService.get<SliderXid>(direccion,this.getRequestHeaders(access_token));
+  }
+
   addSlider(slider: Slider,access_token){
     try {
       this.httpService.post<Slider>(url, slider, this.getRequestHeaders(access_token)).subscribe(
         data => alert ('Slider ingresado correctamente'),
         error => alert("Error al ingresar el Slider")
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  editSlider(slide: Slider,access_token){
+    try {
+      console.log(slide);
+      this.httpService.put<Slider>(url, slide, this.getRequestHeaders(access_token)).subscribe(
+        data => alert("Slider Actualizado Correctamente"),
+        error => alert("No se pudo actualizar el Slider")
       );
     } catch (error) {
       console.log(error);
