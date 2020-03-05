@@ -13,3 +13,8 @@ export interface Rol{
     id?:number
 }
 
+export interface RolxId{
+  rol: Rol;
+  errorResponse?: any;
+}
+

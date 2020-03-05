@@ -3,6 +3,7 @@ import { RolesService } from '../servicios/roles.service';
 import { responseRoles } from '../interfaces/interface.roles';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
@@ -11,7 +12,10 @@ import { Router } from '@angular/router';
 export class RolesComponent implements OnInit {
 
   responseRoles: responseRoles;
-  constructor(private rs:RolesService,private router:Router) { }
+
+  constructor(private rs:RolesService,private router:Router) {
+    
+   }
 
   ngOnInit() {
     this.consultarRoles();
@@ -32,6 +36,7 @@ export class RolesComponent implements OnInit {
   }
 
   eliminarrol(idrol:number){
-
+    this.rs.deleteRol(idrol,localStorage.getItem('token'));
+    this.router.navigateByUrl("admin/(roles)")
   }
 }
