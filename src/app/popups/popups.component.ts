@@ -29,4 +29,13 @@ export class PopupsComponent implements OnInit {
     this.route.navigateByUrl("crearpopup");
   }
 
+  editarPopup(idpopup:number){
+    this.route.navigateByUrl("editarpopup/"+idpopup);
+  }
+
+  eliminarPopup(idpopup:number){
+    this.ps.deletePopUp(idpopup,this.token=localStorage.getItem('token'));
+    this.route.navigateByUrl("admin/(popups)")
+  }
+
 }

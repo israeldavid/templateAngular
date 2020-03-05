@@ -13,3 +13,8 @@ export interface responsePopups {
     fechaCreacion?: string;
     id?: number;
   }
+
+  export interface PopupxId{
+    popup: Popups;
+    errorResponse?: any;
+  }
