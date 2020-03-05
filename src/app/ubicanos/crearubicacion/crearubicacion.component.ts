@@ -19,7 +19,7 @@ export class CrearubicacionComponent implements OnInit {
   responseAplicacion: responseAplicacion;
   token:any;
   base64textString = [];
-  crearCoodernada:Coordenada = {id:1,idBusiness:1,idAplication:1,nombre:'',longitud: '',latitud:''};
+  crearCoodernada:Coordenada = {id:1,idEmpresa:1,idAplicacion:1,nombre:'',longitud: '',latitud:''};
   valorFormulario: any;
   imgUrl:any;
 
@@ -62,8 +62,8 @@ export class CrearubicacionComponent implements OnInit {
   grabar() {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
-      this.crearCoodernada.idBusiness=this.valorFormulario.empresa;
-      this.crearCoodernada.idAplication=this.valorFormulario.aplicacion;
+      this.crearCoodernada.idEmpresa=this.valorFormulario.empresa;
+      this.crearCoodernada.idAplicacion=this.valorFormulario.aplicacion;
       this.crearCoodernada.nombre=this.valorFormulario.nombreSucursal;
       this.crearCoodernada.longitud=this.valorFormulario.longitud;
       this.crearCoodernada.latitud=this.valorFormulario.latitud;

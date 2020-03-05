@@ -5,11 +5,16 @@ export interface responseCoordenada {
   }
   
   export interface Coordenada {
-    idBusiness:number,
-    idAplication:number,
+    idEmpresa:number,
+    idAplicacion:number,
     nombre: string,
     longitud: string,
     latitud: string,
     fechaCreacion?: string,
     id?: number
+  }
+
+  export interface CoordenadaXid{
+    coordenada: Coordenada;
+    errorResponse?: any;
   }
