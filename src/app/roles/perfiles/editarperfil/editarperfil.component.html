@@ -1,3 +1,36 @@
-<p>
-  editarperfil works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-dark" (click)="regresar()">Regresar</button>
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Editar Perfil</h4>
+                  </div>
+                  <div class="card-body">
+                    <form id="addPerfil" [formGroup]="formGroup">
+             
+                      <div class="container" style="margin-top: 2%">
+                          <strong>Nombre Perfil:</strong>
+                          <input type="text" name="nombrePerfil" formControlName="nombrePerfil" placeholder="Nombre de Perfil" class="form-control">
+                      </div>
+                            
+                      <div class="container" style="margin-top: 2%">
+                          <strong>Estado:</strong>
+                          <select class="form-control" formControlName="estado" name="estado">
+                              <option selected value="A">Activo</option>
+                              <option value="D">Desactivado</option>
+                          </select>
+                      </div>
+
+                      <div class="container centrado" style="margin-top: 2%">
+                        <button class="btn btn-dark" (click)="cerrar()">Cerrar</button>
+                        <button class="btn btn-danger" (click)="grabar()" [disabled]="formGroup.invalid">Grabar</button>
+                      </div>
+                  </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
