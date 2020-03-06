@@ -5,7 +5,9 @@
               <div class="card">
                   <div class="card-header card-header-danger">
                       <h4 class="card-title ">Listado de PopUps</h4>
-                      <p class="card-category"> Imagenes registrados</p>
+                      <button mat-raised-button type="button" (click)="crearPopup()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary alineadoDerecha">
+                        Nuevo Popup
+                    </button>
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">

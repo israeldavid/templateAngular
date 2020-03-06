@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Coordenada } from '../../interfaces/interface.coordenada';
@@ -26,7 +27,8 @@ export class CrearubicacionComponent implements OnInit {
   constructor(private route:Router,private formBuilder: FormBuilder,
               private cs:UbicanosService, 
               private es:EmpresaService,
-              private as:AplicacionService) { 
+              private as:AplicacionService,
+              private _location:Location) { 
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
@@ -40,6 +42,10 @@ export class CrearubicacionComponent implements OnInit {
   ngOnInit() {
     this.consultarEmpresas();
     this.token=localStorage.getItem('token');
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   consultarEmpresas(){
