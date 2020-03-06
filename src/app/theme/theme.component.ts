@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
+import { Location } from '@angular/common';
+import { ThemeService } from '../servicios/theme.service'
+import { Theme,responseTheme,ThemeXid } from 'app/interfaces/interface.theme';
+import { AplicacionService } from '../servicios/aplicacion.service';
+import { responseAplicacion, Aplicacion} from '../interfaces/interface.aplicacion';
 
 @Component({
   selector: 'app-theme',
@@ -7,13 +13,59 @@ import { Router } from '@angular/router';
   styleUrls: ['./theme.component.scss']
 })
 export class ThemeComponent implements OnInit {
+  token:any;
+  responseTheme:responseTheme;
+  responseAplicacion: responseAplicacion;
 
-  constructor(private route:Router) { }
+  constructor(private route:Router,private _location: Location,
+              private SpinnerService: NgxSpinnerService,
+              private ts:ThemeService,private as:AplicacionService) { }
 
   ngOnInit() {
+    //this.consultarThemes();
+    this.consultarAplicaciones();
+  }
+
+  consultarAplicaciones(){
+    this.SpinnerService.show();
+    this.as.obtenerAplicaciones(localStorage.getItem('token')).subscribe(data => { 
+      this.responseAplicacion=data;  
+      this.SpinnerService.hide();
+    });
+  }
+
+  consultarThemes(){
+    this.token=localStorage.getItem('token');
+    this.SpinnerService.show();
+    this.ts.obtenerTheme(this.token).subscribe(data => { 
+      this.responseTheme=data;  
+      this.SpinnerService.hide();
+    }, err => {
+      alert("No se encontraron Themes para esa aplicacion")
+    });
+  }
+
+  regresar(){
+    this._location.back();
+  }
+
+  cambioSeleccionado(event){
+    const IdAplicacion = event.target.value;
+    this.ts.obtenerThemesByAplicacion(IdAplicacion,this.token).subscribe(data => { 
+      this.responseTheme=data;  
+    });
   }
 
   crearTheme(){
     this.route.navigateByUrl("crearthemes");
+  }
+
+  editartheme(idTheme:number){
+    this.route.navigateByUrl("editarthemes/"+idTheme);
+  }
+
+  eliminartheme(idTheme:number){
+    this.ts.deleteTheme(idTheme,localStorage.getItem('token'));
+    this.route.navigateByUrl("admin/(theme)");
   }
 }

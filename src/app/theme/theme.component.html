@@ -1,6 +1,28 @@
 <div class="main-content">
   <div class="container-fluid">
       <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-dark" (click)="regresar()">Regresar</button>
+            <button class="btn btn-danger" (click)="crearTheme()">Nuevo</button>
+            <div class="card">
+                <div class="card-header card-header-success">
+                    <h4 class="card-title ">Seleccione la Aplicación para Listar los Themes</h4>
+                </div>
+                <div class="card-body">
+                    <div class="container" style="margin-top: 4%">
+                        <strong>Aplicación:</strong>
+                        <select class="form-control" (change)='cambioSeleccionado($event)'>
+                            <option selected value="1">Selecciona una Aplicacion</option>
+                            <option value="{{itema.id}}" *ngFor="let itema of responseAplicacion?.aplicaciones">
+                                {{itema.nombre}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-danger">
@@ -25,20 +47,17 @@
                                   </th>
                               </thead>
                               <tbody>
-                                  <tr>
+                                  <tr *ngFor="let item of responseTheme?.temas">
                                       <td>
-                                          1
+                                          {{item.id}}
                                       </td>
                                       <td>
-                                          distrigen
+                                          {{item.idAplicacion}}
                                       </td>
                                       <td>
-                                          deep sky
+                                          {{item.nombre}}
                                       </td>
                                       <td>
-                                        <button mat-raised-button type="button" (click)="crearTheme()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                            <i class="material-icons">open_in_new</i>
-                                        </button>
                                         <button mat-raised-button type="button" (click)="editartheme(item.id)" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">edit</i>
                                         </button>
@@ -50,6 +69,9 @@
                               </tbody>
                           </table>
                       </div>
+                      <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                        <p style="color: white">Cargando Datos. </p>  
+                      </ngx-spinner> 
                   </div>
               </div>
           </div>

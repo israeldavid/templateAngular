@@ -2,14 +2,15 @@
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
+            <button class="btn btn-dark" (click)="regresar()">Regresar</button>
               <div class="card">
                   <div class="card-header card-header-success">
                       <h4 class="card-title">Nuevo Theme</h4>
                       <p class="card-category"> El Theme es la combinación de colores que su aplicación va a tener</p>
                   </div>
                   <div class="card-body">
-                    <form id="addTabs" [formGroup]="formGroup" (ngSubmit)="grabar()">
-
+                    <!-- (ngSubmit)="grabar()"-->
+                    <form id="addThemes" [formGroup]="formGroup">
                       <div class="container" style="margin-top: 4%">
                           <strong>Empresa:</strong>
                           <select class="form-control" formControlName="empresa" name="empresa" (change)='cambioSeleccionado($event)'>
@@ -29,25 +30,194 @@
                               </option>
                           </select>
                       </div>
-              
-                      <div class="container" style="margin-top: 2%">
-                          <strong>Nombre del Theme:</strong>
-                          <input type="text" name="nombretheme" formControlName="nombretheme" placeholder="Nombre de la opción" class="form-control">
+
+                    <div class="container" style="margin-top: 1%">
+
+                      <div class="form-group input-group-lg row">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Color Tab</mat-label>
+                                        <input matInput  value="{{actualColorTab}}" formControlName="colorTab">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-sm-2 emoji">
+                                    <div class="emoji-config-tab">
+                                        <button [ngStyle]="{'background-color': actualColorTab}"
+                                            (click)="toggleColorPickerTab();" type="button" class="btn"
+                                            style=" padding-left:0%;">
+                                        </button>
+                                        <div *ngIf="pickerShowTab">
+                                            <color-sketch color="{{actualColorTab}}" width="200px"
+                                                (onChange)="handleChangeColorTab($event)"></color-sketch>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                       </div>
+                    
+                    </div>
+
+                    <div class="container" style="margin-top: 1%">  
+                      <div class="form-group input-group-lg row">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Color Menú</mat-label>
+                                        <input matInput  value="{{actualColorMenu}}" formControlName="colorMenu">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-sm-2 emoji">
+                                    <div class="emoji-config-menu">
+                                        <button [ngStyle]="{'background-color': actualColorMenu}"
+                                            (click)="toggleColorPickerMenu();" type="button" class="btn"
+                                            style=" padding-left:0%;">
+                                        </button>
+                                        <div *ngIf="pickerShowMenu">
+                                            <color-sketch width="200px" color="{{actualColorMenu}}"
+                                                (onChange)="handleChangeColorMenu($event)"></color-sketch>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="container" style="margin-top: 1%">
+                      <div class="form-group input-group-lg row">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Color Botón</mat-label>
+                                        <input matInput  value="{{actualColorBoton}}" formControlName="colorBoton">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-sm-2 emoji">
+                                    <div class="emoji-config-boton">
+                                        <button [ngStyle]="{'background-color': actualColorBoton}"
+                                            (click)="toggleColorPickerBoton();" type="button" class="btn"
+                                            style="padding-left:0%;">
+                                        </button>
+                                        <div *ngIf="pickerShowBoton">
+                                            <color-sketch width="200px" color="{{actualColorBoton}}"
+                                                (onChange)="handleChangeColorBoton($event)"></color-sketch>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="container" style="margin-top: 1%">
+                      <div class="form-group input-group-lg row">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Color Alert Success</mat-label>
+                                        <input matInput  value="{{actualColorAlertSuccess}}" formControlName="colorAlertSuccess">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-sm-2 emoji">
+                                    <div class="emoji-config-alert-success">
+                                        <button [ngStyle]="{'background-color': actualColorAlertSuccess}"
+                                            (click)="toggleColorPickerAlertSuccess();" type="button" class="btn"
+                                            style=" padding-left:0%;">
+                                        </button>
+                                        <div *ngIf="pickerShowAlertSuccess">
+                                            <color-sketch width="200px" color="{{actualColorAlertSuccess}}"
+                                                (onChange)="handleChangeColorAlertSuccess($event)">
+                                            </color-sketch>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="container" style="margin-top: 1%">
+                      <div class="form-group input-group-lg row">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Color Alert Warning</mat-label>
+                                        <input matInput  value="{{actualColorAlertWarning}}" formControlName="colorAlertWarning">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-sm-2 emoji">
+                                    <div class="emoji-config-alert-warning">
+                                        <button [ngStyle]="{'background-color': actualColorAlertWarning}"
+                                            (click)="toggleColorPickerAlertWarning();" type="button" class="btn"
+                                            style=" padding-left:0%;">
+                                        </button>
+                                        <div *ngIf="pickerShowAlertWarning">
+                                            <color-sketch width="200px" color="{{actualColorAlertWarning}}"
+                                                (onChange)="handleChangeColorAlertWarning($event)">
+                                            </color-sketch>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="container" style="margin-top: 1%">
+                      <div class="form-group input-group-lg row">
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Color Alert Danger</mat-label>
+                                        <input matInput  value="{{actualColorAlertDanger}}" formControlName="colorAlertDanger"> 
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-sm-2 emoji">
+                                    <div class="emoji-config-alert-danger">
+                                        <button [ngStyle]="{'background-color': actualColorAlertDanger}"
+                                            (click)="toggleColorPickerAlertDanger();" type="button" class="btn"
+                                            style=" padding-left:0%;">
+                                        </button>
+                                        <div *ngIf="pickerShowAlertDanger">
+                                            <color-sketch width="200px" color="{{actualColorAlertDanger}}"
+                                                (onChange)="handleChangeColorAlertDanger($event)">
+                                            </color-sketch>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
               
                       <!-- aqu va la parte de Lider/Colores-->
               
                       <div class="container" style="margin-top: 2%">
                           <strong>Estado:</strong>
                           <select class="form-control" formControlName="estado" name="estado">
-                              <option selected value="1">Activo</option>
-                              <option value="2">Desactivado</option>
+                              <option selected value="A">Activo</option>
+                              <option value="D">Desactivado</option>
                           </select>
                       </div>
 
                       <div class="container centrado" style="margin-top: 2%">
                         <button class="btn btn-dark" (click)="cerrar()">Cerrar</button>
-                        <button class="btn btn-danger" type="submit" [disabled]="formGroup.invalid">Grabar</button>
+                        <button class="btn btn-danger" (click)="grabar()" [disabled]="formGroup.invalid">Grabar</button>
                       </div>
                   </form>
                   </div>

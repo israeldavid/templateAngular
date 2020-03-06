@@ -25,6 +25,7 @@ export const environment = {
   direccionRoles: direccionUnida + 'Roles',
   direccionPermisos: direccionUnida + 'Permisos',
   //direccionUbicanos: direccion + puerto + api + 'coordenadas',
+  direccionTheme: direccionUnida + 'temas',
   direccionUbicanos: direccionUnida + 'Coordenadas',
   direccionEmpresa: direccionUnida + 'Empresas',
   direccionAplicacion: direccionUnida + 'Aplicaciones',

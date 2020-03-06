@@ -9,6 +9,8 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
+//Theme Color Picker
+import { ColorSketchModule } from 'ngx-color/sketch';
 
 //Servicios
 import { BannerService } from './servicios/banner.service';
@@ -61,6 +63,7 @@ import { EditarperfilComponent } from './roles/perfiles/editarperfil/editarperfi
     MatDialogModule,
     MatSelectModule,
     NgxSpinnerModule,
+    ColorSketchModule,
     //MatInputModule,
     //MatCheckboxModule,
     //MatButtonModule,

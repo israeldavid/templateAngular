@@ -12,6 +12,10 @@ export class AplicacionService {
   empresa:empresaXApp={idEmpresa:0};
   constructor(private httpService: HttpClient) { }
 
+  obtenerAplicaciones(access_token){
+    return this.httpService.get<responseAplicacion>(url,this.getRequestHeaders(access_token));
+  }
+
   obtenerAplicacionByEmpresa(idEmpresa:number,access_token){
     let direccion = url + "/ByIdEmpresa/";
     this.empresa.idEmpresa=idEmpresa;

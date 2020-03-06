@@ -65,19 +65,6 @@ export class CreartabsComponent implements OnInit {
     this._location.back();
   }
 
-  onUploadChange(evt: any) {
-    const file = evt.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = this.handleReaderLoaded.bind(this);
-      reader.readAsBinaryString(file);
-    }
-  }
-  
-  handleReaderLoaded(e) {
-    this.imgUrl = btoa(e.target.result);
-    this.base64textString.push('data:image/png;base64,' + btoa(e.target.result));
-  }
 
   grabar() {
     if (this.formGroup.valid) {

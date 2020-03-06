@@ -9,8 +9,8 @@
                       <p class="card-category"> *No se recomienda crear más de 5 tabs para cada aplicación</p>
                   </div>
                   <div class="card-body">
-                    <form id="addTabs" [formGroup]="formGroup" (ngSubmit)="grabar()">
-
+                    <!-- (ngSubmit)="grabar()"-->
+                    <form id="addTabs" [formGroup]="formGroup">
                       <div class="container" style="margin-top: 4%">
                           <strong>Empresa:</strong>
                           <select class="form-control" formControlName="empresa" name="empresa" (change)='cambioSeleccionado($event)'>

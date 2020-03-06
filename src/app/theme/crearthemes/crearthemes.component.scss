@@ -1,0 +1,39 @@
+.emoji-config-tab {
+    position: absolute;
+    z-index: 106;
+}
+
+.emoji-config-menu {
+    position: absolute;
+    z-index: 105;
+}
+
+.emoji-config-boton {
+    position: absolute;
+    z-index: 104;
+}
+
+.emoji-config-alert-success {
+    position: absolute;
+    z-index: 103;
+}
+
+.emoji-config-alert-warning {
+    position: absolute;
+    z-index: 102;
+}
+
+.emoji-config-alert-danger {
+    position: absolute;
+    z-index: 101;
+}
+
+
+@media(max-width: 600px) {
+    .emoji {
+        margin-bottom: 30px;
+        margin-left: 20px;
+        //margin-top: 5px;
+
+    }
+}
