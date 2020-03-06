@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { slidesService } from '../../servicios/slides.service';
@@ -25,7 +26,8 @@ export class CrearslidesComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,private route:Router,private ss:slidesService,
     private es:EmpresaService,
-    private as:AplicacionService) { 
+    private as:AplicacionService,
+    private _location: Location) { 
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       nombre:[''],
@@ -55,6 +57,10 @@ export class CrearslidesComponent implements OnInit {
 
   cerrar(){
     this.route.navigateByUrl("admin/(slides)");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   onUploadChange(evt: any) {

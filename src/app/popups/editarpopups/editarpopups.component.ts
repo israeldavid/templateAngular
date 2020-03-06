@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PopupsService } from '../../servicios/popups.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -30,7 +31,8 @@ export class EditarpopupsComponent implements OnInit {
     private es: EmpresaService,
     private as: AplicacionService,
     private formBuilder: FormBuilder,
-    private route: Router) { 
+    private route: Router,
+    private _location: Location) { 
       this.formGroup = formBuilder.group({
         empresa: ['1'],
         aplicacion: ['1'],
@@ -107,6 +109,10 @@ export class EditarpopupsComponent implements OnInit {
 
   cerrar() {
     this.route.navigateByUrl("admin/(banner)");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   grabar(){

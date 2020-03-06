@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { TabsService } from '../servicios/tabs.service';
 import { responseTabs } from '../interfaces/interface.tabs';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -13,7 +14,7 @@ export class TabsComponent implements OnInit {
 
   responseTabs: responseTabs;
   token:any;
-  constructor(private ts:TabsService,private sanitized: DomSanitizer,private route:Router) { }
+  constructor(private ts:TabsService,private sanitized: DomSanitizer,private route:Router,private _location: Location) { }
 
   ngOnInit() {
     this.consultarTabs();
@@ -28,6 +29,10 @@ export class TabsComponent implements OnInit {
 
   crearTabs(){
     this.route.navigateByUrl("creartabs");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   eliminarTabs(idTab:number){

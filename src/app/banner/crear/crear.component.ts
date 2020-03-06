@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { BannerService } from '../../servicios/banner.service';
@@ -26,7 +27,8 @@ export class CrearComponent implements OnInit {
   constructor(private route:Router,private formBuilder: FormBuilder,
               private bs:BannerService,
               private es:EmpresaService,
-              private as:AplicacionService) { 
+              private as:AplicacionService,
+              private _location: Location) { 
     
     this.formGroup = formBuilder.group({
       empresa: ['1'],
@@ -58,6 +60,10 @@ export class CrearComponent implements OnInit {
 
   cerrar(){
     this.route.navigateByUrl("admin/(banner)");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   obtenerToken(){

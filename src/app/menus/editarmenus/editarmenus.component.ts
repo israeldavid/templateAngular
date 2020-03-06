@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { menusService } from '../../servicios/menus.services';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -31,7 +32,8 @@ export class EditarmenusComponent implements OnInit {
     private es: EmpresaService,
     private as: AplicacionService,
     private formBuilder: FormBuilder,
-    private route: Router) { 
+    private route: Router,
+    private _location: Location) { 
       this.formGroup = formBuilder.group({
         empresa: ['1'],
         aplicacion: ['1'],
@@ -104,6 +106,10 @@ export class EditarmenusComponent implements OnInit {
 
   cerrar() {
     this.route.navigateByUrl("admin/(menus)");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   grabar(){

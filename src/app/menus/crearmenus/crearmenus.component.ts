@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { menusService } from '../../servicios/menus.services';
@@ -26,7 +27,8 @@ export class CrearmenusComponent implements OnInit {
   constructor(private route:Router,private formBuilder: FormBuilder,
     private ms:menusService,
     private es:EmpresaService,
-    private as:AplicacionService) {
+    private as:AplicacionService,
+    private _location: Location) {
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
@@ -57,6 +59,10 @@ export class CrearmenusComponent implements OnInit {
 
   cerrar(){
     this.route.navigateByUrl("admin/(menus)");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   onUploadChange(evt: any) {

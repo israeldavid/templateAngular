@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { Router } from '@angular/router';
 import { AplicacionService } from '../servicios/aplicacion.service';
@@ -16,7 +17,7 @@ export class MultiaplicacionComponent implements OnInit {
   responseAplicacion: responseAplicacion;
   token:any;
   empresaId:{id:number};
-  constructor(private dialog: MatDialog,private router:Router,private es:AplicacionService,private rutaActiva: ActivatedRoute) { }
+  constructor(private dialog: MatDialog,private _location: Location,private router:Router,private es:AplicacionService,private rutaActiva: ActivatedRoute) { }
 
   ngOnInit() {
     this.empresaId = {
@@ -34,6 +35,10 @@ export class MultiaplicacionComponent implements OnInit {
 
   crearaplicacion(){
     this.router.navigateByUrl("crearaplicacion");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   editarApp(idApp:number){

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { TabsService } from '../../servicios/tabs.service';
@@ -25,7 +26,9 @@ export class CreartabsComponent implements OnInit {
 
   constructor(private route:Router,private formBuilder:FormBuilder,private ts:TabsService,
     private es:EmpresaService,
-    private as:AplicacionService) {
+    private as:AplicacionService,
+    private _location: Location,
+    ) {
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
@@ -56,6 +59,10 @@ export class CreartabsComponent implements OnInit {
 
   cerrar(){
     this.route.navigateByUrl("admin/(tabs)");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   onUploadChange(evt: any) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { PopupsService } from '../../servicios/popups.service';
@@ -23,7 +24,7 @@ export class CrearPopupComponent implements OnInit {
   valorFormulario: any;
   imgUrl:any;
 
-  constructor(private route:Router,private formBuilder: FormBuilder,private ps:PopupsService,
+  constructor(private route:Router,private formBuilder: FormBuilder,private _location: Location,private ps:PopupsService,
     private es:EmpresaService,
     private as:AplicacionService) { 
     this.formGroup = formBuilder.group({
@@ -55,6 +56,10 @@ export class CrearPopupComponent implements OnInit {
 
   cerrar(){
     this.route.navigateByUrl("admin/(popups)");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   onUploadChange(evt: any) {

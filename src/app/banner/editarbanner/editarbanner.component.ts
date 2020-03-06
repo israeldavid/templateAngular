@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BannerService } from '../../servicios/banner.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -30,7 +31,8 @@ export class EditarbannerComponent implements OnInit {
     private es: EmpresaService,
     private as: AplicacionService,
     private formBuilder: FormBuilder,
-    private route: Router) { 
+    private route: Router,
+    private _location: Location) { 
 
     this.formGroup = formBuilder.group({
       empresa: ['1'],
@@ -110,6 +112,10 @@ export class EditarbannerComponent implements OnInit {
 
   cerrar() {
     this.route.navigateByUrl("admin/(banner)");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   grabar() {

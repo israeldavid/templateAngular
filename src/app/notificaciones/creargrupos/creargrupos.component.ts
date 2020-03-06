@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { EmpresaService } from '../../servicios/empresa.service';
 import { AplicacionService } from '../../servicios/aplicacion.service';
 import { responseEmpresa, Empresa } from '../../interfaces/interface.empresa';
@@ -25,7 +26,8 @@ export class CreargruposComponent implements OnInit {
     private as: AplicacionService,
     private formBuilder: FormBuilder,
     private gs:GruposService,
-    private route: Router
+    private route: Router,
+    private _location: Location
   ) {
     this.formGroup = formBuilder.group({
       empresa: ['1'],
@@ -60,6 +62,10 @@ export class CreargruposComponent implements OnInit {
 
   cerrar(){
     this.route.navigateByUrl("admin/(notificaciones)");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   grabar(){
