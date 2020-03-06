@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RolesService } from '../../servicios/roles.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -27,7 +28,8 @@ export class EditarrolComponent implements OnInit {
     private es: EmpresaService,
     private as: AplicacionService,
     private formBuilder: FormBuilder,
-    private route: Router) { 
+    private route: Router,
+    private _location: Location) { 
       this.formGroup = formBuilder.group({
         empresa: ['1'],
         aplicacion: ['1'],
@@ -39,13 +41,14 @@ export class EditarrolComponent implements OnInit {
 
   ngOnInit() {
     this.rolId = {
-      id: this.rutaActiva.snapshot.params.idBanner
+      id: this.rutaActiva.snapshot.params.idrol
     }
     //consultar las empresas
     this.consultarEmpresas();
     //consultar las aplicaciones
 
     //Obtiene los datos para cargar en el formulario
+    
     this.rs.obtenerRolById(this.rolId.id, this.obtenerToken()).subscribe(
       data => {
         this.rolMostrar = data;
@@ -83,6 +86,10 @@ export class EditarrolComponent implements OnInit {
 
   cerrar() {
     this.route.navigateByUrl("admin/(roles)");
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   grabar() {

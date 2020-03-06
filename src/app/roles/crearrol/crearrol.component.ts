@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { EmpresaService } from '../../servicios/empresa.service';
 import { AplicacionService } from '../../servicios/aplicacion.service';
 import { responseEmpresa,Empresa } from '../../interfaces/interface.empresa';
@@ -24,7 +25,8 @@ export class CrearrolComponent implements OnInit {
   constructor(private es:EmpresaService,
     private as:AplicacionService,private formBuilder: FormBuilder,
     private router:Router,
-    private rs:RolesService) { 
+    private rs:RolesService,
+    private _location: Location) { 
       this.formGroup = formBuilder.group({
         empresa: ['1'],
         aplicacion:['1'],
@@ -49,6 +51,10 @@ export class CrearrolComponent implements OnInit {
     this.as.obtenerAplicacionByEmpresa(IdEmpresa,this.token).subscribe(data => { 
       this.responseAplicacion=data;  
     });
+  }
+
+  regresar(){
+    this._location.back();
   }
 
   cerrar(){
