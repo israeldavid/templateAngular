@@ -3,6 +3,7 @@ import { menusService } from '../servicios/menus.services';
 import { responseMenu } from '../interfaces/interface.menu';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-menus',
@@ -12,7 +13,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class MenusComponent implements OnInit {
   responseMenus: responseMenu;
   token:any;
-  constructor(private ms:menusService,private route:Router,private sanitized: DomSanitizer) { }
+  constructor(private ms:menusService,private route:Router,
+              private sanitized: DomSanitizer,
+              private SpinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
     this.consultarMenus();
@@ -20,8 +23,10 @@ export class MenusComponent implements OnInit {
 
   consultarMenus(){
     this.token=localStorage.getItem('token');
+    this.SpinnerService.show();
     this.ms.obtenerMenus(this.token).subscribe(data => { 
-      this.responseMenus=data;  
+      this.responseMenus=data; 
+      this.SpinnerService.hide(); 
     });
   }
 

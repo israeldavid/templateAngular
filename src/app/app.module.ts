@@ -13,10 +13,11 @@ import { HttpClientModule,HttpClient } from '@angular/common/http';
 //Servicios
 import { BannerService } from './servicios/banner.service';
 import { MatDialogConfig, MatDialog, MatDialogModule, MatSelectModule   } from '@angular/material';
-
+//Loading
+import { NgxSpinnerModule } from "ngx-spinner"; 
 //import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/material';
 import { MaterialModule } from './material.module';
-
+//Componentes
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import { CrearComponent } from './banner/crear/crear.component';
@@ -56,6 +57,7 @@ import { EditarrolComponent } from './roles/editarrol/editarrol.component';
     MaterialModule,
     MatDialogModule,
     MatSelectModule,
+    NgxSpinnerModule,
     //MatInputModule,
     //MatCheckboxModule,
     //MatButtonModule,

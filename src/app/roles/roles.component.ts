@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RolesService } from '../servicios/roles.service';
 import { responseRoles } from '../interfaces/interface.roles';
 import { Router } from '@angular/router';
-
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-roles',
@@ -13,7 +13,7 @@ export class RolesComponent implements OnInit {
 
   responseRoles: responseRoles;
 
-  constructor(private rs:RolesService,private router:Router) {
+  constructor(private rs:RolesService,private router:Router,private SpinnerService: NgxSpinnerService) {
     
    }
 
@@ -22,8 +22,10 @@ export class RolesComponent implements OnInit {
   }
 
   consultarRoles(){
+    this.SpinnerService.show();
     this.rs.obtenerRoles().subscribe(data => { 
-      this.responseRoles=data;        
+      this.responseRoles=data;  
+      this.SpinnerService.hide();      
     });
   }
 

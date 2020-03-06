@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../servicios/auth.service';
 import { User } from '../interfaces/interface.user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
               private as:AuthService,
-              private fb: FormBuilder) { 
+              private fb: FormBuilder,
+              private SpinnerService: NgxSpinnerService) { 
     this.formLogin = this.fb.group({
       usuario: ['', Validators.required],
       clave: ['', Validators.required]
@@ -32,12 +34,14 @@ export class LoginComponent implements OnInit {
 
   onLogin(sendata:User) {
     localStorage.setItem('isLoggedin', 'true');
+    this.SpinnerService.show();
     if (this.formLogin.invalid){
       return;
     } else {
       this.as.validarUsuario(sendata).subscribe((res) => {
         if (res.login.token) {
           localStorage.setItem('token', res.login.token);
+          this.SpinnerService.hide();
           this.router.navigateByUrl('admin/(dashboard)');
         }
       },err => {

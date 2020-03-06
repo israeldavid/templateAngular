@@ -4,6 +4,7 @@ import { TabsService } from '../servicios/tabs.service';
 import { responseTabs } from '../interfaces/interface.tabs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-tabs',
@@ -14,7 +15,9 @@ export class TabsComponent implements OnInit {
 
   responseTabs: responseTabs;
   token:any;
-  constructor(private ts:TabsService,private sanitized: DomSanitizer,private route:Router,private _location: Location) { }
+  constructor(private ts:TabsService,private sanitized: DomSanitizer,
+              private route:Router,private _location: Location,
+              private SpinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
     this.consultarTabs();
@@ -22,8 +25,10 @@ export class TabsComponent implements OnInit {
 
   consultarTabs(){
     this.token=localStorage.getItem('token');
+    this.SpinnerService.show();
     this.ts.obtenerTabs(this.token).subscribe(data => { 
       this.responseTabs=data;  
+      this.SpinnerService.hide();
     });
   }
 

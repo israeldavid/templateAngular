@@ -4,6 +4,7 @@ import { responseBanner } from '../interfaces/interface.banner';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { isUndefined } from 'util';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-banner',
@@ -13,7 +14,10 @@ import { Router } from '@angular/router';
 export class BannerComponent implements OnInit {
   responseBanners: responseBanner;
   token:any;
-  constructor(private bs:BannerService,private dialog: MatDialog,private router:Router) { 
+  constructor(private bs:BannerService,
+              private dialog: MatDialog,
+              private router:Router,
+              private SpinnerService: NgxSpinnerService) { 
 
   }
 
@@ -23,8 +27,10 @@ export class BannerComponent implements OnInit {
 
   consultarBanners(){
     this.token=localStorage.getItem('token');
+    this.SpinnerService.show();
     this.bs.obtenerBanners(this.token).subscribe(data => { 
-      this.responseBanners=data;  
+      this.responseBanners=data;
+      this.SpinnerService.hide();
     });
   }
 

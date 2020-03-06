@@ -13,7 +13,6 @@ export class BannerService {
   constructor(private httpService: HttpClient) { }
 
   obtenerBanners(access_token){
-    console.log(url);
     return this.httpService.get<responseBanner>(url,this.getRequestHeaders(access_token));
   }
 

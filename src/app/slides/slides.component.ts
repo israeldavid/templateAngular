@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { slidesService } from '../servicios/slides.service';
 import { responseSlides } from '../interfaces/interface.slides';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-slides',
@@ -11,15 +12,19 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class SlidesComponent implements OnInit {
   responseSlides: responseSlides;
-  constructor(private route:Router,private ss:slidesService,private sanitized: DomSanitizer) { }
+  constructor(private route:Router,private ss:slidesService,
+              private sanitized: DomSanitizer,
+              private SpinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
     this.consultarSlides();
   }
 
   consultarSlides(){
+    this.SpinnerService.show();
     this.ss.obtenerSliders().subscribe(data => { 
-      this.responseSlides=data;  
+      this.responseSlides=data; 
+      this.SpinnerService.hide(); 
     });
   }
 

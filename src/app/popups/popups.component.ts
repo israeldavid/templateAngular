@@ -3,6 +3,7 @@ import { PopupsService } from '../servicios/popups.service';
 import { responsePopups } from '../interfaces/interface.popup';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-popups',
@@ -12,7 +13,9 @@ import { Router } from '@angular/router';
 export class PopupsComponent implements OnInit {
   token:any;
   responsePopup:responsePopups;
-  constructor(private ps:PopupsService,private sanitized: DomSanitizer,private route:Router) { }
+  constructor(private ps:PopupsService,private sanitized: DomSanitizer,
+    private route:Router,
+    private SpinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
     this.cargarPopups();
@@ -20,8 +23,10 @@ export class PopupsComponent implements OnInit {
 
   cargarPopups(){
     this.token=localStorage.getItem('token');
+    this.SpinnerService.show();
     this.ps.obtenerPopup(this.token).subscribe(data => { 
       this.responsePopup=data;  
+      this.SpinnerService.hide();
     });
   }
 

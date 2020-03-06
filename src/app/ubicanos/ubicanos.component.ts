@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UbicanosService } from '../servicios/ubicanos.service';
 import { responseCoordenada } from '../interfaces/interface.coordenada';
-
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-ubicanos',
@@ -12,7 +12,7 @@ import { responseCoordenada } from '../interfaces/interface.coordenada';
 export class UbicanosComponent implements OnInit {
   token:any;
   responseCoordenada:responseCoordenada;
-  constructor(private route:Router,private us:UbicanosService) { }
+  constructor(private route:Router,private us:UbicanosService,private SpinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
     this.cargarUbicaciones();
@@ -20,8 +20,10 @@ export class UbicanosComponent implements OnInit {
 
   cargarUbicaciones(){
     this.token=localStorage.getItem('token');
+    this.SpinnerService.show();
     this.us.obtenerUbicaciones(this.token).subscribe(data => { 
       this.responseCoordenada=data;  
+      this.SpinnerService.hide();
     });
   }
 

@@ -22,6 +22,9 @@ import { UbicanosComponent } from '../../ubicanos/ubicanos.component';
 //Charts
 import { ChartsModule } from 'ng2-charts';
 
+//Loading
+import { NgxSpinnerModule } from "ngx-spinner"; 
+
 import {
   MatButtonModule,
   MatInputModule,
@@ -43,7 +46,8 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    ChartsModule
+    ChartsModule,
+    NgxSpinnerModule
   ],
   declarations: [
     DashboardComponent,

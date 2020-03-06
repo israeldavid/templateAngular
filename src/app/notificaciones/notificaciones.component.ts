@@ -10,6 +10,7 @@ import { responseAplicacion } from 'app/interfaces/interface.aplicacion';
 import { AplicacionService } from 'app/servicios/aplicacion.service';
 import { NotificacionesService } from 'app/servicios/notificaciones.service';
 import { mensajeFCM } from 'app/interfaces/interface.fcm';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-notificaciones',
@@ -31,7 +32,8 @@ export class NotificacionesComponent implements OnInit {
               private formBuilder: FormBuilder,
               private es:EmpresaService,
               private as:AplicacionService,
-              private ns:NotificacionesService) 
+              private ns:NotificacionesService,
+              private SpinnerService: NgxSpinnerService) 
   { 
     this.formGroup = formBuilder.group({
       empresa: ['1'],
@@ -48,8 +50,10 @@ export class NotificacionesComponent implements OnInit {
   }
 
   consultarEmpresas(){
+    this.SpinnerService.show();
     this.es.obtenerEmpresas(this.token).subscribe(data => {
       this.responseEmpresa = data;
+      this.SpinnerService.hide();
     });
   }
 
