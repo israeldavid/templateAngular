@@ -42,6 +42,9 @@ import { CreargruposComponent } from './notificaciones/creargrupos/creargrupos.c
 import { EditargrupoComponent } from './notificaciones/editargrupo/editargrupo.component';
 import { CrearrolComponent } from './roles/crearrol/crearrol.component';
 import { EditarrolComponent } from './roles/editarrol/editarrol.component';
+import { CrearperfilComponent } from './roles/perfiles/crearperfil/crearperfil.component';
+import { EditarperfilComponent } from './roles/perfiles/editarperfil/editarperfil.component';
+
 
 @NgModule({
   imports: [
@@ -91,7 +94,9 @@ import { EditarrolComponent } from './roles/editarrol/editarrol.component';
     CreargruposComponent,
     EditargrupoComponent,
     CrearrolComponent,
-    EditarrolComponent
+    EditarrolComponent,
+    CrearperfilComponent,
+    EditarperfilComponent
   ],
   providers: [BannerService,
     MatDialog,

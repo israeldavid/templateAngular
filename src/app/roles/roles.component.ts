@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RolesService } from '../servicios/roles.service';
 import { responseRoles } from '../interfaces/interface.roles';
+import { responsePermisos,Permiso} from '../interfaces/interface.permiso';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
+import { PermisosService } from '../servicios/permisos.service';
 
 @Component({
   selector: 'app-roles',
@@ -12,19 +14,31 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class RolesComponent implements OnInit {
 
   responseRoles: responseRoles;
-
-  constructor(private rs:RolesService,private router:Router,private SpinnerService: NgxSpinnerService) {
+  responsePermisos: responsePermisos;
+  constructor(private rs:RolesService,
+              private router:Router,
+              private SpinnerService: NgxSpinnerService,
+              private ps:PermisosService) {
     
    }
 
   ngOnInit() {
     this.consultarRoles();
+    this.consultarPermisos();
   }
 
   consultarRoles(){
     this.SpinnerService.show();
     this.rs.obtenerRoles().subscribe(data => { 
       this.responseRoles=data;  
+      this.SpinnerService.hide();      
+    });
+  }
+
+  consultarPermisos(){
+    this.SpinnerService.show();
+    this.ps.obtenerPermisos().subscribe(data => { 
+      this.responsePermisos=data;  
       this.SpinnerService.hide();      
     });
   }
@@ -39,6 +53,19 @@ export class RolesComponent implements OnInit {
 
   eliminarrol(idrol:number){
     this.rs.deleteRol(idrol,localStorage.getItem('token'));
+    this.router.navigateByUrl("admin/(roles)")
+  }
+
+  nuevopermiso(){
+    this.router.navigateByUrl("crearperfil");
+  }
+
+  editarpermiso(idperfil:number){
+    this.router.navigateByUrl("editarperfil/"+idperfil)
+  }
+
+  eliminarpermiso(idperfil:number){
+    this.ps.deletePermiso(idperfil,localStorage.getItem('token'));
     this.router.navigateByUrl("admin/(roles)")
   }
 }

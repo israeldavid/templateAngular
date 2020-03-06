@@ -4,8 +4,7 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-danger">
-                      <h4 class="card-title ">Listado de Roles</h4>
-                      <p class="card-category"> Roles registrados</p>
+                      <h4 class="card-title">Listado de Roles</h4>
                       <button mat-raised-button type="button" matTooltip="Nuevo" (click)="nuevorol()" [matTooltipPosition]="'above'" class="btn btn-primary">
                         Nuevo Rol
                     </button>
@@ -47,5 +46,52 @@
               </div>
           </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-success">
+                    <h4 class="card-title ">Listado de Perfiles</h4>
+                    <button mat-raised-button type="button" matTooltip="Nuevo" (click)="nuevopermiso()" [matTooltipPosition]="'above'" class="btn btn-primary">
+                      Nuevo Perfil
+                  </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Id Aplicacion</th>
+                                <th>Id Empresa</th>
+                                <th>Id Rol</th>
+                                <th>Acciones</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of responsePermisos?.permisos">
+                                    <td> {{item.id}} </td>
+                                    <td> {{item.nombre}} </td>
+                                    <td> {{item.idAplicacion}}</td>
+                                    <td> {{item.idEmpresa}} </td>
+                                    <td> {{item.estado}} </td>
+                                    <td>  
+                                      <button mat-raised-button type="button" matTooltip="Nuevo" (click)="nuevopermiso()" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                          <i class="material-icons">open_in_new</i>
+                                      </button>
+                                      <button mat-raised-button type="button" matTooltip="Editar" (click)="editarpermiso(item.id)" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                          <i class="material-icons">edit</i>
+                                      </button>
+                                      <button mat-raised-button type="button" matTooltip="Borrar" (click)="eliminarpermiso(item.id)" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                          <i class="material-icons">close</i>
+                                      </button>
+                                     </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
 </div>

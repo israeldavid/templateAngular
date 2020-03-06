@@ -23,6 +23,7 @@ export const environment = {
   direccionTabs: direccionUnida + 'Tabs',
   direccionSlides: direccionUnida + 'Slides',
   direccionRoles: direccionUnida + 'Roles',
+  direccionPermisos: direccionUnida + 'Permisos',
   //direccionUbicanos: direccion + puerto + api + 'coordenadas',
   direccionUbicanos: direccionUnida + 'Coordenadas',
   direccionEmpresa: direccionUnida + 'Empresas',

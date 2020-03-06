@@ -27,6 +27,8 @@ import { CreargruposComponent } from './notificaciones/creargrupos/creargrupos.c
 import { EditargrupoComponent } from './notificaciones/editargrupo/editargrupo.component';
 import { CrearrolComponent } from './roles/crearrol/crearrol.component';
 import { EditarrolComponent } from './roles/editarrol/editarrol.component';
+import { CrearperfilComponent } from './roles/perfiles/crearperfil/crearperfil.component';
+import { EditarperfilComponent } from './roles/perfiles/editarperfil/editarperfil.component';
 
 const routes: Routes =[
   {
@@ -130,6 +132,14 @@ const routes: Routes =[
   {
     path:'editarrol/:idrol',
     component:EditarrolComponent
+  },
+  {
+    path:'crearperfil',
+    component:CrearperfilComponent
+  },
+  {
+    path:'editarperfil/:idperfil',
+    component:EditarperfilComponent
   }
 ];
 

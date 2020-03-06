@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { responsePermisos,Permiso} from '../../interfaces/interface.permiso';
+import { PermisosService } from '../../servicios/permisos.service';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-perfiles',
@@ -6,10 +10,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./perfiles.component.scss']
 })
 export class PerfilesComponent implements OnInit {
-
-  constructor() { }
+  responsePermisos: responsePermisos;
+  constructor(private ps:PermisosService,private route:Router,private SpinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.consultarPermisos();
+  }
+
+  consultarPermisos(){
+    this.SpinnerService.show();
+    this.ps.obtenerPermisos().subscribe(data => { 
+      this.responsePermisos=data;  
+      this.SpinnerService.hide();      
+    });
   }
 
 }
