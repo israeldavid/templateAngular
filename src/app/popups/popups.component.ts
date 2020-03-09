@@ -28,6 +28,8 @@ export class PopupsComponent implements OnInit {
     this.ps.obtenerPopup(this.token).subscribe(data => { 
       this.responsePopup=data;  
       this.SpinnerService.hide();
+    }, err =>{
+      this.SpinnerService.hide();
     });
   }
 

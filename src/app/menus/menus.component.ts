@@ -27,6 +27,8 @@ export class MenusComponent implements OnInit {
     this.ms.obtenerMenus(this.token).subscribe(data => { 
       this.responseMenus=data; 
       this.SpinnerService.hide(); 
+    }, err =>{
+      this.SpinnerService.hide();
     });
   }
 

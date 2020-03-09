@@ -33,10 +33,14 @@ export class MultiaplicacionComponent implements OnInit {
   consultarAplicaciones(idEmpresa:number){
     this.token=localStorage.getItem('token');
     this.SpinnerService.show();
-    this.es.obtenerAplicacionByEmpresa(idEmpresa,this.token).subscribe(data => { 
-      this.responseAplicacion=data;  
-      this.SpinnerService.hide();
-    });
+    this.es.obtenerAplicacionByEmpresa(idEmpresa,this.token).subscribe(
+      data => { 
+        this.responseAplicacion=data;  
+        this.SpinnerService.hide();
+      },  
+      err =>{
+        this.SpinnerService.hide();
+      });
   }
 
   crearaplicacion(){

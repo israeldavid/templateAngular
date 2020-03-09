@@ -29,6 +29,8 @@ export class TabsComponent implements OnInit {
     this.ts.obtenerTabs(this.token).subscribe(data => { 
       this.responseTabs=data;  
       this.SpinnerService.hide();
+    }, err => {
+      this.SpinnerService.hide();
     });
   }
 

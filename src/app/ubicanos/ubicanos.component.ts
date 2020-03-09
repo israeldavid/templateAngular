@@ -24,6 +24,8 @@ export class UbicanosComponent implements OnInit {
     this.us.obtenerUbicaciones(this.token).subscribe(data => { 
       this.responseCoordenada=data;  
       this.SpinnerService.hide();
+    }, err => {
+      this.SpinnerService.hide();
     });
   }
 

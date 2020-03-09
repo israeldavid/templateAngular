@@ -25,6 +25,8 @@ export class SlidesComponent implements OnInit {
     this.ss.obtenerSliders().subscribe(data => { 
       this.responseSlides=data; 
       this.SpinnerService.hide(); 
+    }, err => {
+      this.SpinnerService.hide();
     });
   }
 

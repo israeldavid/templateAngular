@@ -31,6 +31,8 @@ export class RolesComponent implements OnInit {
     this.SpinnerService.show();
     this.rs.obtenerRoles().subscribe(data => { 
       this.responseRoles=data;  
+      this.SpinnerService.hide(); 
+    }, err => {
       this.SpinnerService.hide();      
     });
   }
@@ -39,7 +41,9 @@ export class RolesComponent implements OnInit {
     this.SpinnerService.show();
     this.ps.obtenerPermisos().subscribe(data => { 
       this.responsePermisos=data;  
-      this.SpinnerService.hide();      
+      this.SpinnerService.hide();  
+    }, err => {
+      this.SpinnerService.hide();
     });
   }
 

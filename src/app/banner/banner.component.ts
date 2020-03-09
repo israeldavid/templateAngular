@@ -28,9 +28,12 @@ export class BannerComponent implements OnInit {
   consultarBanners(){
     this.token=localStorage.getItem('token');
     this.SpinnerService.show();
-    this.bs.obtenerBanners(this.token).subscribe(data => { 
-      this.responseBanners=data;
-      this.SpinnerService.hide();
+    this.bs.obtenerBanners(this.token).subscribe(
+      data => { 
+        this.responseBanners=data;
+        this.SpinnerService.hide();
+      }, err => {
+        this.SpinnerService.hide();
     });
   }
 
