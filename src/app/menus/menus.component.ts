@@ -39,8 +39,12 @@ export class MenusComponent implements OnInit {
   }
 
   eliminarMenu(idMenu:number){
-    this.ms.deleteMenu(idMenu,this.token=localStorage.getItem('token'));
-    this.route.navigateByUrl("admin/(menus)")
+    if(window.confirm('Estas seguro de eliminar ?')){
+      this.ms.deleteMenu(idMenu,this.token=localStorage.getItem('token'));
+      this.route.navigateByUrl("admin/(menus)")
+    } else {
+      alert("No se elimino el menu");
+    }
   }
 
 }

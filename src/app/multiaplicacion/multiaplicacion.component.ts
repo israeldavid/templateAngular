@@ -52,8 +52,12 @@ export class MultiaplicacionComponent implements OnInit {
   }
 
   eliminarApp(idAplicacion:number){
-    this.es.deleteAplicacion(idAplicacion,this.token=localStorage.getItem('token'));
-    this.router.navigateByUrl("admin/(user-profile)")
+    if(window.confirm('Estas seguro de eliminar ?')){
+      this.es.deleteAplicacion(idAplicacion,this.token=localStorage.getItem('token'));
+      this.router.navigateByUrl("admin/(user-profile)");
+    } else {
+      alert("No se elimino la aplicación");
+    }
   }
 
 

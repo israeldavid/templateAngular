@@ -39,8 +39,12 @@ export class PopupsComponent implements OnInit {
   }
 
   eliminarPopup(idpopup:number){
-    this.ps.deletePopUp(idpopup,this.token=localStorage.getItem('token'));
-    this.route.navigateByUrl("admin/(popups)")
+    if(window.confirm('Estas seguro de eliminar ?')){
+      this.ps.deletePopUp(idpopup,this.token=localStorage.getItem('token'));
+      this.route.navigateByUrl("admin/(popups)")
+    } else {
+      console.log("No se elimino el PopUp");
+    }
   }
 
 }

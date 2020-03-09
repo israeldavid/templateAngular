@@ -37,7 +37,11 @@ export class SlidesComponent implements OnInit {
   }
 
   eliminarslide(idSlider:number){
-    this.ss.deleteSlide(idSlider);
-    this.route.navigateByUrl("admin/(slides)")
+    if(window.confirm('Estas seguro de eliminar ?')){
+      this.ss.deleteSlide(idSlider);
+      this.route.navigateByUrl("admin/(slides)")
+    } else {
+      alert("No se elimino el Slide");
+    }
   }
 }

@@ -65,7 +65,11 @@ export class RolesComponent implements OnInit {
   }
 
   eliminarpermiso(idperfil:number){
-    this.ps.deletePermiso(idperfil,localStorage.getItem('token'));
-    this.router.navigateByUrl("admin/(roles)")
+    if(window.confirm('Estas seguro de eliminar ?')){
+      this.ps.deletePermiso(idperfil,localStorage.getItem('token'));
+      this.router.navigateByUrl("admin/(roles)")
+    } else {
+      alert("No se pudo eliminar el rol");
+    }
   }
 }

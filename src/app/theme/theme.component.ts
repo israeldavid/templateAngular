@@ -65,7 +65,11 @@ export class ThemeComponent implements OnInit {
   }
 
   eliminartheme(idTheme:number){
-    this.ts.deleteTheme(idTheme,localStorage.getItem('token'));
-    this.route.navigateByUrl("admin/(theme)");
+    if(window.confirm('Estas seguro de eliminar ?')){
+      this.ts.deleteTheme(idTheme,localStorage.getItem('token'));
+      this.route.navigateByUrl("admin/(theme)");
+    } else {
+      alert("No se elimino el Theme");
+    }
   }
 }

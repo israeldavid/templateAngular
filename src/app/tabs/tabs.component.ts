@@ -41,8 +41,12 @@ export class TabsComponent implements OnInit {
   }
 
   eliminarTabs(idTab:number){
-    this.ts.deleteTabs(idTab,this.token=localStorage.getItem('token'));
-    this.route.navigateByUrl("admin/(tabs)");
+    if(window.confirm('Estas seguro de eliminar ?')){
+      this.ts.deleteTabs(idTab,this.token=localStorage.getItem('token'));
+      this.route.navigateByUrl("admin/(tabs)");
+    } else {
+      alert("No se elimino el tab");
+    }
   }
 
   editarTabs(idTab:number){
