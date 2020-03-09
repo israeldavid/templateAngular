@@ -17,13 +17,13 @@
                                   <th>Acciones</th>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td> D-13408798 </td>
-                                      <td> Distrigen </td>
-                                      <td> OK </td>
+                                  <tr *ngFor="let itemd of responseAplicacionListado?.aplicaciones">
+                                      <td> {{itemd.id}} </td>
+                                      <td> {{itemd.nombre}} </td>
+                                      <td> {{itemd.estado}} </td>
                                       <td>  
-                                        <button mat-raised-button type="button" (click)="crearAplicacion()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                            <i class="material-icons">open_in_new</i>
+                                        <button mat-raised-button type="button" (click)="cambiarEstado(itemd.id)" matTooltip="Cambiar Estado" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
                                         </button>
                                     </td>
                                   </tr>

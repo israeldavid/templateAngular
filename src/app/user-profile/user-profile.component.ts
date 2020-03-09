@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { EmpresaService } from '../servicios/empresa.service';
 import { responseEmpresa,Empresa } from '../interfaces/interface.empresa';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,7 +15,9 @@ export class UserProfileComponent implements OnInit {
   responseEmpresa: responseEmpresa;
   token:any;
 
-  constructor(private route:Router,private es:EmpresaService,private SpinnerService: NgxSpinnerService) { }
+  constructor(private route:Router,private es:EmpresaService,
+              private SpinnerService: NgxSpinnerService,
+              private _location:Location) { }
 
   ngOnInit() {
     this.consultarEmpresas();
@@ -44,5 +47,9 @@ export class UserProfileComponent implements OnInit {
 
   editarEmpresa(idEmpresa:number){
     this.route.navigateByUrl("editarempresa/"+idEmpresa)
+  }
+
+  regresar(){
+    this._location.back();
   }
 }

@@ -6,7 +6,7 @@ import { GruposService } from 'app/servicios/grupos.service';
 import { responseGrupos } from '../interfaces/interface.grupo';
 import { EmpresaService } from 'app/servicios/empresa.service';
 import { responseEmpresa } from 'app/interfaces/interface.empresa';
-import { responseAplicacion } from 'app/interfaces/interface.aplicacion';
+import { responseAplicacion,Aplicacion,AppXid } from 'app/interfaces/interface.aplicacion';
 import { AplicacionService } from 'app/servicios/aplicacion.service';
 import { NotificacionesService } from 'app/servicios/notificaciones.service';
 import { mensajeFCM } from 'app/interfaces/interface.fcm';
@@ -20,10 +20,16 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class NotificacionesComponent implements OnInit {
   responseGrupos: responseGrupos;
   responseEmpresa:responseEmpresa;
-  responseAplicacion:responseAplicacion
+  responseAplicacion:responseAplicacion;
+  responseAplicacionListado:responseAplicacion;
+
   public formGroup: FormGroup;
   token:any;
   valorFormulario: any;
+  nombre:string;
+  appMostrar:AppXid;
+  objetoActualizar:Aplicacion={id:0,nombre:'',estado:'',idempresa:0}
+
   crearMensaje:mensajeFCM = {headNotification:'',bodyNotification:'',topic:'',idAplicationSend:''};
 
   constructor(private gs:GruposService,
@@ -47,6 +53,7 @@ export class NotificacionesComponent implements OnInit {
   ngOnInit() {
     this.consultarTopicos();
     this.consultarEmpresas();
+    this.consultarAplicaciones();
   }
 
   consultarEmpresas(){
@@ -61,6 +68,14 @@ export class NotificacionesComponent implements OnInit {
     const IdEmpresa = event.target.value;
     this.as.obtenerAplicacionByEmpresa(IdEmpresa, this.token).subscribe(data => {
       this.responseAplicacion = data;
+    });
+  }
+
+  consultarAplicaciones(){
+    this.SpinnerService.show();
+    this.as.obtenerAplicaciones(this.token).subscribe(data => {
+      this.responseAplicacionListado = data;
+      this.SpinnerService.hide();
     });
   }
 
@@ -80,6 +95,26 @@ export class NotificacionesComponent implements OnInit {
 
   crearGrupo(){
     this.route.navigateByUrl("creargrupo")
+  }
+
+  cambiarEstado(idAplicacion:number){
+    //this.as.obtenerAplicacionById
+    this.as.obtenerAplicacionById(idAplicacion,this.obtenerToken()).subscribe(
+      data => {
+        this.objetoActualizar.id=idAplicacion;
+        this.objetoActualizar.nombre = data.aplicacion.nombre;
+        this.objetoActualizar.estado="P";
+        //Aplicacion permitida
+        this.as.editAplicacion(this.objetoActualizar,localStorage.getItem('token'))
+        .subscribe(data => {
+          alert("App Permitida");
+        },error =>{
+          console.log(error);
+          alert("App No se pudo Actualizar, Error en el servicio");
+        })
+        },error => {
+          console.log(error);
+        });
   }
 
   envioFCM(){
