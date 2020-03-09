@@ -16,7 +16,8 @@ export class menusService {
   }
 
   obtenerMenuById(idMenu:number,access_token){
-    let direccion=url+"/"+idMenu;
+    //let direccion=url+"/"+idpopup;
+    let direccion=url+"/ById/"+idMenu;
     return this.httpService.get<MenuXid>(direccion,this.getRequestHeaders(access_token));
   }
 
@@ -43,7 +44,7 @@ export class menusService {
 
   editMenu(menu: Menu,access_token){
     try {
-      console.log(menu);
+      
       this.httpService.put<Menu>(url, menu, this.getRequestHeaders(access_token)).subscribe(
         data => alert("Menu Actualizado Correctamente"),
         error => alert("No se pudo actualizar el Menu")

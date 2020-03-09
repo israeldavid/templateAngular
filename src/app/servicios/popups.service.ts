@@ -17,7 +17,8 @@ const url = environment.direccionPopups;
     }
 
     obtenerPopupById(idpopup:number,access_token){
-      let direccion=url+"/"+idpopup;
+      //let direccion=url+"/"+idpopup;
+      let direccion=url+"/ById/"+idpopup;
       return this.httpService.get<PopupxId>(direccion,this.getRequestHeaders(access_token));
     }
     
@@ -31,7 +32,7 @@ const url = environment.direccionPopups;
 
     addPopups(popup: Popups,access_token){
       try {
-        console.log(popup,access_token,url);
+        
         this.httpService.post<Popups>(url, popup, this.getRequestHeaders(access_token)).subscribe(
           data => alert("Popup creado correctamente"),
           error => alert("Popup no se pudo crear")
@@ -42,6 +43,7 @@ const url = environment.direccionPopups;
     }
 
     editPopup(popup: Popups,access_token){
+      console.log(popup);
       try {
         this.httpService.put<Popups>(url, popup, this.getRequestHeaders(access_token)).subscribe(
           data => alert("Popups Actualizado Correctamente"),

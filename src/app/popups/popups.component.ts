@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { PopupsService } from '../servicios/popups.service';
 import { responsePopups } from '../interfaces/interface.popup';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -15,7 +15,8 @@ export class PopupsComponent implements OnInit {
   responsePopup:responsePopups;
   constructor(private ps:PopupsService,private sanitized: DomSanitizer,
     private route:Router,
-    private SpinnerService: NgxSpinnerService) { }
+    private SpinnerService: NgxSpinnerService,
+    private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.cargarPopups();
@@ -41,10 +42,16 @@ export class PopupsComponent implements OnInit {
   eliminarPopup(idpopup:number){
     if(window.confirm('Estas seguro de eliminar ?')){
       this.ps.deletePopUp(idpopup,this.token=localStorage.getItem('token'));
-      this.route.navigateByUrl("admin/(popups)")
+      this.cargarPopups();
+      this.refresh();
     } else {
-      console.log("No se elimino el PopUp");
+      alert("No se pudo eliminar el PopUp");
     }
+  }
+
+  refresh() {
+    this.cd.detectChanges();
+    this.cd.markForCheck();
   }
 
 }

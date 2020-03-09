@@ -45,7 +45,7 @@ export class BannerComponent implements OnInit {
   eliminarBanner(idBanner:number){
     if(window.confirm('Estas seguro de eliminar ?')){
       this.bs.deleteBanner(idBanner,this.token=localStorage.getItem('token'));
-      this.router.navigateByUrl("admin/(banner)");
+      this.consultarBanners();
     } else {
       alert("No se elimino el banner");
     }

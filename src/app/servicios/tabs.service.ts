@@ -17,7 +17,8 @@ const url = environment.direccionTabs;
     }
 
     obtenerTabById(idTab:number,access_token){
-      let direccion=url+"/"+idTab;
+      //let direccion=url+"/"+idTab;
+      let direccion=url+"/ById/"+idTab;
       return this.httpService.get<TabXid>(direccion,this.getRequestHeaders(access_token));
     }
     

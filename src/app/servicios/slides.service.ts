@@ -17,7 +17,8 @@ export class slidesService {
   }
 
   obtenerSliderById(idSlider:number,access_token){
-    let direccion=url+"/"+idSlider;
+    //let direccion=url+"/"+idSlider;
+    let direccion=url+"/ById/"+idSlider;
     console.log(direccion);
     return this.httpService.get<SliderXid>(direccion,this.getRequestHeaders(access_token));
   }

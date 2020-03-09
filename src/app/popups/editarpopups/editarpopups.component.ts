@@ -77,9 +77,6 @@ export class EditarpopupsComponent implements OnInit {
   cambioSeleccionado(event) {
     const IdEmpresa = event.target.value;
     this.cargarAplicaciones(IdEmpresa);
-    //this.as.obtenerAplicacionByEmpresa(IdEmpresa, this.token).subscribe(data => {
-    //  this.responseAplicacion = data;
-    //});
   }
 
   cargarAplicaciones(IdEmpresa:number){
@@ -108,7 +105,7 @@ export class EditarpopupsComponent implements OnInit {
   }
 
   cerrar() {
-    this.route.navigateByUrl("admin/(banner)");
+    this.route.navigateByUrl("admin/(popups)");
   }
 
   regresar(){
@@ -119,8 +116,8 @@ export class EditarpopupsComponent implements OnInit {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
       this.objetoActualizar.id=this.popupId.id;
-      //this.objetoActualizar.idEmpresa=this.valorFormulario.empresa;
-      //this.objetoActualizar.idAplicacion=this.valorFormulario.aplicacion;
+      this.objetoActualizar.idEmpresa=this.valorFormulario.empresa;
+      this.objetoActualizar.idAplicacion=this.valorFormulario.aplicacion;
       this.objetoActualizar.nombre=this.valorFormulario.nombrePopup;
       this.objetoActualizar.base64=this.imgUrl;
       //this.base64textString[0];
