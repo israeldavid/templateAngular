@@ -39,9 +39,9 @@ export class UserProfileComponent implements OnInit {
   eliminarEmpresa(idEmpresa:number){
     if(window.confirm('Estas seguro de eliminar ?')){
     this.es.deleteEmpresa(idEmpresa,this.token=localStorage.getItem('token'));
-    this.route.navigateByUrl("admin/(user-profile)");
+    this.consultarEmpresas();
     } else {
-      alert("No se elimino la empresa");
+      alert("No se eliminó la empresa");
     }
   }
 

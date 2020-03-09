@@ -52,8 +52,12 @@ export class RolesComponent implements OnInit {
   }
 
   eliminarrol(idrol:number){
-    this.rs.deleteRol(idrol,localStorage.getItem('token'));
-    this.router.navigateByUrl("admin/(roles)")
+    if(window.confirm('Estas seguro de eliminar ?')){
+      this.rs.deleteRol(idrol,localStorage.getItem('token'));
+      this.consultarRoles();
+    } else {
+      alert("Proceso cancelado");
+    }
   }
 
   nuevopermiso(){
@@ -67,7 +71,7 @@ export class RolesComponent implements OnInit {
   eliminarpermiso(idperfil:number){
     if(window.confirm('Estas seguro de eliminar ?')){
       this.ps.deletePermiso(idperfil,localStorage.getItem('token'));
-      this.router.navigateByUrl("admin/(roles)")
+      this.consultarPermisos();
     } else {
       alert("No se pudo eliminar el rol");
     }

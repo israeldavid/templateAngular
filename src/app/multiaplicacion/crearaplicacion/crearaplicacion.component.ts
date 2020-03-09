@@ -22,7 +22,7 @@ export class CrearaplicacionComponent implements OnInit {
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       nombreApp: ['',Validators.required],
-      estado:['1']
+      estado:['A']
     });
    }
 
