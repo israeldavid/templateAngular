@@ -109,13 +109,44 @@
                             <img src="../../assets//img/logoiRoute.png" width="50%">
                         </div>
                         
-                        <div class="container" style="margin-top: 1%">
-                            <strong>Titulo:</strong>
-                          <input type="text" name="headNotification" formControlName="headNotification" placeholder="Titulo del mensaje de prueba" class="form-control">
+                        <div class="row">
+                            <div class="col-sm-8" style="padding-left:10% !important; ">
+                                <strong>Titulo:</strong>
+                                <input type="text" name="headNotification" formControlName="headNotification" placeholder="Titulo del mensaje de prueba" class="form-control">
+                            </div>
+    
+                              <div class="col-sm-2 emoji" style="padding-left:0% !important;">
+                                <button (click)="toggleEmojiPickerTitle();" type="button" class="btn"
+                                    style="background: white; padding-left:0%;"> 
+                                    <img src="../../assets/iconos/happy_face.svg">
+                                </button>
+    
+                                <div *ngIf="showEmojiPickerTitle">
+                                    <emoji-mart (emojiClick)="addEmojiTitle($event)">
+                                    </emoji-mart>
+                                </div>
+                              </div>
                         </div>
-                        <div class="container" style="margin-top: 1%">
-                            <strong>Mensaje:</strong>
-                          <input type="text-area" name="mensaje" formControlName="mensaje" placeholder="Mensaje para enviar" class="form-control">
+                        
+                        <div class="row" style="margin-top: 1%">
+                            <div class="col-sm-8" style="padding-left:10% !important; ">
+                                <strong>Mensaje:</strong>
+                                <input type="text-area" name="mensaje" formControlName="mensaje" placeholder="Mensaje para enviar" class="form-control">  
+                            </div>
+
+                            <div class="col-sm-2 emoji" style="padding-left:0% !important;">
+                                <button (click)="toggleEmojiPickerBody();" type="button" class="btn"
+                                    style="background: white; padding-left:0%;"> 
+                                    <img src="../../assets/iconos/happy_face.svg">
+                                </button>
+    
+                                <div *ngIf="showEmojiPickerBody">
+                                    <emoji-mart (emojiClick)="addEmojiBody($event)">
+                                    </emoji-mart>
+                                </div>
+                              </div>
+
+                          
                         </div>
                         <div class="container centrado" style="margin-top: 2%">
                             <button class="btn btn-warning" (click)="envioFCM()" [disabled]="formGroup.invalid">Enviar FCM</button>

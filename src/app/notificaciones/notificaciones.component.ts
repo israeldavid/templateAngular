@@ -22,6 +22,8 @@ export class NotificacionesComponent implements OnInit {
   responseEmpresa:responseEmpresa;
   responseAplicacion:responseAplicacion;
   responseAplicacionListado:responseAplicacion;
+  showEmojiPickerTitle = false;
+  showEmojiPickerBody = false;
 
   public formGroup: FormGroup;
   token:any;
@@ -130,5 +132,28 @@ export class NotificacionesComponent implements OnInit {
       alert("Llena los campos necesarios")
     }
   }
+
+  //Emojis
+  toggleEmojiPickerTitle() {
+    this.showEmojiPickerTitle = !this.showEmojiPickerTitle;
+  }
+
+  addEmojiTitle(event) {
+    let mensaje = this.formGroup.controls['headNotification'].value;
+    this.formGroup.controls['headNotification'].setValue(mensaje + event.emoji.native);
+    this.showEmojiPickerTitle = false;
+  }
+
+  toggleEmojiPickerBody() {
+    this.showEmojiPickerBody = !this.showEmojiPickerBody;
+}
+
+  addEmojiBody(event) {
+
+    let mensaje = this.formGroup.controls['mensaje'].value;
+    this.formGroup.controls['mensaje'].setValue(mensaje + event.emoji.native);
+    this.showEmojiPickerBody = false;
+
+}
 
 }

@@ -25,6 +25,9 @@ import { ChartsModule } from 'ng2-charts';
 //Loading
 import { NgxSpinnerModule } from "ngx-spinner"; 
 
+//emojis
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+
 import {
   MatButtonModule,
   MatInputModule,
@@ -47,7 +50,8 @@ import {
     MatSelectModule,
     MatTooltipModule,
     ChartsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    PickerModule
   ],
   declarations: [
     DashboardComponent,

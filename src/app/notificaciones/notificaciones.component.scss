@@ -1,0 +1,18 @@
+.emoji-config {
+    position: absolute;
+    z-index: 100;
+}
+
+@media(max-width: 600px) {
+    .emoji {
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-top: 5px;
+
+    }
+}
+
+.emoji-config-title {
+    position: absolute;
+    z-index: 102;
+}
