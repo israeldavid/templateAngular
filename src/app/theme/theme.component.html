@@ -2,7 +2,6 @@
   <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-dark" (click)="regresar()">Regresar</button>
             <button class="btn btn-danger" (click)="crearTheme()">Nuevo</button>
             <div class="card">
                 <div class="card-header card-header-success">
@@ -13,7 +12,7 @@
                         <strong>Aplicación:</strong>
                         <select class="form-control" (change)='cambioSeleccionado($event)'>
                             <option selected value="1">Selecciona una Aplicacion</option>
-                            <option value="{{itema.id}}" *ngFor="let itema of responseAplicacion?.aplicaciones">
+                            <option value="{{itema.id}}" *ngFor="let itema of responseAplicacion?.aplicaciones" >
                                 {{itema.nombre}}
                             </option>
                         </select>
@@ -37,10 +36,10 @@
                                       ID
                                   </th>
                                   <th>
-                                      Aplicacion
+                                      Nombre
                                   </th>
                                   <th>
-                                      Nombre
+                                      Color
                                   </th>
                                   <th>
                                       Acción
@@ -52,10 +51,10 @@
                                           {{item.id}}
                                       </td>
                                       <td>
-                                          {{item.idAplicacion}}
+                                          {{item.nombre}}
                                       </td>
                                       <td>
-                                          {{item.nombre}}
+                                          {{item.descripcion}}
                                       </td>
                                       <td>
                                         <button mat-raised-button type="button" (click)="editartheme(item.id)" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">

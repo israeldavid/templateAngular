@@ -7,12 +7,13 @@ export interface responseTheme {
 export interface Theme{
     nombre: string;
     descripcion: string;
-    idEmpresa: number;
-    idAplicacion: number;
-    estado: string;
+    idEmpresa?: number;
+    idAplicacion?: number;
+    estado?: string;
+    id?:number;
 }
 
 export interface ThemeXid{
-    theme: Theme;
+    tema: Theme;
     errorResponse?: any;
 }

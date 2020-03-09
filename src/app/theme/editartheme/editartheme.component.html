@@ -1,3 +1,49 @@
-<p>
-  editartheme works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-dark" (click)="regresar()">Regresar</button>
+        <div class="card">
+          <div class="card-header card-header-success">
+            <h4 class="card-title">Editar Theme</h4>
+          </div>
+          <div class="card-body">
+            <!-- (ngSubmit)="grabar()"-->
+            <form id="addThemes" [formGroup]="formGroup">
+              <div class="container" style="margin-top: 1%">
+                <b>Nombre:</b>
+                <input type="text" class="form-control" formControlName="nombre" name="nombre"
+                  placeholder="nombre del theme">
+              </div>
+              <div class="container" style="margin-top: 1%">
+                <div class="row">
+                  <div class="col-sm-9">
+                      <b>Color</b>
+                      <input type="text" class="form-control" value="{{actualColorTab}}" formControlName="colortab" name="colortab">
+                  </div>
+
+                  <div class="col-sm-2 emoji">
+                    <div class="emoji-config-tab">
+                      <button [ngStyle]="{'background-color': actualColorTab}" (click)="toggleColorPickerTab();"
+                        type="button" class="btn" style=" padding-left:0%;">
+                      </button>
+                      <div *ngIf="pickerShowTab">
+                        <color-sketch color="{{actualColorTab}}" width="200px"
+                          (onChange)="handleChangeColorTab($event)"></color-sketch>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container centrado" style="margin-top: 2%">
+                <button class="btn btn-dark" (click)="cerrar()">Cerrar</button>
+                <button class="btn btn-danger" (click)="grabar()" [disabled]="formGroup.invalid">Grabar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

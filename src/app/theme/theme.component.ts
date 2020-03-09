@@ -51,8 +51,11 @@ export class ThemeComponent implements OnInit {
 
   cambioSeleccionado(event){
     const IdAplicacion = event.target.value;
-    this.ts.obtenerThemesByAplicacion(IdAplicacion,this.token).subscribe(data => { 
-      this.responseTheme=data;  
+    this.ts.obtenerThemesByAplicacion(IdAplicacion,this.token).subscribe(
+      data => { 
+        this.responseTheme=data; 
+      }, err => {
+        alert("No se han encontrado Registros");
     });
   }
 

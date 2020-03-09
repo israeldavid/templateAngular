@@ -17,7 +17,7 @@ export class ThemeService {
   }
 
   obtenerThemeById(idTheme:number,access_token){
-    let direccion=url+"/"+idTheme;
+    let direccion=url+"/ById/"+idTheme;
     return this.httpService.get<ThemeXid>(direccion);
   }
 

@@ -87,40 +87,40 @@ export class CrearthemesComponent implements OnInit {
       let obj1: Theme = {
         nombre: "--ion-color-primary",
         descripcion: this.actualColorTab,
-        idEmpresa: this.valorFormulario.idEmpresa,
-        idAplicacion: this.valorFormulario.idAplicacion,
+        idEmpresa: this.valorFormulario.Empresa,
+        idAplicacion: this.valorFormulario.Aplicacion,
         estado:"A"
       }
 
       let obj2: Theme  = {
         nombre: "--ion-color-secondary",
         descripcion: this.actualColorMenu,
-        idEmpresa: this.valorFormulario.idEmpresa,
-        idAplicacion: this.valorFormulario.idAplicacion,
+        idEmpresa: this.valorFormulario.Empresa,
+        idAplicacion: this.valorFormulario.Aplicacion,
         estado:"A"
       }
   
       let obj3: Theme = {
         nombre: "--ion-color-tertiary",
         descripcion: this.actualColorBoton,
-        idEmpresa: this.valorFormulario.idEmpresa,
-        idAplicacion: this.valorFormulario.idAplicacion,
+        idEmpresa: this.valorFormulario.Empresa,
+        idAplicacion: this.valorFormulario.Aplicacion,
         estado:"A"
       }
   
       let obj4: Theme = {
         nombre: "--ion-color-success",
         descripcion: this.actualColorAlertSuccess,
-        idEmpresa: this.valorFormulario.idEmpresa,
-        idAplicacion: this.valorFormulario.idAplicacion,
+        idEmpresa: this.valorFormulario.Empresa,
+        idAplicacion: this.valorFormulario.Aplicacion,
         estado:"A"
       }
   
       let obj5: Theme = {
         nombre: "--ion-color-warning",
         descripcion: this.actualColorAlertDanger,
-        idEmpresa: this.valorFormulario.idEmpresa,
-        idAplicacion: this.valorFormulario.idAplicacion,
+        idEmpresa: this.valorFormulario.Empresa,
+        idAplicacion: this.valorFormulario.Aplicacion,
         estado:"A"
       }
 
@@ -134,9 +134,7 @@ export class CrearthemesComponent implements OnInit {
         }, error => {
           console.log("error en component: ", error);
         });
-  
       }
-
       //this.crearTheme.idEmpresa=this.valorFormulario.empresa;
       this.crearTheme.idAplicacion=this.valorFormulario.aplicacion;
       this.crearTheme.nombre=this.valorFormulario.nombretheme;
