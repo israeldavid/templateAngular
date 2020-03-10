@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(private bs:BannerService) { }
 
   ngOnInit() {
-    this.consultarBanners();
+    //this.consultarBanners();
   }
 
   consultarBanners(){
