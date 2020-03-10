@@ -3,12 +3,11 @@
         <div class="logo-img">
             <img src="/assets/img/logoiRoute.png"/>
         </div>
-
     </a>
 </div>
+
 <div class="sidebar-wrapper">
-  <div *ngIf="isMobileMenu()">   
-   
+  <div *ngIf="isMobileMenu()">  
   </div>
     <ul class="nav">
         <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
