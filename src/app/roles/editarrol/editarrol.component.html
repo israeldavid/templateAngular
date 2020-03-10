@@ -11,8 +11,7 @@
                     <form id="addRol" [formGroup]="formGroup">
                       <div class="container" style="margin-top: 4%">
                           <strong>Empresa:</strong>
-                          <select class="form-control" formControlName="empresa" name="empresa" (change)='cambioSeleccionado($event)'>
-                            <option selected value="1">Selecciona una empresa</option>
+                          <select class="form-control" [(ngModel)]="empresaSeleccionada" formControlName="empresa" name="empresa" (change)='cambioSeleccionado($event)'>
                             <option value="{{item.id}}" *ngFor="let item of responseEmpresa?.empresas">
                                 {{item.nombre}}
                             </option>

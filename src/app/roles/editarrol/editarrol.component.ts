@@ -23,6 +23,7 @@ export class EditarrolComponent implements OnInit {
   responseEmpresa: responseEmpresa;
   responseAplicacion: responseAplicacion;
   valorFormulario: any;
+  empresaSeleccionada;
 
   constructor(private rutaActiva: ActivatedRoute, private rs: RolesService,
     private es: EmpresaService,
@@ -32,7 +33,7 @@ export class EditarrolComponent implements OnInit {
     private _location: Location) { 
       this.formGroup = formBuilder.group({
         empresa: ['1'],
-        aplicacion: ['1'],
+        aplicacion: [{value: '1',disabled: true}],
         nombreRol: ['', Validators.required],
         estado: ['A']
       });
@@ -53,6 +54,7 @@ export class EditarrolComponent implements OnInit {
       data => {
         this.rolMostrar = data;
         this.cargarAplicaciones(this.rolMostrar.rol.idEmpresa);
+        this.empresaSeleccionada=this.rolMostrar.rol.idEmpresa;
         this.formGroup.controls['empresa'].setValue(this.rolMostrar.rol.idEmpresa);
         this.formGroup.controls['aplicacion'].setValue(this.rolMostrar.rol.idAplicacion);
         this.formGroup.controls['nombreRol'].setValue(this.rolMostrar.rol.nombre);
@@ -65,7 +67,10 @@ export class EditarrolComponent implements OnInit {
 
   consultarEmpresas() {
     this.es.obtenerEmpresas(this.token).subscribe(data => {
+      console.log(data);
       this.responseEmpresa = data;
+    }, err => {
+        alert("No se encontraron empresas");
     });
   }
 

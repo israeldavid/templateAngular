@@ -68,6 +68,7 @@ export class CrearrolComponent implements OnInit {
       this.crearRol.idAplicacion=this.valorFormulario.aplicacion;
       this.crearRol.nombre=this.valorFormulario.nombreRol;
       this.crearRol.estado=this.valorFormulario.estado;
+      console.log(this.crearRol);
       this.rs.addRol(this.crearRol, this.token);
       this.router.navigateByUrl("admin/(roles)");
     }

@@ -45,7 +45,7 @@ export class EditartabsComponent implements OnInit {
     this.tabId = {
       id: this.rutaActiva.snapshot.params.idtabs
     }
-    //this.consultarEmpresas();
+    this.consultarEmpresas();
     //Obtiene los datos para cargar en el formulario
     this.ts.obtenerTabById(this.tabId.id, this.obtenerToken()).subscribe(
       data => {

@@ -27,7 +27,10 @@ export class UserProfileComponent implements OnInit {
     this.token=localStorage.getItem('token');
     this.SpinnerService.show();
     this.es.obtenerEmpresas(this.token).subscribe(data => { 
-      this.responseEmpresa=data;  
+      this.responseEmpresa=data; 
+      this.SpinnerService.hide(); 
+    }, err => {  
+      alert("No existen empresas");
       this.SpinnerService.hide();
     });
   }

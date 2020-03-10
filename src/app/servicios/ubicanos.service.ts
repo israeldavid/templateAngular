@@ -17,7 +17,8 @@ const url = environment.direccionUbicanos;
     }
 
     obtenerUbicacionById(idUbicacion:number,access_token){
-      let direccion=url+"/"+idUbicacion;
+      //let direccion=url+"/"+idUbicacion;
+      let direccion=url+"/ById/"+idUbicacion;
       return this.httpService.get<CoordenadaXid>(direccion,this.getRequestHeaders(access_token));
     }
     

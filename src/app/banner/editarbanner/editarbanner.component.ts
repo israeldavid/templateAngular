@@ -26,6 +26,7 @@ export class EditarbannerComponent implements OnInit {
   imgUrl:any;
   imgMostrar:string;
   base64textString = [];
+  empresaSeleccionada:number;
 
   constructor(private rutaActiva: ActivatedRoute, private bs: BannerService,
     private es: EmpresaService,
@@ -57,6 +58,7 @@ export class EditarbannerComponent implements OnInit {
       data => {
         this.bannerMostrar = data;
         this.cargarAplicaciones(this.bannerMostrar.banner.idEmpresa);
+        this.empresaSeleccionada=this.bannerMostrar.banner.idEmpresa;
         this.formGroup.controls['empresa'].setValue(this.bannerMostrar.banner.idEmpresa);
         this.formGroup.controls['aplicacion'].setValue(this.bannerMostrar.banner.idAplicacion);
         this.formGroup.controls['nombreBanner'].setValue(this.bannerMostrar.banner.nombre);
