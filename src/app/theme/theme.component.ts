@@ -6,6 +6,8 @@ import { ThemeService } from '../servicios/theme.service'
 import { Theme,responseTheme,ThemeXid } from 'app/interfaces/interface.theme';
 import { AplicacionService } from '../servicios/aplicacion.service';
 import { responseAplicacion, Aplicacion} from '../interfaces/interface.aplicacion';
+import * as fileSaver from 'file-saver';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-theme',
@@ -19,7 +21,8 @@ export class ThemeComponent implements OnInit {
 
   constructor(private route:Router,private _location: Location,
               private SpinnerService: NgxSpinnerService,
-              private ts:ThemeService,private as:AplicacionService) { }
+              private ts:ThemeService,private as:AplicacionService,
+              ) { }
 
   ngOnInit() {
     //this.consultarThemes();
@@ -74,5 +77,16 @@ export class ThemeComponent implements OnInit {
     } else {
       alert("No se elimino el Theme");
     }
+  }
+
+  descargartheme(idTheme:number){
+    this.ts.descargarTheme(idTheme,localStorage.getItem('token')).subscribe(response => {
+			//let blob:any = new Blob([response.blob()], { type: 'text/json; charset=utf-8' });
+			//const url= window.URL.createObjectURL(blob);
+			//window.open(url);
+			window.location.href = response.url;
+			fileSaver.saveAs(Blob, 'themes.json');
+		}), error => console.log('Error al descargar el archivo'),
+        () => console.info('Archivo descargado exitosamente');
   }
 }

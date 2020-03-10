@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Http, ResponseContentType} from '@angular/http';
 import { Theme,responseTheme,ThemeXid } from 'app/interfaces/interface.theme';
+import { Observable } from 'rxjs';
 
 const url = environment.direccionTheme;
 
@@ -10,7 +12,7 @@ const url = environment.direccionTheme;
 })
 export class ThemeService {
 
-  constructor(private httpService: HttpClient) { }
+  constructor(private httpService: HttpClient,private http:Http) { }
 
   obtenerTheme(access_token){
     return this.httpService.get<responseTheme>(url, this.getRequestHeaders(access_token));
@@ -67,5 +69,9 @@ export class ThemeService {
       );
     }
 
+    descargarTheme(idtheme:number,access_token): Observable<any>{
+      let direccion=url+"/ArchivoScss/"+idtheme;
+        return this.http.get(direccion, {responseType: ResponseContentType.Blob});
+    }
 
 }

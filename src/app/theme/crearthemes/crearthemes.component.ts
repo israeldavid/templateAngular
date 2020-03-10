@@ -87,50 +87,47 @@ export class CrearthemesComponent implements OnInit {
       let obj1: Theme = {
         nombre: "--ion-color-primary",
         descripcion: this.actualColorTab,
-        idEmpresa: this.valorFormulario.Empresa,
-        idAplicacion: this.valorFormulario.Aplicacion,
+        idEmpresa: this.valorFormulario.empresa,
+        idAplicacion: this.valorFormulario.aplicacion,
         estado:"A"
       }
 
       let obj2: Theme  = {
         nombre: "--ion-color-secondary",
         descripcion: this.actualColorMenu,
-        idEmpresa: this.valorFormulario.Empresa,
-        idAplicacion: this.valorFormulario.Aplicacion,
+        idEmpresa: this.valorFormulario.empresa,
+        idAplicacion: this.valorFormulario.aplicacion,
         estado:"A"
       }
   
       let obj3: Theme = {
         nombre: "--ion-color-tertiary",
         descripcion: this.actualColorBoton,
-        idEmpresa: this.valorFormulario.Empresa,
-        idAplicacion: this.valorFormulario.Aplicacion,
+        idEmpresa: this.valorFormulario.empresa,
+        idAplicacion: this.valorFormulario.aplicacion,
         estado:"A"
       }
   
       let obj4: Theme = {
         nombre: "--ion-color-success",
         descripcion: this.actualColorAlertSuccess,
-        idEmpresa: this.valorFormulario.Empresa,
-        idAplicacion: this.valorFormulario.Aplicacion,
+        idEmpresa: this.valorFormulario.empresa,
+        idAplicacion: this.valorFormulario.aplicacion,
         estado:"A"
       }
   
       let obj5: Theme = {
         nombre: "--ion-color-warning",
         descripcion: this.actualColorAlertDanger,
-        idEmpresa: this.valorFormulario.Empresa,
-        idAplicacion: this.valorFormulario.Aplicacion,
+        idEmpresa: this.valorFormulario.empresa,
+        idAplicacion: this.valorFormulario.aplicacion,
         estado:"A"
       }
 
-      let array = [obj1,obj2,obj3,obj4,obj5];
-      console.log(array);
-      
+      let array = [obj1,obj2,obj3,obj4,obj5];    
       for(let i = 0; i < array.length; i++){
-  
         this.ts.addTheme(array[i], this.obtenerToken()).subscribe(response => {
-          alert("Tema Ingresado Correctamente");
+          console.log("Ok");
         }, error => {
           console.log("error en component: ", error);
         });
