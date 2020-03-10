@@ -79,6 +79,7 @@ export class EditartabsComponent implements OnInit {
 
   cargarAplicaciones(IdEmpresa:number){
     this.as.obtenerAplicacionByEmpresa(IdEmpresa, this.token).subscribe(data => {
+      console.log(data);
       this.responseAplicacion = data;
     });
   }
@@ -111,8 +112,8 @@ export class EditartabsComponent implements OnInit {
       //aqui me quede comparar con las opciones de banner
       this.valorFormulario = this.formGroup.value;
       this.objetoActualizar.id=this.tabId.id;
-      //this.objetoActualizar.idEmpresa=this.valorFormulario.empresa;
-      //this.objetoActualizar.idAplicacion=this.valorFormulario.aplicacion;
+      this.objetoActualizar.idEmpresa=this.valorFormulario.empresa;
+      this.objetoActualizar.idAplicacion=this.valorFormulario.aplicacion;
       this.objetoActualizar.base64=this.imgUrl;
       this.objetoActualizar.nombre=this.valorFormulario.nombreOpcion;
       this.objetoActualizar.urlPage=this.valorFormulario.nombreEnlace;
