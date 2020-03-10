@@ -34,9 +34,9 @@ export class EditarslidesComponent implements OnInit {
     private route: Router,
     private _location: Location) { 
       this.formGroup = formBuilder.group({
-        empresa: ['1'],
+        empresa: [{value: '1', disabled: true}],
         nombre:[''],
-        aplicacion: ['1'],
+        aplicacion: [{value: '1', disabled: true}],
         archivo: [''],
         estado:['A']
       });

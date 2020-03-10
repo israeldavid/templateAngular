@@ -34,8 +34,8 @@ export class EditarpopupsComponent implements OnInit {
     private route: Router,
     private _location: Location) { 
       this.formGroup = formBuilder.group({
-        empresa: ['1'],
-        aplicacion: ['1'],
+        empresa: [{value: '1', disabled: true}],
+        aplicacion: [{value: '1', disabled: true}],
         nombrePopup: ['',Validators.required],
         archivo: [''],
         estado:['A']

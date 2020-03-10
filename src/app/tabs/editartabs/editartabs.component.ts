@@ -32,8 +32,8 @@ export class EditartabsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: Router) { 
       this.formGroup = formBuilder.group({
-        empresa: ['1'],
-        aplicacion: ['1'],
+        empresa: [{value: '1', disabled: true}],
+        aplicacion: [{value: '1', disabled: true}],
         nombreOpcion: ['',Validators.required],
         archivo: [''],
         nombreEnlace: [''],
@@ -45,9 +45,7 @@ export class EditartabsComponent implements OnInit {
     this.tabId = {
       id: this.rutaActiva.snapshot.params.idtabs
     }
-    
-    this.consultarEmpresas();
-
+    //this.consultarEmpresas();
     //Obtiene los datos para cargar en el formulario
     this.ts.obtenerTabById(this.tabId.id, this.obtenerToken()).subscribe(
       data => {
@@ -69,6 +67,8 @@ export class EditartabsComponent implements OnInit {
   consultarEmpresas() {
     this.es.obtenerEmpresas(this.token).subscribe(data => {
       this.responseEmpresa = data;
+    }, err => {
+      alert("Error no se ha encontrado Empresas asociadas");
     });
   }
 
@@ -79,8 +79,9 @@ export class EditartabsComponent implements OnInit {
 
   cargarAplicaciones(IdEmpresa:number){
     this.as.obtenerAplicacionByEmpresa(IdEmpresa, this.token).subscribe(data => {
-      console.log(data);
       this.responseAplicacion = data;
+    }, err => {
+      alert("Error no se ha encontrado Empresas asociadas");
     });
   }
 
@@ -112,8 +113,8 @@ export class EditartabsComponent implements OnInit {
       //aqui me quede comparar con las opciones de banner
       this.valorFormulario = this.formGroup.value;
       this.objetoActualizar.id=this.tabId.id;
-      this.objetoActualizar.idEmpresa=this.valorFormulario.empresa;
-      this.objetoActualizar.idAplicacion=this.valorFormulario.aplicacion;
+      //this.objetoActualizar.idEmpresa=this.valorFormulario.empresa;
+      //this.objetoActualizar.idAplicacion=this.valorFormulario.aplicacion;
       this.objetoActualizar.base64=this.imgUrl;
       this.objetoActualizar.nombre=this.valorFormulario.nombreOpcion;
       this.objetoActualizar.urlPage=this.valorFormulario.nombreEnlace;
