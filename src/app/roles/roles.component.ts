@@ -3,8 +3,9 @@ import { RolesService } from '../servicios/roles.service';
 import { responseRoles } from '../interfaces/interface.roles';
 import { responsePermisos,Permiso} from '../interfaces/interface.permiso';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from "ngx-spinner";
+import { NgxSpinnerService } from 'ngx-spinner';
 import { PermisosService } from '../servicios/permisos.service';
+import { timeout } from 'q';
 
 @Component({
   selector: 'app-roles',
@@ -15,11 +16,11 @@ export class RolesComponent implements OnInit {
 
   responseRoles: responseRoles;
   responsePermisos: responsePermisos;
-  constructor(private rs:RolesService,
-              private router:Router,
+  token: any;
+  constructor(private rs: RolesService,
+              private router: Router,
               private SpinnerService: NgxSpinnerService,
-              private ps:PermisosService) {
-    
+              private ps: PermisosService) {
    }
 
   ngOnInit() {
@@ -27,9 +28,9 @@ export class RolesComponent implements OnInit {
     this.consultarPermisos();
   }
 
-  consultarRoles(){
+  consultarRoles(){  
     this.SpinnerService.show();
-    this.rs.obtenerRoles().subscribe(data => { 
+    this.rs.obtenerRoles(localStorage.getItem('token')).subscribe(data => { 
       this.responseRoles=data;  
       this.SpinnerService.hide(); 
     }, err => {
@@ -39,7 +40,7 @@ export class RolesComponent implements OnInit {
 
   consultarPermisos(){
     this.SpinnerService.show();
-    this.ps.obtenerPermisos().subscribe(data => { 
+    this.ps.obtenerPermisos(localStorage.getItem('token')).subscribe(data => { 
       this.responsePermisos=data;  
       this.SpinnerService.hide();  
     }, err => {
@@ -77,7 +78,7 @@ export class RolesComponent implements OnInit {
       this.ps.deletePermiso(idperfil,localStorage.getItem('token'));
       this.consultarPermisos();
     } else {
-      alert("No se pudo eliminar el rol");
+      alert("No se pudo eliminar el perfil");
     }
   }
 }

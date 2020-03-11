@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('admin/(dashboard)');
         }
       }, err => {
-        alert('Error Usuario y calve');
+        alert("Error de usuario y Clave ");
       });
     }
   }

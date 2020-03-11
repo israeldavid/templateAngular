@@ -36,7 +36,6 @@ export class slidesService {
 
   editSlider(slide: Slider,access_token){
     try {
-      console.log(slide);
       this.httpService.put<Slider>(url, slide, this.getRequestHeaders(access_token)).subscribe(
         data => alert("Slider Actualizado Correctamente"),
         error => alert("No se pudo actualizar el Slider")

@@ -73,7 +73,7 @@ export class CrearperfilComponent implements OnInit {
 
   consultarRoles(){
     this.SpinnerService.show();
-    this.rs.obtenerRoles().subscribe(data => { 
+    this.rs.obtenerRoles(localStorage.getItem('token')).subscribe(data => { 
       this.responseRoles=data;  
       this.SpinnerService.hide();      
     });

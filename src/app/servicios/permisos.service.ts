@@ -12,8 +12,8 @@ export class PermisosService {
 
     constructor(private httpService: HttpClient) { }
 
-    obtenerPermisos(){
-        return this.httpService.get<responsePermisos>(url);
+    obtenerPermisos(access_token){
+        return this.httpService.get<responsePermisos>(url,this.getRequestHeaders(access_token));
     }
 
     obtenerPermisoById(idPermiso:number,access_token){

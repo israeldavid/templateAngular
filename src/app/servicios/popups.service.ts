@@ -42,8 +42,7 @@ const url = environment.direccionPopups;
       }
     }
 
-    editPopup(popup: Popups,access_token){
-      console.log(popup);
+    editPopup(popup: Popups,access_token){     
       try {
         this.httpService.put<Popups>(url, popup, this.getRequestHeaders(access_token)).subscribe(
           data => alert("Popups Actualizado Correctamente"),

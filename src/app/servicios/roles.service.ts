@@ -12,8 +12,8 @@ export class RolesService {
 
     constructor(private httpService: HttpClient) { }
 
-    obtenerRoles(){
-        return this.httpService.get<responseRoles>(url);
+    obtenerRoles(access_token){
+        return this.httpService.get<responseRoles>(url,this.getRequestHeaders(access_token));
     }
 
     obtenerRolById(idRol:number,access_token){
@@ -43,8 +43,8 @@ export class RolesService {
     editrol(rol:Rol,access_token){
         try {
             this.httpService.put<Rol>(url, rol, this.getRequestHeaders(access_token)).subscribe(
-              data => alert("Popups Actualizado Correctamente"),
-              error => alert("No se pudo actualizar el Popups")
+              data => alert("Rol fue actualizado Correctamente"),
+              error => alert("No se pudo actualizar el Rol")
             );
           } catch (error) {
             console.log(error);

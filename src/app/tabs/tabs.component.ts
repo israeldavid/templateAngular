@@ -14,7 +14,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class TabsComponent implements OnInit {
 
   responseTabs: responseTabs;
-  token:any;
+  token: any;
   constructor(private ts:TabsService,private sanitized: DomSanitizer,
               private route:Router,private _location: Location,
               private SpinnerService: NgxSpinnerService) { }

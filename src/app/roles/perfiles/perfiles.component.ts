@@ -19,7 +19,7 @@ export class PerfilesComponent implements OnInit {
 
   consultarPermisos(){
     this.SpinnerService.show();
-    this.ps.obtenerPermisos().subscribe(data => { 
+    this.ps.obtenerPermisos(localStorage.getItem('token')).subscribe(data => { 
       this.responsePermisos=data;  
       this.SpinnerService.hide();      
     });

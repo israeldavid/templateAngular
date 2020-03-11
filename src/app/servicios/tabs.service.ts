@@ -32,7 +32,6 @@ const url = environment.direccionTabs;
 
     addTabs(tab: Tab, access_token){
       try {
-        console.log(tab,access_token);
         this.httpService.post<Tab>(url, tab, this.getRequestHeaders(access_token)).subscribe(
           data => alert("Tab agregado correctamente"),
           error => alert("No se pudo agregar el Tab")
@@ -44,7 +43,6 @@ const url = environment.direccionTabs;
 
     editTabs(tab: Tab, access_token){
       try {
-        console.log("info: ",tab);
         this.httpService.put<Tab>(url, tab, this.getRequestHeaders(access_token)).subscribe(
           data => alert("Tab Actualizado Correctamente"),
           error => alert("No se pudo actualizar el Tab")
