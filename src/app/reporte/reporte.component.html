@@ -1,5 +1,59 @@
 <div class="main-content">
   <div class="container-fluid">
+
+    <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header card-header-warning">
+                <h4 class="card-title">Consulta Por Empresa y Aplicacion</h4>
+                <p class="card-category">Seleccione sus filtros</p>
+              </div>
+              <div class="card-body">
+                <form id="reporteFCM" [formGroup]="formGroup">
+                  <div class="container" style="margin-top: 1%">
+                    <strong>Empresa:</strong>
+                    <select class="form-control" formControlName="empresa" name="empresa" (change) = 'cambioSeleccionado($event)'>
+                        <option selected value="1">Selecciona una empresa</option>
+                        <option value="{{item.id}}" *ngFor="let item of responseEmpresa?.empresas">
+                            {{item.nombre}}
+                        </option>
+                      </select>
+                  </div>
+    
+                  <div class="container" style="margin-top: 1%">
+                    <strong>Aplicación:</strong>
+                    <select class="form-control" formControlName="aplicacion" name="aplicacion" (change) = 'cargarTopicos($event)'>
+                        <option selected value="1">Selecciona una aplicación</option>
+                          <option selected value="{{itema.id}}" *ngFor="let itema of responseAplicacion?.aplicaciones">
+                            {{itema.nombre}}
+                        </option>
+                      </select>
+                  </div>
+    
+                  <div class="container" style="margin-top: 1%">
+                    <strong>Grupo:</strong>
+                    <select class="form-control" formControlName="topico" name="topico">
+                        <option selected value="1">Selecciona un Grupo</option>
+                          <option selected value="{{itemg.id}}" *ngFor="let itemg of listado">
+                            {{itemg.nameGroup}}
+                        </option>
+                    </select>
+                  </div>
+    
+                  <div class="container centrado" style="margin-top: 1%">
+                    <button class="btn btn-dark" (click)="cerrar()">Regresar</button>
+                    <button class="btn btn-danger" (click)="visualizar()" [disabled]="formGroup.invalid">Visualizar</button>
+                  </div>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+          <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+              <p style="color: white">Cargando Datos. </p>  
+          </ngx-spinner> 
+    </div>
+
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -17,48 +71,5 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header card-header-warning">
-            <h4 class="card-title">Consulta Por Empresa y Aplicacion</h4>
-            <p class="card-category">Seleccione sus filtros</p>
-          </div>
-          <div class="card-body">
-            <form id="reporteFCM" [formGroup]="formGroup" (ngSubmit)="reportear()">
-              <div class="container" style="margin-top: 1%">
-                <strong>Empresa:</strong>
-                <select class="form-control" formControlName="empresa" name="empresa">
-                  <option selected value="1">Difare</option>
-                  <option value="2">Otra</option>
-                  <option value="3">La Otra</option>
-                </select>
-              </div>
-
-              <div class="container" style="margin-top: 1%">
-                <strong>Aplicación:</strong>
-                <select class="form-control" formControlName="aplicacion" name="aplicacion">
-                  <option selected value="1">Distrigen</option>
-                  <option value="2">Otra</option>
-                  <option value="3">La Otra</option>
-                </select>
-              </div>
-
-              <div class="container" style="margin-top: 1%">
-                <strong>Grupo:</strong>
-                <select class="form-control" formControlName="topico" name="topico">
-                  <option selected value="1">Default</option>
-                  <option value="2">Tecnología</option>
-                  <option value="3">Salud</option>
-                </select>
-              </div>
-
-              <div class="container centrado" style="margin-top: 1%">
-                <button class="btn btn-dark" (click)="cerrar()">Regresar</button>
-                <button class="btn btn-danger" type="submit" [disabled]="formGroup.invalid">Visualizar</button>
-              </div>
-              
-            </form>
-          </div>
-        </div>
-      </div>
+  </div>  
+</div>  

@@ -84,6 +84,8 @@ export class NotificacionesComponent implements OnInit {
   consultarTopicos(){
     this.gs.obtenerGrupos(this.token).subscribe(data => {
       this.responseGrupos = data;
+    }, err => {
+      alert ('No xisten Topicos cree uno');
     });
   }
 

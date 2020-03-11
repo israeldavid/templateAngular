@@ -30,6 +30,7 @@ export const environment = {
   direccionUbicanos: direccionUnida + 'Coordenadas',
   direccionEmpresa: direccionUnida + 'Empresas',
   direccionAplicacion: direccionUnida + 'Aplicaciones',
-  direccionGrupos:direccion + puertodosn + api + 'RegistroTopicos',
-  direccionEnvioFCM:direccion + puertodosn + api + 'Notifications/PushNotificationByGroup'
+  direccionGrupos: direccion + puertodosn + api + 'RegistroTopicos',
+  direccionEnvioFCM: direccion + puertodosn + api + 'Notifications/PushNotificationByGroup',
+  direccionMetricas: direccion + puertodosn + api + 'NotificationsLog/Metricas',
 };
