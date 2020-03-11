@@ -4,13 +4,15 @@ export interface responsePermisos {
     errorResponse?: any;
   }
 
-export interface Permiso{
+export interface Permiso {
     nombre: string,
     estado: string,
     idEmpresa: number,
     idAplicacion: number,
     idRol: number,
     idMenu: number,
+    aplicacion?: string,
+    empresa?: string,
     fechaCreacion?: string,
     id?: number
 }

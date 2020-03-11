@@ -9,6 +9,8 @@ export interface Rol{
     idAplicacion:number,
     idEmpresa:number,
     estado:string,
+    aplicacion?: string,
+    empresa?: string,  
     fechaCreacion?:string,
     id?:number
 }

@@ -15,7 +15,8 @@ const direccionUnida = direcciondos + puertodos + apidos;
 export const environment = {
   production: false,
 
-  direccionLogin: direccion + puerto + api + 'Login/ValidateLogin',
+  //direccionLogin: direccion + puerto + api + 'Login/ValidateLogin',
+  direccionLogin: direccionUnida + 'Login/ValidateLogin',
   //direccionBanner: direccion + puerto + api + 'banners',
   direccionBanner: direccionUnida + 'Banners',
   direccionMenu: direccionUnida + 'Menus',

@@ -39,16 +39,16 @@ export class LoginComponent implements OnInit {
       return;
     } else {
       this.as.validarUsuario(sendata).subscribe((res) => {
+        console.log(res);
         if (res.login.token) {
           localStorage.setItem('token', res.login.token);
           this.SpinnerService.hide();
           this.router.navigateByUrl('admin/(dashboard)');
         }
-      },err => {
-        alert("Error;");
-      });  
+      }, err => {
+        alert('Error Usuario y calve');
+      });
     }
-  
   }
 
   mostrarPassword(){

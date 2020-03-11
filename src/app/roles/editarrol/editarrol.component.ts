@@ -32,7 +32,7 @@ export class EditarrolComponent implements OnInit {
     private route: Router,
     private _location: Location) { 
       this.formGroup = formBuilder.group({
-        empresa: ['1'],
+        empresa: [{value: '1',disabled: true}],
         aplicacion: [{value: '1',disabled: true}],
         nombreRol: ['', Validators.required],
         estado: ['A']
@@ -67,7 +67,6 @@ export class EditarrolComponent implements OnInit {
 
   consultarEmpresas() {
     this.es.obtenerEmpresas(this.token).subscribe(data => {
-      console.log(data);
       this.responseEmpresa = data;
     }, err => {
         alert("No se encontraron empresas");
