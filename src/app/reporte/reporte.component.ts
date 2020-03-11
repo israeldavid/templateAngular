@@ -107,10 +107,13 @@ export class ReporteComponent implements OnInit {
   }
 
   visualizar(){
+    this.listuno = [];
+    this.listdos = [];
+    this.listtres = [];
+    this.listcuatro = [];
     const control = this.formGroup.get('topico');
     this.gs.visualizarDatos(control.value, localStorage.getItem('token')).subscribe( data => {
       this.metricas = data;
-
       this.metricas.metricsNotification.forEach((obj: Metricas) => {
           this.listuno.push(obj.enviados);
           this.listdos.push(obj.recibidos);
