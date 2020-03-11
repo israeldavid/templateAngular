@@ -29,7 +29,7 @@ export class ReporteComponent implements OnInit {
   listdos: number [] = [];
   listtres: number [] = [];
   listcuatro: string [] = [];
-  
+
 
   //Chart
 
@@ -107,14 +107,15 @@ export class ReporteComponent implements OnInit {
   }
 
   visualizar(){
-    this.gs.visualizarDatos(0, localStorage.getItem('token')).subscribe( data => {
+    const control = this.formGroup.get('topico');
+    this.gs.visualizarDatos(control.value, localStorage.getItem('token')).subscribe( data => {
       this.metricas = data;
 
       this.metricas.metricsNotification.forEach((obj: Metricas) => {
           this.listuno.push(obj.enviados);
           this.listdos.push(obj.recibidos);
           this.listtres.push(obj.leidos);
-          this.listcuatro.push(obj.fechaEnvio);
+          this.listcuatro.push(obj.fechaEnvio.substring(0, 10));
       })
     }, err => {
         alert("No existen datos suficientes");
