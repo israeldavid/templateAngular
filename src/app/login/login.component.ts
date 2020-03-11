@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
       return;
     } else {
       this.as.validarUsuario(sendata).subscribe((res) => {
-        console.log(res);
         if (res.login.token) {
           localStorage.setItem('token', res.login.token);
           this.SpinnerService.hide();
@@ -47,6 +46,7 @@ export class LoginComponent implements OnInit {
         }
       }, err => {
         alert("Error de usuario y Clave ");
+        this.SpinnerService.hide();
       });
     }
   }

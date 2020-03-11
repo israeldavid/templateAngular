@@ -1,6 +1,8 @@
 export interface mensajeFCM {
   headNotification: string;
   bodyNotification: string;
-  topic: string;
-  idAplicationSend: string;
+  idtopic: number;
+  urlImage: string;
+  idAplicationSend?: number;
+  idAplicationReceptive?: number;
 }

@@ -31,8 +31,8 @@ export class NotificacionesComponent implements OnInit {
   nombre:string;
   appMostrar:AppXid;
   objetoActualizar:Aplicacion={id:0,nombre:'',estado:'',idempresa:0}
-
-  crearMensaje:mensajeFCM = {headNotification:'',bodyNotification:'',topic:'',idAplicationSend:''};
+  //idAplicationSend este no es necesario;
+  crearMensaje:mensajeFCM = {headNotification:'',bodyNotification:'',idtopic:0,urlImage:'',idAplicationReceptive:0};
 
   constructor(private gs:GruposService,
               private sanitized: DomSanitizer,
@@ -46,7 +46,7 @@ export class NotificacionesComponent implements OnInit {
     this.formGroup = formBuilder.group({
       empresa: ['1'],
       aplicacion: ['1'],
-      grupo: ['1'],
+      grupo: [1],
       headNotification: ['',Validators.required],
       mensaje:['',Validators.required]
     });
@@ -126,8 +126,9 @@ export class NotificacionesComponent implements OnInit {
       this.valorFormulario = this.formGroup.value;
       this.crearMensaje.headNotification=this.valorFormulario.headNotification;
       this.crearMensaje.bodyNotification=this.valorFormulario.mensaje;
-      this.crearMensaje.idAplicationSend=this.valorFormulario.aplicacion;
-      this.crearMensaje.topic=this.valorFormulario.grupo;
+      this.crearMensaje.idAplicationReceptive=this.valorFormulario.aplicacion;
+      this.crearMensaje.urlImage = "https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y";
+      this.crearMensaje.idtopic=this.valorFormulario.grupo;
       this.ns.envioFCM(this.crearMensaje);
     }
     else{

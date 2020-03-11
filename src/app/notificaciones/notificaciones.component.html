@@ -98,7 +98,7 @@
                             <b>Seleccione el Grupo:</b>
                             <select class="form-control" formControlName="grupo" name="grupo">
                                 <option selected value="1">Selecciona un grupo</option>
-                                <option selected value="{{itemg.nameGroup}}" *ngFor="let itemg of responseGrupos?.topics">
+                                <option selected value="{{itemg.id}}" *ngFor="let itemg of responseGrupos?.topics">
                                   {{itemg.nameGroup}}
                                 </option>
                             </select>
