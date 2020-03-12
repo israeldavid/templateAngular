@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { GruposService } from 'app/servicios/grupos.service';
-import { responseGrupos, Grupo } from '../interfaces/interface.grupo';
+import { responseGrupos } from '../interfaces/interface.grupo';
 import { EmpresaService } from 'app/servicios/empresa.service';
 import { responseEmpresa } from 'app/interfaces/interface.empresa';
 import { responseAplicacion,Aplicacion,AppXid } from 'app/interfaces/interface.aplicacion';
@@ -35,7 +35,7 @@ export class NotificacionesComponent implements OnInit {
   crearMensaje:mensajeFCM = {headNotification:'',bodyNotification:'',idtopic:0,urlImage:'',idAplicationReceptive:0};
 
   listado: Grupo[] = [];
-
+  
   constructor(private gs:GruposService,
               private sanitized: DomSanitizer,
               private route:Router,

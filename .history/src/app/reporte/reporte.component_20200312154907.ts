@@ -100,8 +100,10 @@ export class ReporteComponent implements OnInit {
   cargarTopicos(event) {
     this.SpinnerService.show();
     this.gs.obtenerGrupos(localStorage.getItem('token')).subscribe( data => {
+      console.log(data);
       this.responseGrupos = data;
       this.listado = this.responseGrupos.topics.filter(obj => obj.idAplication == event.target.value);
+      console.log(this.listado);
       this.SpinnerService.hide();
     });
   }

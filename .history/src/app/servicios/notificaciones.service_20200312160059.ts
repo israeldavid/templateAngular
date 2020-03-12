@@ -16,7 +16,7 @@ export class NotificacionesService {
         console.log("Cuerpo mensaje:",mensaje);
         this.httpService.post<mensajeFCM>(url, mensaje).subscribe(
         data => alert("Mensaje enviado correctamente"),
-        error => alert(JSON.stringify(error.error.errorResponse.errorSummary))
+        error => alert(JSON.stringify(error.error.errorSummary))
         
       );
     }

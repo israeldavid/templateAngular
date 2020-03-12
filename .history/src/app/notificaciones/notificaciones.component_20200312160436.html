@@ -87,7 +87,7 @@
                         <div class="container" style="margin-top: 2%">
                             <b>Seleccione la Aplicación:</b>
                             <select class="form-control" formControlName="aplicacion" name="aplicacion" (change) = 'cargarTopicos($event)'>
-                                <option value="1">Selecciona una aplicación</option>
+                                <option selected value="1">Selecciona una aplicación</option>
                                 <option selected value="{{itema.id}}" *ngFor="let itema of responseAplicacion?.aplicaciones">
                                   {{itema.nombre}}
                                 </option>
@@ -97,9 +97,9 @@
                         <div class="container" style="margin-top: 2%">
                             <b>Seleccione el Grupo:</b>
                             <select class="form-control" formControlName="grupo" name="grupo">
-                                <option value="1">Selecciona un grupo</option>
-                                <option selected value="{{itemg.id}}" *ngFor="let itemg of listado">
-                                    {{itemg.nameGroup}}
+                                <option selected value="1">Selecciona un grupo</option>
+                                <option selected value="{{itemg.id}}" *ngFor="let itemg of responseGrupos?.topics">
+                                  {{itemg.nameGroup}}
                                 </option>
                             </select>
                         </div>
