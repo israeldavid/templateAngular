@@ -1,0 +1,66 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Listado de Banners</h4>
+                      <button mat-raised-button type="button" (click)="crearBanner()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary alineadoDerecha">
+                        Nuevo Banner
+                      </button>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>ID</th>
+                                  <th>Nombre</th>
+                                  <th>Imagen</th>
+                                  <th>Estado</th>
+                                  <th>Acción</th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let item of responseBanners?.banners "> 
+                                      <td>{{item?.id}}</td>
+                                      <td>{{item?.nombre}}</td>
+                                      <td><img [src]="item.base64" width="50px" height="auto"></td>
+                                      <td>{{item?.estado}}</td>
+                                      <td>
+                                        <button mat-raised-button type="button" (click)="crearBanner()" matTooltip="Nuevo" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">open_in_new</i>
+                                        </button>
+                                        <button mat-raised-button type="button" (click)="editarBanner(item.id)" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" (click)="eliminarBanner(item.id)"  matTooltip="Borrar" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                        </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+
+                          <div class="col-12 justify-content-center mb-5">
+                              <!-- collectionSize the total number of items the pagination should handle. 
+                                    pageSize - Number of elements/items per page.
+                                    page - The current page.
+                                -->
+                            <ngb-pagination [collectionSize]="4" 
+                            [pageSize]="itemsPerPage" 
+                            [(page)]="page" 
+                            [maxSize]="7" 
+                            [rotate]="true" 
+                            [boundaryLinks]="true" 
+                            (pageChange)="loadPage($event)"></ngb-pagination>
+                          </div>
+
+                      </div>
+                      <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                        <p style="color: white">Cargando Datos. </p>  
+                      </ngx-spinner> 
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
