@@ -49,7 +49,8 @@ export class EditarmenusComponent implements OnInit {
       id: this.rutaActiva.snapshot.params.idmenu
     }
     this.consultarEmpresas();
-    // Obtiene los datos para cargar en el formulario
+    
+    //Obtiene los datos para cargar en el formulario
     this.ms.obtenerMenuById(this.menuId.id, this.obtenerToken()).subscribe(
       data => {
         this.menuMostrar = data;
@@ -57,9 +58,9 @@ export class EditarmenusComponent implements OnInit {
         this.formGroup.controls['empresa'].setValue(this.menuMostrar.menu.idEmpresa);
         this.formGroup.controls['aplicacion'].setValue(this.menuMostrar.menu.idAplicacion);
         this.formGroup.controls['nombreOpcion'].setValue(this.menuMostrar.menu.nombre);
-        this.imgMostrar = 'data:image/png;base64,' + this.menuMostrar.menu.base64;
+        this.imgMostrar='data:image/png;base64,' + this.menuMostrar.menu.base64;
         this.formGroup.controls['nombreEnlace'].setValue(this.menuMostrar.menu.urlPage);
-        this.imgUrl = this.menuMostrar.menu.base64;
+        this.imgUrl=this.menuMostrar.menu.base64;
         this.formGroup.controls['estado'].setValue(this.menuMostrar.menu.estado);
       }, error => {
         console.log(error);
