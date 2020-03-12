@@ -3,7 +3,7 @@ import { PopupsService } from '../servicios/popups.service';
 import { responsePopups } from '../interfaces/interface.popup';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-popups',
@@ -11,16 +11,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./popups.component.scss']
 })
 export class PopupsComponent implements OnInit {
-  token: any;
-  responsePopup: responsePopups;
-  // Variables para la paginación
-  page: any = 1;
-  pageSize: any = 4;
-  collectionSize: number;
-  numeroItems = 4;
-
-  constructor(private ps: PopupsService, private sanitized: DomSanitizer,
-    private route: Router,
+  token:any;
+  responsePopup:responsePopups;
+  constructor(private ps:PopupsService,private sanitized: DomSanitizer,
+    private route:Router,
     private SpinnerService: NgxSpinnerService,
     private cd: ChangeDetectorRef) { }
 
@@ -28,33 +22,32 @@ export class PopupsComponent implements OnInit {
     this.cargarPopups();
   }
 
-  cargarPopups() {
-    this.token = localStorage.getItem('token');
+  cargarPopups(){
+    this.token=localStorage.getItem('token');
     this.SpinnerService.show();
-    this.ps.obtenerPopup(this.token).subscribe(data => {
-      this.responsePopup = data;
-      this.collectionSize = data.count;
+    this.ps.obtenerPopup(this.token).subscribe(data => { 
+      this.responsePopup=data;  
       this.SpinnerService.hide();
-    }, err => {
+    }, err =>{
       this.SpinnerService.hide();
     });
   }
 
-  crearPopup() {
-    this.route.navigateByUrl('crearpopup');
+  crearPopup(){
+    this.route.navigateByUrl("crearpopup");
   }
 
-  editarPopup(idpopup: number) {
-    this.route.navigateByUrl('editarpopup/' + idpopup);
+  editarPopup(idpopup:number){
+    this.route.navigateByUrl("editarpopup/"+idpopup);
   }
 
-  eliminarPopup(idpopup: number) {
-    if (window.confirm('Estas seguro de eliminar ?')) {
-      this.ps.deletePopUp(idpopup, this.token = localStorage.getItem('token'));
+  eliminarPopup(idpopup:number){
+    if(window.confirm('Estas seguro de eliminar ?')){
+      this.ps.deletePopUp(idpopup,this.token=localStorage.getItem('token'));
       this.cargarPopups();
       this.refresh();
     } else {
-      alert('No se pudo eliminar el PopUp');
+      alert("No se pudo eliminar el PopUp");
     }
   }
 
