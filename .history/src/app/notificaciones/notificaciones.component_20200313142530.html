@@ -1,0 +1,163 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Listado de Aplicaciones</h4>
+                      <p class="card-category"> para el envio de Notificaciones Push</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>ID</th>
+                                  <th>Nombre</th>
+                                  <th>Estado</th>
+                                  <th>Acciones</th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let itemd of responseAplicacionListado?.aplicaciones">
+                                      <td> {{itemd.id}} </td>
+                                      <td> {{itemd.nombre}} </td>
+                                      <td> {{itemd.estado}} </td>
+                                      <td>  
+                                        <button mat-raised-button type="button" (click)="cambiarEstado(itemd.id)" matTooltip="Cambiar Estado" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-success">
+                    <h4 class="card-title ">Listado de Grupos (Topicos)</h4>
+                    <p class="card-category"> para el envio de Notificaciones Push</p>
+                    <button mat-raised-button type="button" matTooltip="Nuevo" (click)="crearGrupo()" [matTooltipPosition]="'above'" class="btn btn-primary">
+                        Nuevo Grupo
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Aplicacion</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of responseGrupos?.topics">
+                                    <td> {{item.id}} </td>
+                                    <td> {{item.nameGroup}} </td>
+                                    <td> {{item.idAplication}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-warning">
+                    <h4 class="card-title ">Envío de Mensaje de Pruebas</h4>
+                    <p class="card-category"> para el envio de Notificaciones Push</p>
+                </div>
+                <div class="card-body">
+                    <form id="envioMensaje" [formGroup]="formGroup">
+                        <div class="container" style="margin-top: 4%">
+                            <strong>Empresa:</strong>
+                            <select class="form-control" formControlName="empresa" name="empresa" (change)='cambioSeleccionado($event)'>
+                                <option selected value="1">Selecciona una empresa</option>
+                                <option value="{{item.id}}" *ngFor="let item of responseEmpresa?.empresas">
+                                    {{item.nombre}}
+                                </option>
+                            </select>
+                        </div>
+                
+                        <div class="container" style="margin-top: 2%">
+                            <b>Seleccione la Aplicación:</b>
+                            <select class="form-control" formControlName="aplicacion" name="aplicacion" (change) = 'cargarTopicos($event)'>
+                                <option value="1">Selecciona una aplicación</option>
+                                <option selected value="{{itema.id}}" *ngFor="let itema of responseAplicacion?.aplicaciones">
+                                  {{itema.nombre}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="container" style="margin-top: 2%">
+                            <b>Seleccione el Grupo:</b>
+                            <select class="form-control" formControlName="grupo" name="grupo">
+                                <option value="1">Selecciona un grupo</option>
+                                <option selected value="{{itemg.id}}" *ngFor="let itemg of listado">
+                                    {{itemg.nameGroup}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="container" style="margin-top: 2%">
+                            <strong>Dirección URL donde esta la imagen:</strong>
+                            <input type="text" name="urlImagen" formControlName="urlImagen" placeholder="http://www.difare.com.ec/imagen/logo.jpg" class="form-control">
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-8" style="padding-left:10% !important; ">
+                                <strong>Titulo:</strong>
+                                <input type="text" name="headNotification" formControlName="headNotification" placeholder="Titulo del mensaje de prueba" class="form-control">
+                            </div>
+    
+                              <div class="col-sm-2 emoji" style="padding-left:0% !important;">
+                                <button (click)="toggleEmojiPickerTitle();" type="button" class="btn"
+                                    style="background: white; padding-left:0%;"> 
+                                    <img src="../../assets/iconos/happy_face.svg">
+                                </button>
+    
+                                <div *ngIf="showEmojiPickerTitle">
+                                    <emoji-mart (emojiClick)="addEmojiTitle($event)">
+                                    </emoji-mart>
+                                </div>
+                              </div>
+                        </div>
+                        
+                        <div class="row" style="margin-top: 1%">
+                            <div class="col-sm-8" style="padding-left:10% !important; ">
+                                <strong>Mensaje:</strong>
+                                <input type="text-area" name="mensaje" formControlName="mensaje" placeholder="Mensaje para enviar" class="form-control">  
+                            </div>
+
+                            <div class="col-sm-2 emoji" style="padding-left:0% !important;">
+                                <button (click)="toggleEmojiPickerBody();" type="button" class="btn"
+                                    style="background: white; padding-left:0%;"> 
+                                    <img src="../../assets/iconos/happy_face.svg">
+                                </button>
+    
+                                <div *ngIf="showEmojiPickerBody">
+                                    <emoji-mart (emojiClick)="addEmojiBody($event)">
+                                    </emoji-mart>
+                                </div>
+                              </div>
+
+                          
+                        </div>
+                        <div class="container centrado" style="margin-top: 2%">
+                            <button class="btn btn-warning" (click)="envioFCM()" [disabled]="formGroup.invalid">Enviar FCM</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                <p style="color: white">Cargando Datos. </p>  
+              </ngx-spinner> 
+        </div>
+      </div>
+  </div>
+</div>

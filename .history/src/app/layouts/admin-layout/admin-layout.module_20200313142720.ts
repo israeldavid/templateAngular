@@ -32,8 +32,6 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 // para paginar resultados
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { NotificacionesModule } from '../../notificaciones/notificaciones.module';
-
 import {
   MatButtonModule,
   MatInputModule,
@@ -58,8 +56,7 @@ import {
     ChartsModule,
     NgxSpinnerModule,
     PickerModule,
-    NgbModule,
-    NotificacionesModule
+    NgbModule
   ],
   declarations: [
     DashboardComponent,
@@ -81,8 +78,7 @@ import {
     PerfilesComponent
   ],
   providers: [
-    PickerModule,
-    NotificacionesModule
+    PickerModule
   ],
 })
 

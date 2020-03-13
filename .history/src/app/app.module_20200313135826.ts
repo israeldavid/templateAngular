@@ -70,6 +70,7 @@ import { EditarperfilComponent } from './roles/perfiles/editarperfil/editarperfi
     MatSelectModule,
     NgxSpinnerModule,
     ColorSketchModule,
+    PickerModule,
     //MatInputModule,
     //MatCheckboxModule,
     //MatButtonModule,
@@ -114,7 +115,6 @@ import { EditarperfilComponent } from './roles/perfiles/editarperfil/editarperfi
     MatDialogConfig,
     MatDialogModule,
     MatSelectModule,
-    PickerModule
   ],
   bootstrap: [AppComponent],
   
