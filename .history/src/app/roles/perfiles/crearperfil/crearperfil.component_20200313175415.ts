@@ -42,6 +42,7 @@ export class CrearperfilComponent implements OnInit {
                 this.formGroup = formBuilder.group({
                   empresa: ['1'],
                   aplicacion:['1'],
+                  nombrePerfil: ['',Validators.required],
                   rol:['1'],
                   menu:['1'],
                   estado:['A']
@@ -83,8 +84,7 @@ export class CrearperfilComponent implements OnInit {
     this.token=localStorage.getItem('token');
     this.SpinnerService.show();
     this.ms.obtenerMenus(this.token).subscribe(data => { 
-      //aqui tengo que concatenar el menu.
-      //this.responseMenus=data.menu.id; 
+      this.responseMenus=data.menu.id; 
       this.SpinnerService.hide(); 
     });
   }
