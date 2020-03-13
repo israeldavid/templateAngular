@@ -26,11 +26,11 @@ export class EditargrupoComponent implements OnInit {
   }
 
   grabar(){
-    alert("Grupo Grabado");
+
   }
 
   cerrar(){
-    this._location.back();
+    
   }
 
 }

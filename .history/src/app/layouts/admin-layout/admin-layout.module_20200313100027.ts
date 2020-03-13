@@ -19,7 +19,6 @@ import { PopupsComponent} from '../../popups/popups.component';
 import { ReporteComponent } from '../../reporte/reporte.component';
 import { UbicanosComponent } from '../../ubicanos/ubicanos.component';
 import { EnviofcmpruebaComponent } from '../../notificaciones/enviofcmprueba/enviofcmprueba.component';
-import { PerfilesComponent } from '../../roles/perfiles/perfiles.component';
 //Charts
 import { ChartsModule } from 'ng2-charts';
 
@@ -74,8 +73,7 @@ import {
     PopupsComponent,
     ReporteComponent,
     UbicanosComponent,
-    EnviofcmpruebaComponent,
-    PerfilesComponent
+    EnviofcmpruebaComponent
   ]
 })
 

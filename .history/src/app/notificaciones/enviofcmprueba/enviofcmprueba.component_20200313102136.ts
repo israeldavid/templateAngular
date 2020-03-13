@@ -8,15 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./enviofcmprueba.component.scss']
 })
 export class EnviofcmpruebaComponent implements OnInit {
-  public formGroup: FormGroup;
-  constructor(private _location: Location,private formBuilder: FormBuilder,) {
-    this.formGroup = formBuilder.group({
-      empresa: [{value: '1', disabled: true}],
-      aplicacion: [{value: '1', disabled: true}],
-      titulo: ['',Validators.required],
-      texto: ['',Validators.required]
-    });
-   }
+
+  constructor(private _location: Location,private formBuilder: FormBuilder,) { }
 
   ngOnInit() {
   }
@@ -25,13 +18,6 @@ export class EnviofcmpruebaComponent implements OnInit {
     this._location.back();
   }
 
-  cerrar(){
-    this._location.back();
-  }
-
-  enviar(){
-    alert("mensaje enviado");
-  }
 
 
 }

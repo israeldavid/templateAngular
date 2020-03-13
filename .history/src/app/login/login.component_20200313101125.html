@@ -1,0 +1,38 @@
+<div class="login-page">
+  <div class="content">
+      <form class="login-form" [formGroup] = "formLogin" (ngSubmit)="onLogin(formLogin.value)">
+          <div class="text-center">
+              <h2 class="app-name">DIFARE Admin Web</h2>
+          </div>
+          <div fxlayout="row" fxlayout.lt-md="column">
+              <div fxFlexFill>
+                  <mat-form-field class="w-100">
+                      <input matInput placeholder="Usuario" formControlName="usuario"
+                      [ngClass]="{ 'is-invalid': submitted && f.usuario.errors }">
+                  </mat-form-field>          
+              </div>
+          </div>
+          <div fxFlex  fxLayout="row" fxLayout.lt-md="column">
+              <div fxFlexFill>
+                  <mat-form-field class="w-100">
+                      <input matInput [type]="passwordType" placeholder="Password" formControlName="clave" autocomplete="on">
+                      <i matSuffix (click)="mostrarPassword()"><img src="../../assets/img/password.png" width="32px" height="32px"></i>
+                  </mat-form-field>  
+              </div>
+          </div>
+          <div fxFlex  fxLayout="row" fxLayout.lt-md="column" style="margin: 20px 0 30px 0">
+              <!--<div fxFlex  fxLayoutAlign="end">
+                  <a href="#">Olvide la Clave</a>
+              </div> -->
+          </div>
+          <div fxFlex  fxLayout="row" fxLayout.lt-md="column">
+              <div fxFlexFill>
+                  <button mat-raised-button [color]="'success'" class="w-100">Login</button>
+              </div>
+          </div>
+      </form>
+  </div>
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+    <p style="color: white">Cargando Datos. </p>  
+  </ngx-spinner> 
+</div>

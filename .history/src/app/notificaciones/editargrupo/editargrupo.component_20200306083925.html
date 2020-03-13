@@ -9,7 +9,7 @@
                       <p class="card-category"> Estos Canales son para la distribución de notificaciones</p>
                   </div>
                   <div class="card-body">
-                    <form id="addGrupo" [formGroup]="formGroup">
+                    <form id="addGrupo" [formGroup]="formGroup" (ngSubmit)="grabar()">
 
                       <div class="container" style="margin-top: 4%">
                           <strong>Empresa:</strong>
@@ -43,7 +43,7 @@
 
                       <div class="container centrado" style="margin-top: 2%">
                         <button class="btn btn-dark" (click)="cerrar()">Cerrar</button>
-                        <button class="btn btn-danger" (click)="grabar()" [disabled]="formGroup.invalid">Grabar</button>
+                        <button class="btn btn-danger" type="submit" [disabled]="formGroup.invalid">Grabar</button>
                       </div>
                   </form>
                   </div>

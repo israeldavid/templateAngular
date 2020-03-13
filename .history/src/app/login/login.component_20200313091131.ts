@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   passwordShown = false;
   passwordType = 'password';
   nameIcon = 'eye-off';
-  submitted = false;
 
   formLogin: FormGroup;
 
@@ -33,10 +32,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  get f() {
-    return this.formLogin.controls;
-}
-
   onLogin(sendata:User) {
     localStorage.setItem('isLoggedin', 'true');
     this.SpinnerService.show();
@@ -50,7 +45,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('admin/(dashboard)');
         }
       }, err => {
-        alert(JSON.stringify(err.error.errorResponse.errorSummary));
+        alert(JSON.stringify(err));
         this.SpinnerService.hide();
       });
     }

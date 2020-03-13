@@ -2,12 +2,14 @@
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
+            <button class="btn btn-dark" (click)="regresar()">Regresar</button>
               <div class="card">
                   <div class="card-header card-header-success">
-                      <h4 class="card-title">Editar Opción para Tabs</h4>
-                      <p class="card-category"> *No se recomienda crear más de 5 tabs para cada aplicación</p>
+                      <h4 class="card-title">Editar las opciones para Menús</h4>
+                      <p class="card-category"> *No se recomienda crear más de 10 items en el menú</p>
                   </div>
                   <div class="card-body">
+                      <!-- (ngSubmit)="grabar()" -->
                     <form id="addTabs" [formGroup]="formGroup">
                       <div class="container" style="margin-top: 4%">
                           <strong>Empresa:</strong>
@@ -33,17 +35,17 @@
                       </div>
 
                       <div class="container" style="margin-top: 2%">
-                        <strong>Icono Actual:</strong><br>
-                        <img [src]="imgMostrar" width="25%">
+                        <strong>Icono Actual</strong><br>
+                        <img [src]="imgMostrar" width="30%">
                       </div>
               
                       <div class="container" style="margin-top: 2%">
-                          <strong>Icono:</strong><br>
-                          <input type="file" formControlName="archivo" name="archivo" (change)="onUploadChange($event)" accept=".svg">
+                          <strong>Icono: [png,svg]</strong><br>
+                          <input type="file" formControlName="archivo" name="archivo" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf">
                       </div>
 
                       <div class="container" style="margin-top: 2%">
-                          <strong>Enlace:( a donde se va a dirigir la opción)</strong>
+                          <strong>Enlace (a donde se va a dirigir la opción)</strong>
                           <input type="text" name="nombreEnlace" formControlName="nombreEnlace" placeholder="Nombre de la página que se visitará en la aplicación" class="form-control">
                       </div>
               

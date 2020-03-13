@@ -8,28 +8,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./editargrupo.component.scss']
 })
 export class EditargrupoComponent implements OnInit {
-  public formGroup: FormGroup;
-  constructor(private _location: Location,private formBuilder: FormBuilder,) { 
-    this.formGroup = formBuilder.group({
-      empresa: [{value: '1', disabled: true}],
-      aplicacion: [{value: '1', disabled: true}],
-      nombreGrupo: ['',Validators.required],
-      estado:['A']
-    });
-  }
+
+  constructor(private _location: Location) { }
 
   ngOnInit() {
   }
 
   regresar(){
-    this._location.back();
-  }
-
-  grabar(){
-    alert("Grupo Grabado");
-  }
-
-  cerrar(){
     this._location.back();
   }
 

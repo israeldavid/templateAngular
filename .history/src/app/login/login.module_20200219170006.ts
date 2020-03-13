@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/material';
 
 import { LoginRoutingModule } from './login-routing.module';
-
+import { LoginComponent } from './login.component';
 
 @NgModule({
     imports: [
@@ -13,6 +13,6 @@ import { LoginRoutingModule } from './login-routing.module';
         MatCheckboxModule,
         MatButtonModule,
     ],
-    declarations: []
+    declarations: [LoginComponent]
 })
 export class LoginModule {}

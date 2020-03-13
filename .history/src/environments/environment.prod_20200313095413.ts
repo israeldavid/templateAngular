@@ -9,7 +9,9 @@ const apidos = 'api/v1/';
 const direccionUnida = direcciondos + puertodos + apidos;
 
 export const environment = {
-  production: true,
+  production: true
+
+
   //direccionLogin: direccion + puerto + api + 'Login/ValidateLogin',
   direccionLogin: direccionUnida + 'Login/ValidateLogin',
   //direccionBanner: direccion + puerto + api + 'banners',
