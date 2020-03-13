@@ -7,7 +7,7 @@ import { EmpresaService } from '../../servicios/empresa.service';
 import { AplicacionService } from '../../servicios/aplicacion.service';
 import { responseEmpresa,Empresa } from '../../interfaces/interface.empresa';
 import { responseAplicacion, Aplicacion} from '../../interfaces/interface.aplicacion';
-import { Tema } from '../../interfaces/interface.theme';
+import { Theme } from '../../interfaces/interface.theme';
 import { ThemeService } from 'app/servicios/theme.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class CrearthemesComponent implements OnInit {
   responseEmpresa: responseEmpresa;
   responseAplicacion: responseAplicacion;
   token:any;
-  crearTheme:Tema = {nombre:'',descripcion:'',idEmpresa:1,idAplicacion:1,estado:''};
+  crearTheme:Theme = {nombre:'',descripcion:'',idEmpresa:1,idAplicacion:1,estado:''};
   valorFormulario: any;
 
   //variable para controlar la visualización del color picker
@@ -84,7 +84,7 @@ export class CrearthemesComponent implements OnInit {
     if (this.formGroup.valid) {
       this.valorFormulario = this.formGroup.value;
 
-      let obj1: Tema = {
+      let obj1: Theme = {
         nombre: "--ion-color-primary",
         descripcion: this.actualColorTab,
         idEmpresa: this.valorFormulario.empresa,
@@ -92,7 +92,7 @@ export class CrearthemesComponent implements OnInit {
         estado:"A"
       }
 
-      let obj2: Tema  = {
+      let obj2: Theme  = {
         nombre: "--ion-color-secondary",
         descripcion: this.actualColorMenu,
         idEmpresa: this.valorFormulario.empresa,
@@ -100,7 +100,7 @@ export class CrearthemesComponent implements OnInit {
         estado:"A"
       }
   
-      let obj3: Tema = {
+      let obj3: Theme = {
         nombre: "--ion-color-tertiary",
         descripcion: this.actualColorBoton,
         idEmpresa: this.valorFormulario.empresa,
@@ -108,7 +108,7 @@ export class CrearthemesComponent implements OnInit {
         estado:"A"
       }
   
-      let obj4: Tema = {
+      let obj4: Theme = {
         nombre: "--ion-color-success",
         descripcion: this.actualColorAlertSuccess,
         idEmpresa: this.valorFormulario.empresa,
@@ -116,7 +116,7 @@ export class CrearthemesComponent implements OnInit {
         estado:"A"
       }
   
-      let obj5: Tema = {
+      let obj5: Theme = {
         nombre: "--ion-color-warning",
         descripcion: this.actualColorAlertDanger,
         idEmpresa: this.valorFormulario.empresa,

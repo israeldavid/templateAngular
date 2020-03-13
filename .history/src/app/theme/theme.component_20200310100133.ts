@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 import { Location } from '@angular/common';
 import { ThemeService } from '../servicios/theme.service'
-import { Tema,responseTheme,ThemeXid } from 'app/interfaces/interface.theme';
+import { Theme,responseTheme,ThemeXid } from 'app/interfaces/interface.theme';
 import { AplicacionService } from '../servicios/aplicacion.service';
 import { responseAplicacion, Aplicacion} from '../interfaces/interface.aplicacion';
 import { HttpResponse } from '@angular/common/http';

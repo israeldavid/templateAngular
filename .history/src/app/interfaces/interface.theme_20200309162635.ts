@@ -1,10 +1,10 @@
 export interface responseTheme {
-    temas: Tema[];
+    themes: Theme[];
     count: number;
     errorResponse?: any;
   }
 
-export interface Tema{
+export interface Theme{
     nombre: string;
     descripcion: string;
     idEmpresa?: number;
@@ -14,6 +14,6 @@ export interface Tema{
 }
 
 export interface ThemeXid{
-    tema: Tema;
+    tema: Theme;
     errorResponse?: any;
 }

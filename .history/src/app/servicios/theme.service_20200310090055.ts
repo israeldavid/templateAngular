@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { HttpClient,HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Http, ResponseContentType} from '@angular/http';
-import { Tema,responseTheme,ThemeXid } from 'app/interfaces/interface.theme';
+import { Theme,responseTheme,ThemeXid } from 'app/interfaces/interface.theme';
 import { Observable } from 'rxjs';
 
 const url = environment.direccionTheme;
@@ -28,9 +28,9 @@ export class ThemeService {
     return this.httpService.get<responseTheme>(direccion, this.getRequestHeaders(access_token));
   }
 
-  addTheme(theme: Tema, access_token){
+  addTheme(theme: Theme, access_token){
     try {
-        //console.log(theme);
+        console.log(theme);
         //this.httpService.post<Theme>(url, theme, this.getRequestHeaders(access_token)).subscribe(
         //  data => alert("Theme creado correctamente"),
         //  error => alert("Theme no se pudo crear")
@@ -49,10 +49,10 @@ export class ThemeService {
     return { headers: headers };  
     }
 
-    editTheme(theme:Tema,access_token){
+    editTheme(theme:Theme,access_token){
         try {
-            this.httpService.put<Tema>(url, theme, this.getRequestHeaders(access_token)).subscribe(
-              data => alert("Tema Actualizado Correctamente"),
+            this.httpService.put<Theme>(url, theme, this.getRequestHeaders(access_token)).subscribe(
+              data => alert("Theme Actualizado Correctamente"),
               error => alert("No se pudo actualizar el Theme")
             );
           } catch (error) {
@@ -62,7 +62,7 @@ export class ThemeService {
 
     deleteTheme(idtheme:number,access_token){
       let direccion=url+"/"+idtheme;
-      this.httpService.delete<Tema>(direccion,this.getRequestHeaders(access_token))
+      this.httpService.delete<Theme>(direccion,this.getRequestHeaders(access_token))
       .subscribe(
         data  => alert("Theme Eliminado Correctamente"),
         error => alert("Theme no pudo ser eliminado, Error de proceso")

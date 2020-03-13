@@ -49,10 +49,10 @@ export class ThemeService {
     return { headers: headers };  
     }
 
-    editTheme(theme:Tema,access_token){
+    editTheme(theme:Theme,access_token){
         try {
-            this.httpService.put<Tema>(url, theme, this.getRequestHeaders(access_token)).subscribe(
-              data => alert("Tema Actualizado Correctamente"),
+            this.httpService.put<Theme>(url, theme, this.getRequestHeaders(access_token)).subscribe(
+              data => alert("Theme Actualizado Correctamente"),
               error => alert("No se pudo actualizar el Theme")
             );
           } catch (error) {
@@ -62,7 +62,7 @@ export class ThemeService {
 
     deleteTheme(idtheme:number,access_token){
       let direccion=url+"/"+idtheme;
-      this.httpService.delete<Tema>(direccion,this.getRequestHeaders(access_token))
+      this.httpService.delete<Theme>(direccion,this.getRequestHeaders(access_token))
       .subscribe(
         data  => alert("Theme Eliminado Correctamente"),
         error => alert("Theme no pudo ser eliminado, Error de proceso")

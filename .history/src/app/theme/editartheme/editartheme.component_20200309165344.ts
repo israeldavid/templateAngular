@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ThemeService } from '../../servicios/theme.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { responseTheme,Tema, ThemeXid } from '../../interfaces/interface.Theme';
+import { responseTheme,Theme, ThemeXid } from '../../interfaces/interface.Theme';
 import { EmpresaService } from '../../servicios/empresa.service';
 import { AplicacionService } from '../../servicios/aplicacion.service';
 import { responseEmpresa, Empresa } from '../../interfaces/interface.empresa';
@@ -17,7 +17,7 @@ import { ColorEvent } from 'ngx-color';
 })
 export class EditarthemeComponent implements OnInit {
   public formGroup: FormGroup;
-  objetoActualizar: Tema = { id: 0, nombre: '',descripcion:''}
+  objetoActualizar: Theme = { id: 0, nombre: '',descripcion:''}
   themeMostrar: ThemeXid;
   themeId: { id: number };
   token: any;

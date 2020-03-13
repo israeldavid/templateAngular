@@ -17,7 +17,7 @@ import { ColorEvent } from 'ngx-color';
 })
 export class EditarthemeComponent implements OnInit {
   public formGroup: FormGroup;
-  objetoActualizar: Tema = { id: 0, nombre: '',descripcion:''}
+  objetoActualizar: Theme = { id: 0, nombre: '',descripcion:''}
   themeMostrar: ThemeXid;
   themeId: { id: number };
   token: any;

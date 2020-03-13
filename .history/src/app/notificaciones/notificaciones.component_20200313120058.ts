@@ -139,8 +139,7 @@ export class NotificacionesComponent implements OnInit {
       this.crearMensaje.headNotification=this.valorFormulario.headNotification;
       this.crearMensaje.bodyNotification=this.valorFormulario.mensaje;
       this.crearMensaje.idAplicationReceptive=this.valorFormulario.aplicacion;
-      // this.crearMensaje.urlImage = "https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y";
-      this.crearMensaje.urlImage = this.valorFormulario.urlImagen;
+      this.crearMensaje.urlImage = "https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y";
       this.crearMensaje.idtopic=this.valorFormulario.grupo;
       this.ns.envioFCM(this.crearMensaje);
     }
