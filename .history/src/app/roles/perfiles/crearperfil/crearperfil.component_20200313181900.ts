@@ -109,7 +109,7 @@ export class CrearperfilComponent implements OnInit {
       this.valorFormulario = this.formGroup.value;
       this.crearPerfil.idEmpresa=this.valorFormulario.empresa;
       this.crearPerfil.idAplicacion=this.valorFormulario.aplicacion;
-      //this.crearPerfil.nombre=this.valorFormulario.nombrePerfil;
+      this.crearPerfil.nombre=this.valorFormulario.nombrePerfil;
       this.crearPerfil.estado=this.valorFormulario.estado;
       this.crearPerfil.idRol=this.valorFormulario.rol;
       this.crearPerfil.idMenu=this.valorFormulario.menu;

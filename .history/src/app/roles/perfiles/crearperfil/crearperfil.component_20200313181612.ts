@@ -25,7 +25,7 @@ export class CrearperfilComponent implements OnInit {
   responseMenus: responseMenu;
   responseEmpresa: responseEmpresa;
   responseAplicacion: responseAplicacion;
-  public opciones:any;
+  opciones:any;
   token:any;
   crearPerfil:Permiso = {idEmpresa:1,idAplicacion:1,nombre:'',estado:'',idRol:0,idMenu:0};
   valorFormulario: any;
@@ -86,8 +86,7 @@ export class CrearperfilComponent implements OnInit {
     this.token=localStorage.getItem('token');
     this.SpinnerService.show();
     this.ms.obtenerMenus(this.token).subscribe(data => { 
-      this.opciones=data.menus; 
-      console.log(this.opciones);
+      this.opciones.push(data.menus.id,data.menus.nombre); 
       this.SpinnerService.hide(); 
     });
   }
@@ -109,7 +108,7 @@ export class CrearperfilComponent implements OnInit {
       this.valorFormulario = this.formGroup.value;
       this.crearPerfil.idEmpresa=this.valorFormulario.empresa;
       this.crearPerfil.idAplicacion=this.valorFormulario.aplicacion;
-      //this.crearPerfil.nombre=this.valorFormulario.nombrePerfil;
+      this.crearPerfil.nombre=this.valorFormulario.nombrePerfil;
       this.crearPerfil.estado=this.valorFormulario.estado;
       this.crearPerfil.idRol=this.valorFormulario.rol;
       this.crearPerfil.idMenu=this.valorFormulario.menu;
